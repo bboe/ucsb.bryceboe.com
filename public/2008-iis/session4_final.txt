@@ -1,0 +1,109 @@
+<?php
+error_reporting(E_ALL | E_STRICT);
+ini_set('display_errors','on');
+
+$file = "./priv/chat";
+
+/* Verify the file exists, and is writable */
+if (!is_writable($file)) {
+  print "Sorry the file is not accessible\n";
+  exit(1);
+ }
+
+if (isset($_GET['ajax']) && $_GET['ajax'] = 1) {
+  /* The AJAX will want the file contents, so serve them up */
+  print file_get_contents($file);
+  exit(0);
+}
+elseif (isset($_POST['line'])) {
+  /* Add a line to the file */
+  $input = $_SERVER['REMOTE_ADDR'] . ": " . trim(htmlspecialchars($_POST['line'])) . "\n";
+  file_put_contents($file,$input,FILE_APPEND);
+  exit(0);
+}
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>php + ajax chat</title>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+<script>
+contentType = "application/x-www-form-urlencoded; charset=UTF-8";
+function initAJAX() {
+  var req = null;
+  try {
+	req = new XMLHttpRequest();
+  }
+  catch (e)	{
+	try {
+	  req = new ActiveXObject("Msxml2.XMLHTTP");
+	}
+	catch (e) {
+	  try {
+		req = new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  catch (e) {
+		document.input.box.value = "Your browser does not support AJAX!";
+	  }
+	}
+  }
+  return req
+}
+function updateBox(loop) {
+  var req = initAJAX();
+  if (req) {
+	req.onreadystatechange = function() {
+	  if (req.readyState == 4) {
+		if (req.status == 200) {
+		  document.input.box.value = req.responseText;
+		  document.input.box.scrollTop = document.input.box.scrollHeight;
+		}
+		else
+		  document.input.box.value = req.status;
+	  }
+	};
+	req.open("GET","?ajax=1",true);
+	req.send(null);
+  }
+  if (loop)
+	setTimeout("updateBox(true)",2000);
+}
+function sendLine() {
+  query = "line=" + document.input.line.value;
+  var req = initAJAX();
+  if (req) {
+	req.onreadystatechange = function() {
+	  if (req.readyState == 4) {
+		if (req.status == 200) {
+		  document.input.line.value = '';
+		  updateBox(false);
+		}
+	  }
+	};
+	req.open("POST","./index.php",true);
+	req.setRequestHeader("Content-Type",contentType);
+	req.send(query);
+  }
+}
+function handleSubmit() {
+  sendLine();
+  return false;
+}
+function bootstrap() {
+  document.input.line.focus();
+  document.input.box.scrollTop = document.input.box.scrollHeight;
+  updateBox(true);
+}
+</script>
+</head>
+<body onload="bootstrap()">
+<p>Welcome to this cool chat application</p>
+<form name="input" action="" method="post" onsubmit="return handleSubmit()">
+<textarea name="box" readonly="readonly" rows="10" cols="40">Loading...</textarea>
+<br/>
+<input type="text" name="line" size="40"/>
+<input type="submit" value="submit"/>
+</form>
+</body>
+</html>

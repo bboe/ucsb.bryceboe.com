@@ -1,0 +1,11 @@
+Webpages
+	public_html folder for ~user
+	permissions
+	a sloppy example
+	converted to xhtml 1.1
+		requires <html>
+		must have xmlns attribute
+	
+	ahh not enough time to prepare... don't
+		worry we'll make it up as we go :)
+

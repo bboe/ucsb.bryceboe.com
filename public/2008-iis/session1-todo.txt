@@ -1,0 +1,42 @@
+Python
+	Interative shell
+		Of course... hello world
+		numbers
+			complex
+			octal
+			hex
+		lists
+			as queue -- pop(0)
+			as stack -- pop()
+			common functions
+		dictionaries
+		tuples
+			immutable
+		strings
+			separator.join(string)
+			math on strings
+			
+		slices [a:b:c:]
+			shallow copy of lists
+			reversing
+		help function
+
+	Scripting
+		syntax
+			indention, indention, indention
+			if statement (sorry no switch)
+			for loops
+		user input
+		command line args
+		file i/o
+			read
+			readlines
+
+-------------------------------------------------------------------------------
+
+	Functional Programming
+		lamdba, map, reduce, filter
+	List comprehensions
+		result = [expression for item1 in sequence1  [if condition1]
+             		    [for item2 in sequence2 ... for itemN in sequenceN]
+         		 ]

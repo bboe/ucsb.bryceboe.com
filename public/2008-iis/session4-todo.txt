@@ -1,0 +1,38 @@
+Building A Web Based Chat
+	Step 1: Start with the html file provided.
+	Step 2: Grab information from the file and put in textarea
+	Step 3: Process form submission to add a line to the file
+	Step 4: Use AJAX to pull file at regular time intervals
+	Step 5: Use AJAX for form submission
+
+
+Function Notes:
+	php
+		phpinfo ( )
+		error_reporting ( level )
+			E_ALL | E_STRICT
+		ini_set ( key, value )
+			display_errors
+		is_writable ( file )
+		isset ( variable )
+		file_put_contents ( file, string )
+		file_get_contents ( file )
+
+	javascript
+		XMLHttpRequest ( ) | ActiveXObject ( "Msxml2.XMLHTTP" | "Microsoft.XMLHTTP" )
+			onreadystatechange
+				0	The request is not initialized
+				1	The request has been set up
+				2	The request has been sent
+				3	The request is in process
+				4	The request is complete
+			open ( method, url, asynchronously )
+			send ( data )
+			responseText
+		document
+			focus
+			scrollTop
+			scrollHeight
+			readonly
+			value
+		setTimeout ( function, milliseconds )
