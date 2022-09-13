@@ -1,9 +1,9 @@
 <nav id="navigation">
   <ul>
-  {% for item in site.data.navigation %}
+  {%- for item in site.data.navigation %}
     <li><a href="{% if page.url != item.link %}{{ item.link | relative_url }}{% endif %}">
       {{ item.name }}
     </a></li>
-  {% endfor %}
+  {%- endfor %}
   </ul>
 </nav>
