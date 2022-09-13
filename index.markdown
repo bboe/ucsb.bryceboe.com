@@ -1,8 +1,7 @@
 ---
 layout: default
-title: Home
+title: About
 ---
-
 ## About
 
 Bryce received his Ph.D. in Computer Science in 2014. Bryce has been employed

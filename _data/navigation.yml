@@ -1,2 +1,6 @@
 - name: Home
   link: /
+- name: Curriculum Vitae
+  link: /cv
+- name: Projects
+  link: /projects
