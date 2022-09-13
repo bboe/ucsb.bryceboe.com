@@ -12,7 +12,7 @@ Bryce was appointed as 1/3 Lecturer for the CS deparment for the Fall 2015, Fall
 
 ## CS291A (Fall 2019)
 
-- [Course Page](http://cs291.com/)
+- [Course Page](https://cs291.com/)
 
 
 ## Old Stuff
@@ -26,6 +26,6 @@ Bryce was appointed as 1/3 Lecturer for the CS deparment for the Fall 2015, Fall
 - [CS32 Course Page](/~bboe/cs32_m12/) (Summer 2012)
 - [CS170 TA Page](/~bboe/p/cs170_s11/) (Spring 2011)
 - [CS170 TA Page](/~bboe/p/cs170_s09/) (Spring 2009)
-- [Privacy Protector Video](/~bboe/p/privacy/) (Fall 2008)
+- [Privacy Protector Video]({{ "privacy_protector" | relative_url }}) (Fall 2008)
 - [UCSB Programming Battle 2008]({{ "battle08" | relative_url }}) (Spring 2008)
 - [ACM Interactive Informational Sessions]({{ "iis" | relative_url }}) (Winter / Spring 2008)
