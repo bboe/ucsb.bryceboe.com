@@ -28,4 +28,4 @@ Bryce was appointed as 1/3 Lecturer for the CS deparment for the Fall 2015, Fall
 - [CS170 TA Page](/~bboe/p/cs170_s09/) (Spring 2009)
 - [Privacy Protector Video](/~bboe/p/privacy/) (Fall 2008)
 - [UCSB Programming Battle 2008]({{ "battle08" | relative_url }}) (Spring 2008)
-- [ACM Interactive Informational Sessions](/~bboe/p/iis/) (Winter / Spring 2008)
+- [ACM Interactive Informational Sessions]({{ "iis" | relative_url }}) (Winter / Spring 2008)
