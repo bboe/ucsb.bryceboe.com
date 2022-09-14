@@ -1,0 +1,64 @@
+---
+layout: variant-multi
+---
+{%- assign base = site.baseurl | append: "/cs24_m13" -%}
+<div id="header">
+  <h1><a href="{{ base }}/">Computer Science 24, Summer 2013</a></h1>
+  <h2>Problem Solving with Computers II</h2>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="{{ base }}/schedule">lecture schedule</a></li>
+    <li><a href="{{ base }}/submission">submission instructions</a></li>
+  </ul>
+</div>
+
+<div id="main">
+  <div id="sidebar">
+    <div class="sidebarbox">
+      <h2>People &amp; Office Hours</h2>
+      <ul>
+        <li><strong>Instructor</strong>: Bryce Boe
+          (<a href="{{ site.baseurl }}/">web</a>, <a href="mailto:{{ site.email }}">email</a>)
+          <ul>
+            <li>Tuesday, 14:15 - 15:15 in GSL</li>
+            <li>Thursday, 11:15 - 12:15 in GSL</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Jane Iedemska
+          (<a href="mailto:jane@iedemska.com">email</a>)
+          <ul>
+            <li>Wednesday, 11:30 - 12:30 in Phelps 1413</li>
+            <li>Thursday, 14:30 - 15:30 in Phelps 1413</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebarbox">
+      <h2>Deadlines</h2>
+      <h3>All deadlines are at 23:59:59 on the due date.</h3>
+      <ul>
+        <li>2013/06/25 -- <a href="{{ base }}/hw1">Homework 1</a></li>
+        <li>2013/06/26 -- <a href="{{ base }}/lab1">Lab 1</a></li>
+        <li>2013/06/28 -- Course Drop with Refund</li>
+        <li>2013/07/03 -- <a href="{{ base }}/lab2">Lab 2</a></li>
+        <li>2013/07/10 -- <a href="{{ base }}/lab3">Lab 3</a></li>
+        <li>2013/07/16 -- <a href="{{ base }}/proj1">Project 1</a></li>
+        <li>2013/07/17 -- <a href="{{ base }}/lab4">Lab 4</a></li>
+        <li>2013/08/01 -- <a href="{{ base }}/lab5">Lab 5</a></li>
+        <li>2013/08/07 -- <a href="{{ base }}/lab6">Lab 6</a></li>
+        <li>2013/08/10 -- <a href="{{ base }}/proj2">Project 2 (Part 1)</a></li>
+        <li>2013/08/14 -- <a href="{{ base }}/lab7">Lab 7</a></li>
+        <li>2013/08/17 -- <a href="{{ base }}/proj2">Project 2 (Part 2)</a></li>
+        <li>2013/08/21 -- <a href="{{ base }}/lab8">Lab 8</a></li>
+        <li>2013/08/30 -- <a href="{{ base }}/proj3">Project 3</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+{{ content }}
+  </div>
+</div>

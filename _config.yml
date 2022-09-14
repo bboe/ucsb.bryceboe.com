@@ -9,6 +9,11 @@ defaults:
       path: cs32_m12/
     values:
       layout: cs32_m12
+  - scope:
+      path: cs24_m13/
+    values:
+      layout: cs24_m13
+
 
 url: https://sites.cs.ucsb.edu
 

@@ -1,5 +1,5 @@
 ---
-title: CS32 Summer 2012 &raquo; CS32 Summer 2012
+title: CS32 Summer 2012
 ---
 
 ## Announcements
