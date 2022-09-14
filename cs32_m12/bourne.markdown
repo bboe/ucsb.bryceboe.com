@@ -21,8 +21,9 @@ examples:
  * Loops
 
 
-For a more complete reference please see the [Bourne Shell
-Programming](https://www.ooblick.com/text/sh/) page provided by ooblick.com.
+For a more complete reference please see the
+[Bourne Shell Programming](https://www.ooblick.com/text/sh/) page provided by
+ooblick.com.
 
 ### Hello World
 

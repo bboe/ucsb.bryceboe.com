@@ -161,8 +161,8 @@ All announcements and online discussion will occur via
 [Piazza](https://piazza.com/class#summer2012/cs32). CS32 related questions
 asked via email will not be answered. Personal questions or questions that
 contain too much information specific to your implementation should
-be sent as a __private__ question via Piazza (see "[Ask questions privately to
-instructors](https://piazza.com/features#)").
+be sent as a __private__ question via Piazza (see
+"[Ask questions privately to instructors](https://piazza.com/features#)").
 
 You are encouraged and will be rewarded with participation points for
 non-anonymously asking and responding to questions via Piazza. While you may
