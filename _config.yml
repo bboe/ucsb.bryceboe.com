@@ -1,4 +1,4 @@
-baseurl: /~bboe
+baseurl:
 email: bboe@cs.ucsb.edu
 defaults:
   - scope:
@@ -18,7 +18,7 @@ defaults:
     values:
       layout: cs24_f13
 
-url: https://sites.cs.ucsb.edu
+url: https://ucsb.bryceboe.com
 
 # Build settings
 plugins:
