@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/variant-multi.css" title="Variant Multi" media="all" />
+    <link rel="stylesheet" type="text/css" href="/public/monokai.sublime.css" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>Project 2 &raquo; CS32 Summer 2012</title>
+  </head>
+  <body>
+    <div id="container980">
+<div id="header">
+  <h1><a href="/cs32_m12/">Computer Science 32, Summer 2012</a></h1>
+  <h2>Object-Oriented Design and Implementation</h2>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="/cs32_m12/schedule">lecture schedule</a></li>
+    <li><a href="/cs32_m12/automated_feedback">automated feedback</a></li>
+    <li><a href="/cs32_m12/bourne">bourne shell scripting</a></li>
+  </ul>
+</div>
+
+<div id="main">
+  <div id="sidebar">
+    <div class="sidebarbox">
+      <h2>People &amp; Office Hours</h2>
+      <ul>
+        <li><strong>Instructor</strong>: Bryce Boe
+          (<a href="/">web</a>, <a href="mailto:bboe@cs.ucsb.edu">email</a>)
+          <ul>
+            <li>Monday, 14:15 - 15:15 in GSL</li>
+            <li>Wednesday, 11:15 - 12:15 in GSL</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Saeed Mahani
+          <ul>
+            <li>Tuesday, 14:00 - 15:00 in CSIL</li>
+            <li>Thursday, 13:00 - 14:00 in CSIL</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebarbox">
+      <h2>Tentative Deadlines</h2>
+      <h3>All deadlines are at 23:59:59 on the due date.</h3>
+      <ul>
+        <li>2012/08/06 -- <a href="/cs32_m12/hw1">Homework 1</a></li>
+        <li>2012/08/09 -- <a href="/cs32_m12/lab1">Lab 1</a></li>
+        <li>2012/08/10 -- Drop with Refund</li>
+        <li>2012/08/12 -- <a href="/cs32_m12/hw2">Homework 2</a></li>
+        <li>2012/08/16 -- <a href="/cs32_m12/lab2">Lab 2</a></li>
+        <li>2012/08/19 -- <a href="/cs32_m12/project1_part1">Project 1, Part 1</a></li>
+        <li>2012/08/23 -- <a href="/cs32_m12/lab3">Lab 3</a></li>
+        <li>2012/08/26 -- <a href="/cs32_m12/project1_part2">Project 1, Part 2</a></li>
+        <li>2012/08/30 -- <a href="/cs32_m12/lab4">Lab 4</a></li>
+        <li>2012/09/06 -- <a href="/cs32_m12/lab5">Lab 5</a></li>
+        <li>2012/09/13 -- <a href="/cs32_m12/project2">Project 2</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+<h2 id="project-2-a-semi-simple-turn-based-card-game">Project 2, A Semi-Simple Turn-based Card Game</h2>
+
+<h3 id="motivation">Motivation</h3>
+
+<p>To learn and demonstrate proper class inheritance. And to have fun with a
+simple card game.</p>
+
+<h3 id="project-setup">Project Setup</h3>
+
+<p>Change into the cs32 directory, and create a proj2 directory:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>cs32
+<span class="nb">mkdir </span>proj2
+</code></pre></div></div>
+
+<p>Change into the proj2 directory and copy files you will need for this project:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>proj2
+<span class="nb">cp</span>  <span class="nt">-r</span> ~cs32/public_html/code/proj2/<span class="k">*</span> <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>At this point all the files you fetched are read only except for the files you
+will need to modify.</p>
+
+<h3 id="implementation-part-1-player-class-inheritance">Implementation Part 1: Player class inheritance</h3>
+
+<p>For the first part of this assignment, you will need to write three descendants
+to the Player class. The code for each of these classes should only be added to
+<code class="language-plaintext highlighter-rouge">custom_players.h</code> and <code class="language-plaintext highlighter-rouge">custom_players.cpp</code>.</p>
+
+<p>The classes you have to implement are:</p>
+
+<ul>
+  <li>AttackWeakestPlayer (9 pts)</li>
+  <li>HumanPlayer (9 pts)</li>
+  <li>AttackStrongest3xPlayer (9 pts)</li>
+</ul>
+
+<p>The descriptions for what each does are contained in <code class="language-plaintext highlighter-rouge">custom_players.h</code>. The
+comments should be more than enough information to get you started.</p>
+
+<h3 id="implementation-part-2-card-class-inheritance">Implementation Part 2: Card class inheritance</h3>
+
+<p>For the second part of the assignment, you will need to write five descendants
+to the Card class. These changes need to be made to <code class="language-plaintext highlighter-rouge">custom_cards.h</code> and
+<code class="language-plaintext highlighter-rouge">custom_cards.cpp</code>. The five classes you need to implement are described fully
+in <code class="language-plaintext highlighter-rouge">custom_cards.h</code>.</p>
+
+<p>The classes you have to implement are:</p>
+
+<ul>
+  <li>AccumlatorCard (9 pts)</li>
+  <li>KillMultiplierCard (9 pts)</li>
+  <li>ReflectorCard (9 pts)</li>
+  <li>SnowballCard (9 pts)</li>
+  <li>TransformationCard (9 pts)</li>
+</ul>
+
+<h3 id="building-and-running-play">Building and running play</h3>
+
+<p>To build the program you need only run:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make
+</code></pre></div></div>
+
+<p>This will produce the executable play that can be run via:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./play INPUT_FILE NUM_GAMES [SEED]
+</code></pre></div></div>
+
+<p>The INPUT_FILE should be a file constructed similar to such as <code class="language-plaintext highlighter-rouge">tests/initial</code>
+or <code class="language-plaintext highlighter-rouge">tests/all</code> that describe the players and cards for the game. In order to
+create player instances other than <code class="language-plaintext highlighter-rouge">AttackNextPlayer</code> you will need to
+uncomment the appropriate <code class="language-plaintext highlighter-rouge">else if</code> conditions in <code class="language-plaintext highlighter-rouge">main.cpp</code> in the function
+<code class="language-plaintext highlighter-rouge">read_in_game_data</code>. The same is true if you wish to create card instances
+other than the base Card class.</p>
+
+<p>The NUM_GAMES argument should be a number that is greater than 0. This
+indicates how many rounds should be played.</p>
+
+<p>The SEED argument, when present, should be any number. The seed value is used
+to seed the random number generator. In a nutshell, when the SEED argument is
+given, random will behave the same for each iteration with the same SEED
+value. That means everytime you run <code class="language-plaintext highlighter-rouge">./play 10 0</code> it will produce the exact
+same output. However, that output will differ from <code class="language-plaintext highlighter-rouge">./play 10 1</code>.</p>
+
+<p>When no SEED argument is provided, the random number generator is seeded with
+the current time. Effectively, the output will be different for every
+invocation.</p>
+
+<h3 id="submission-instructions">Submission Instructions</h3>
+
+<p>For this project you will be allowed 20 submissions. You will receive up to 16
+lines of diff output for each test case.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~cs32/submit proj2@cs32 custom_*.h custom_*.cpp
+</code></pre></div></div>
+
+<p><strong>Note on the feedback for this project</strong>: In order to prevent a major
+dependency between your implementation of the <code class="language-plaintext highlighter-rouge">Card</code> classes and the <code class="language-plaintext highlighter-rouge">Player</code>
+classes when testing this project, the feedback system builds the projects
+slightly differently than you build them. When the feedback system is testing
+your <code class="language-plaintext highlighter-rouge">Player</code> classes, it builds the project using the <em>solution</em> version of
+the <code class="language-plaintext highlighter-rouge">Card</code> classes. Likewise, the feedback system uses the <em>solution</em> version
+of the <code class="language-plaintext highlighter-rouge">Player</code> classes when testing your <code class="language-plaintext highlighter-rouge">Card</code> classes.</p>
+
+<p>Please check the feedback email to ensure you submitted correctly, and are
+satisfied with your final score. If you are not, feel free to revise and submit
+again. Please also review the
+<a href="/cs32_m12/automated_feedback">automated feedback</a> instructions as needed.</p>
+
+  </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
+      <div id="credits">
+        <p><span class="small">Template design by <a href="https://andreasviklund.com/">Andreas Viklund</a></span></p>
+      </div>
+    </div>
+  </body>
+</html>

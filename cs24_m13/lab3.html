@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/variant-multi.css" title="Variant Multi" media="all" />
+    <link rel="stylesheet" type="text/css" href="/public/monokai.sublime.css" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>Lab 3 &raquo; CS24 Summer 2013</title>
+  </head>
+  <body>
+    <div id="container980">
+<div id="header">
+  <h1><a href="/cs24_m13/">Computer Science 24, Summer 2013</a></h1>
+  <h2>Problem Solving with Computers II</h2>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="/cs24_m13/schedule">lecture schedule</a></li>
+    <li><a href="/cs24_m13/submission">submission instructions</a></li>
+  </ul>
+</div>
+
+<div id="main">
+  <div id="sidebar">
+    <div class="sidebarbox">
+      <h2>People &amp; Office Hours</h2>
+      <ul>
+        <li><strong>Instructor</strong>: Bryce Boe
+          (<a href="/">web</a>, <a href="mailto:bboe@cs.ucsb.edu">email</a>)
+          <ul>
+            <li>Tuesday, 14:15 - 15:15 in GSL</li>
+            <li>Thursday, 11:15 - 12:15 in GSL</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Jane Iedemska
+          (<a href="mailto:jane@iedemska.com">email</a>)
+          <ul>
+            <li>Wednesday, 11:30 - 12:30 in Phelps 1413</li>
+            <li>Thursday, 14:30 - 15:30 in Phelps 1413</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebarbox">
+      <h2>Deadlines</h2>
+      <h3>All deadlines are at 23:59:59 on the due date.</h3>
+      <ul>
+        <li>2013/06/25 -- <a href="/cs24_m13/hw1">Homework 1</a></li>
+        <li>2013/06/26 -- <a href="/cs24_m13/lab1">Lab 1</a></li>
+        <li>2013/06/28 -- Course Drop with Refund</li>
+        <li>2013/07/03 -- <a href="/cs24_m13/lab2">Lab 2</a></li>
+        <li>2013/07/10 -- <a href="/cs24_m13/lab3">Lab 3</a></li>
+        <li>2013/07/16 -- <a href="/cs24_m13/proj1">Project 1</a></li>
+        <li>2013/07/17 -- <a href="/cs24_m13/lab4">Lab 4</a></li>
+        <li>2013/08/01 -- <a href="/cs24_m13/lab5">Lab 5</a></li>
+        <li>2013/08/07 -- <a href="/cs24_m13/lab6">Lab 6</a></li>
+        <li>2013/08/10 -- <a href="/cs24_m13/proj2">Project 2 (Part 1)</a></li>
+        <li>2013/08/14 -- <a href="/cs24_m13/lab7">Lab 7</a></li>
+        <li>2013/08/17 -- <a href="/cs24_m13/proj2#part-2">Project 2 (Part 2)</a></li>
+        <li>2013/08/21 -- <a href="/cs24_m13/lab8">Lab 8</a></li>
+        <li>2013/08/30 -- <a href="/cs24_m13/proj3">Project 3</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+<h2 id="lab-3-starting-project-1">Lab 3: Starting Project 1</h2>
+
+<h3 id="goals-for-this-lab">Goals for this lab</h3>
+
+<p>By the time you have completed this lab, you should</p>
+
+<ul>
+  <li>Have an initial version of the array-based implementation of the List
+completed.</li>
+</ul>
+
+<h3 id="no-lab-pairing">No Lab Pairing</h3>
+
+<p>This is not really a lab, but rather an opportunity to require you to start
+working on project 1. As such, you may not work with a partner on this
+assignment.</p>
+
+<h3 id="lab-preparation">Lab Preparation</h3>
+
+<p>Follow the <a href="/cs24_m13/proj1">instructions</a> to obtain the project 1
+files if you have not done so already. If you started early, you may want to
+update your <a href="/cs24_m13/code/proj1/test_list.c">test_list.c</a> file.</p>
+
+<h3 id="implementing-array_listc">Implementing <code class="language-plaintext highlighter-rouge">array_list.c</code></h3>
+
+<ol>
+  <li>
+    <p>Create the file <code class="language-plaintext highlighter-rouge">array_list.c</code> if you have not done so already.</p>
+  </li>
+  <li>
+    <p>Add <code class="language-plaintext highlighter-rouge">#include "array_list.h"</code> at the top of <code class="language-plaintext highlighter-rouge">array_list.c</code> so that the
+implementation is aware of the attributes available in <code class="language-plaintext highlighter-rouge">struct List</code>.</p>
+  </li>
+  <li>
+    <p>Define all of the functions that are declared in <code class="language-plaintext highlighter-rouge">array_list.h</code>. Your
+initial definition might simply want to return the “error” value (<code class="language-plaintext highlighter-rouge">NULL</code> for
+pointers, <code class="language-plaintext highlighter-rouge">0</code> for boolean integers).</p>
+  </li>
+  <li>
+    <p>Once all the functions have been sufficiently defined, attempt to compile
+<code class="language-plaintext highlighter-rouge">test_array</code> by running <code class="language-plaintext highlighter-rouge">make test_array</code>. Fix any issues and repeat until
+<code class="language-plaintext highlighter-rouge">test_array</code> builds.</p>
+  </li>
+  <li>
+    <p>Run <code class="language-plaintext highlighter-rouge">test_array 0 -1</code> and observe any tests that fail. Make the necessary
+additions/corrections and repeat steps 4 and 5 until all the tests are passed.</p>
+  </li>
+</ol>
+
+<h3 id="submitting-the-project">Submitting the project</h3>
+
+<p>Even though you’re working on project 1, your lab 3 grade will depend on
+passing all the tests for the array-based implementation of the List that are
+included in <code class="language-plaintext highlighter-rouge">test_list.c</code>.</p>
+
+  </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
+      <div id="credits">
+        <p><span class="small">Template design by <a href="https://andreasviklund.com/">Andreas Viklund</a></span></p>
+      </div>
+    </div>
+  </body>
+</html>

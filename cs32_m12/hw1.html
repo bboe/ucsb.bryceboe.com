@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/variant-multi.css" title="Variant Multi" media="all" />
+    <link rel="stylesheet" type="text/css" href="/public/monokai.sublime.css" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>Homework 1 &raquo; CS32 Summer 2012</title>
+  </head>
+  <body>
+    <div id="container980">
+<div id="header">
+  <h1><a href="/cs32_m12/">Computer Science 32, Summer 2012</a></h1>
+  <h2>Object-Oriented Design and Implementation</h2>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="/cs32_m12/schedule">lecture schedule</a></li>
+    <li><a href="/cs32_m12/automated_feedback">automated feedback</a></li>
+    <li><a href="/cs32_m12/bourne">bourne shell scripting</a></li>
+  </ul>
+</div>
+
+<div id="main">
+  <div id="sidebar">
+    <div class="sidebarbox">
+      <h2>People &amp; Office Hours</h2>
+      <ul>
+        <li><strong>Instructor</strong>: Bryce Boe
+          (<a href="/">web</a>, <a href="mailto:bboe@cs.ucsb.edu">email</a>)
+          <ul>
+            <li>Monday, 14:15 - 15:15 in GSL</li>
+            <li>Wednesday, 11:15 - 12:15 in GSL</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Saeed Mahani
+          <ul>
+            <li>Tuesday, 14:00 - 15:00 in CSIL</li>
+            <li>Thursday, 13:00 - 14:00 in CSIL</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebarbox">
+      <h2>Tentative Deadlines</h2>
+      <h3>All deadlines are at 23:59:59 on the due date.</h3>
+      <ul>
+        <li>2012/08/06 -- <a href="/cs32_m12/hw1">Homework 1</a></li>
+        <li>2012/08/09 -- <a href="/cs32_m12/lab1">Lab 1</a></li>
+        <li>2012/08/10 -- Drop with Refund</li>
+        <li>2012/08/12 -- <a href="/cs32_m12/hw2">Homework 2</a></li>
+        <li>2012/08/16 -- <a href="/cs32_m12/lab2">Lab 2</a></li>
+        <li>2012/08/19 -- <a href="/cs32_m12/project1_part1">Project 1, Part 1</a></li>
+        <li>2012/08/23 -- <a href="/cs32_m12/lab3">Lab 3</a></li>
+        <li>2012/08/26 -- <a href="/cs32_m12/project1_part2">Project 1, Part 2</a></li>
+        <li>2012/08/30 -- <a href="/cs32_m12/lab4">Lab 4</a></li>
+        <li>2012/09/06 -- <a href="/cs32_m12/lab5">Lab 5</a></li>
+        <li>2012/09/13 -- <a href="/cs32_m12/project2">Project 2</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+<h2 id="homework-1-fizzbuzz">Homework 1, FizzBuzz</h2>
+
+<h3 id="motivation">Motivation</h3>
+
+<p>The purpose of this assignment is to write a C++ program that demonstrates a
+basic understanding of programming using C++. The core concepts demonstrated by
+this assignment are the handling of <em>command line arguments</em>, <em>looping</em>, and
+<em>conditionals</em>. These are all concepts that you are expected to have already
+learned. I encourage you to attempt to complete this assignment without
+consulting any outside resources. However, should you need to look something
+up, please make a mental note of the topic in order to track your progress
+toward mastery of the topic.</p>
+
+<h3 id="description">Description</h3>
+
+<p>This assignment requires you to write a program, <strong>fizzbuzz.cpp</strong>, that
+produces a single-line output for each number, <em>i</em>, from 1 up to and including
+the given number <em>NUM</em>. Each line of output is one of the following:</p>
+
+<ul>
+  <li><em>i</em> when <em>i</em> is not divisible by 3 and not divisible by 5</li>
+  <li><code class="language-plaintext highlighter-rouge">fizz</code> when <em>i</em> is divisible by 3</li>
+  <li><code class="language-plaintext highlighter-rouge">buzz</code> when <em>i</em> is divisible by 5</li>
+  <li><code class="language-plaintext highlighter-rouge">fizzbuzz</code> when <em>i</em> is divisible by both 3 and 5</li>
+</ul>
+
+<p>The number, <em>NUM</em>, should be read in as the first command line argument. Your
+program should check for the following error cases and produce the associated
+error output message. Note that each error message should be followed by a
+newline:</p>
+
+<ul>
+  <li>The number of command line arguments is not 1: <code class="language-plaintext highlighter-rouge">Usage: fizzbuzz NUM</code></li>
+  <li>The number, <em>NUM</em> is too small to produce any output: <code class="language-plaintext highlighter-rouge">NUM is too small</code></li>
+</ul>
+
+<h4 id="keyword-restrictions">Keyword Restrictions</h4>
+
+<p>Given that this is a class in C++, you will be expected to write C++ specific
+code. While C++ is backwards compatible with C, you will be expected to use
+C++’s specific conventions over their C counterparts in your assignments for
+this class. This includes <code class="language-plaintext highlighter-rouge">cout</code> and <code class="language-plaintext highlighter-rouge">cin</code> over <code class="language-plaintext highlighter-rouge">printf</code> and <code class="language-plaintext highlighter-rouge">scanf</code>, as well
+as <code class="language-plaintext highlighter-rouge">new</code> and <code class="language-plaintext highlighter-rouge">delete</code> over <code class="language-plaintext highlighter-rouge">malloc</code> and <code class="language-plaintext highlighter-rouge">free</code>.</p>
+
+<h3 id="compiling-and-running-your-program">Compiling and running your program</h3>
+
+<p>In this class we will use the clang++ compiler for all assignments. The clang++
+compiler has a number of benefits over the g++ compiler, most notably with
+respect to the usefulness of its error and warning messages.</p>
+
+<p>To compile the project:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>clang++ fizzbuzz.cpp
+</code></pre></div></div>
+
+<p>To run the project:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./a.out NUM
+</code></pre></div></div>
+
+<h3 id="example-input-and-corresponding-output">Example input and corresponding output</h3>
+
+<p>No command line arguments:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./a.out
+Usage: fizzbuzz NUM
+</code></pre></div></div>
+
+<p>Negative value command line argument:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./a.out -1024
+NUM is too small
+</code></pre></div></div>
+
+<p>A valid input:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./a.out 15
+1
+2
+fizz
+4
+buzz
+fizz
+7
+8
+fizz
+buzz
+11
+fizz
+13
+14
+fizzbuzz
+</code></pre></div></div>
+
+<h3 id="submitting-the-project">Submitting the project</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~cs32/submit hw1@cs32 fizzbuzz.cpp
+</code></pre></div></div>
+
+<p>Please review the <a href="/cs32_m12/automated_feedback">automated feedback</a> instructions as
+needed.</p>
+
+<h3 id="see-also">See also</h3>
+
+<ul>
+  <li><a href="https://blog.codinghorror.com/why-cant-programmers-program/">CodingHorror: Why Can’t Programmers
+Program?</a></li>
+</ul>
+
+  </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
+      <div id="credits">
+        <p><span class="small">Template design by <a href="https://andreasviklund.com/">Andreas Viklund</a></span></p>
+      </div>
+    </div>
+  </body>
+</html>

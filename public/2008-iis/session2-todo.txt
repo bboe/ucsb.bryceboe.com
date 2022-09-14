@@ -1,0 +1,51 @@
+Linux
+	General commands
+		cat / echo
+		ls
+		less / more
+		diff
+		grep / cut / head / tail
+		cp / mv / rm / ln
+		mkdir / rmdir
+		clear
+		touch
+		man
+
+	Input/Output
+		piping "|"
+		redirect ">" "<"
+
+	Quick editor overview
+		vi / emacs / nano
+
+	Permissions
+		chmod / chown / chgrp
+
+	Archive / Compression
+		tar / gzip / bz2
+		************************************************
+		to tar and gizp a folder and it's contents:
+
+			tar -cvzf somefile.tar.gz foldername/
+
+		to uncompress and extract files from a tarball
+
+			tar -xvzf somefile.tar.gz
+		************************************************
+
+	Running processes
+		fg / bg
+		top / ps / kill / killall
+
+	Shells
+		sh / bash / csh
+
+	SSH
+		x forwarding
+		Tunneling
+		*passwordless login
+
+	Other
+		xargs
+		who
+		screen

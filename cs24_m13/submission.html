@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/variant-multi.css" title="Variant Multi" media="all" />
+    <link rel="stylesheet" type="text/css" href="/public/monokai.sublime.css" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>Submission Instructions &raquo; CS24 Summer 2013</title>
+  </head>
+  <body>
+    <div id="container980">
+<div id="header">
+  <h1><a href="/cs24_m13/">Computer Science 24, Summer 2013</a></h1>
+  <h2>Problem Solving with Computers II</h2>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="/cs24_m13/schedule">lecture schedule</a></li>
+    <li><a href="/cs24_m13/submission">submission instructions</a></li>
+  </ul>
+</div>
+
+<div id="main">
+  <div id="sidebar">
+    <div class="sidebarbox">
+      <h2>People &amp; Office Hours</h2>
+      <ul>
+        <li><strong>Instructor</strong>: Bryce Boe
+          (<a href="/">web</a>, <a href="mailto:bboe@cs.ucsb.edu">email</a>)
+          <ul>
+            <li>Tuesday, 14:15 - 15:15 in GSL</li>
+            <li>Thursday, 11:15 - 12:15 in GSL</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Jane Iedemska
+          (<a href="mailto:jane@iedemska.com">email</a>)
+          <ul>
+            <li>Wednesday, 11:30 - 12:30 in Phelps 1413</li>
+            <li>Thursday, 14:30 - 15:30 in Phelps 1413</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebarbox">
+      <h2>Deadlines</h2>
+      <h3>All deadlines are at 23:59:59 on the due date.</h3>
+      <ul>
+        <li>2013/06/25 -- <a href="/cs24_m13/hw1">Homework 1</a></li>
+        <li>2013/06/26 -- <a href="/cs24_m13/lab1">Lab 1</a></li>
+        <li>2013/06/28 -- Course Drop with Refund</li>
+        <li>2013/07/03 -- <a href="/cs24_m13/lab2">Lab 2</a></li>
+        <li>2013/07/10 -- <a href="/cs24_m13/lab3">Lab 3</a></li>
+        <li>2013/07/16 -- <a href="/cs24_m13/proj1">Project 1</a></li>
+        <li>2013/07/17 -- <a href="/cs24_m13/lab4">Lab 4</a></li>
+        <li>2013/08/01 -- <a href="/cs24_m13/lab5">Lab 5</a></li>
+        <li>2013/08/07 -- <a href="/cs24_m13/lab6">Lab 6</a></li>
+        <li>2013/08/10 -- <a href="/cs24_m13/proj2">Project 2 (Part 1)</a></li>
+        <li>2013/08/14 -- <a href="/cs24_m13/lab7">Lab 7</a></li>
+        <li>2013/08/17 -- <a href="/cs24_m13/proj2#part-2">Project 2 (Part 2)</a></li>
+        <li>2013/08/21 -- <a href="/cs24_m13/lab8">Lab 8</a></li>
+        <li>2013/08/30 -- <a href="/cs24_m13/proj3">Project 3</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+<h2 id="submitting-using-submitcs">Submitting using submit.cs</h2>
+
+<p>All non-written assignments this quarter will utilize the
+<strong>submit.cs</strong> system. This system not only handles
+the submission of the files, but can also provide you with nearly immediate
+feedback on your submission. This submission system is intended to help you
+iteratively make improvements to the programs you submit, thus you are allowed
+to resubmit as many times as you want. Note, however, that on some of the
+assignments you may have to wait some period of time to receive subsequent
+feedback if you make multiple submissions in a small window of time.</p>
+
+<h3 id="getting-started">Getting Started</h3>
+
+<p>Before you can make submissions, you will need an account on
+<strong>submit.cs</strong>. Use whatever
+email you prefer to signup (your email is your username, and can be used if you
+forget your password). However, in the <em>name</em> field you <strong>must</strong> enter your
+name as listed in GOLD if you want to get credit for your submissions.</p>
+
+<p>Once you’ve created your account, you need to join the class. Note that you
+will need to login if you have not already.</p>
+
+<h3 id="making-submissions">Making Submissions</h3>
+
+<p>After you’ve joined the appropriate course, you should find a list of available
+projects on the course specific page. Clicking on the link for the project will
+show you the command you are to use to submit your project. It will look
+something like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~bboe/bin/submit -p PROJECT_ID FILENAME FILENAME
+</code></pre></div></div>
+
+<p>Once you have verified that your code works as it should on a CSIL machine
+(<code class="language-plaintext highlighter-rouge">csil.cs.ucsb.edu</code> is a good machine to ssh into if you’re working remotely)
+and have executed a few test cases on it (it’s really important you don’t cheat
+yourself out of valuable testing experience) then from a CSIL machine (not an
+ECI machine) then execute the command exactly as listed on the project page.</p>
+
+<h3 id="common-issues">Common Issues</h3>
+
+<p>When submitting, if you see an error similar to the one below it means you are
+not actually on a CSIL machine (or one sufficiently similar to it). The easiest
+thing to do is to just quickly ssh into <code class="language-plaintext highlighter-rouge">csil.cs.ucsb.edu</code> to submit your work.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/cs/student/bboe/bin/submit: line 6: /cs/student/bboe/bin/.py27/bin/python: cannot execute binary file
+</code></pre></div></div>
+
+  </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
+      <div id="credits">
+        <p><span class="small">Template design by <a href="https://andreasviklund.com/">Andreas Viklund</a></span></p>
+      </div>
+    </div>
+  </body>
+</html>

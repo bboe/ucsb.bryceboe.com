@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/variant-multi.css" title="Variant Multi" media="all" />
+    <link rel="stylesheet" type="text/css" href="/public/monokai.sublime.css" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>Lab 4 &raquo; CS24 Summer 2013</title>
+  </head>
+  <body>
+    <div id="container980">
+<div id="header">
+  <h1><a href="/cs24_m13/">Computer Science 24, Summer 2013</a></h1>
+  <h2>Problem Solving with Computers II</h2>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="/cs24_m13/schedule">lecture schedule</a></li>
+    <li><a href="/cs24_m13/submission">submission instructions</a></li>
+  </ul>
+</div>
+
+<div id="main">
+  <div id="sidebar">
+    <div class="sidebarbox">
+      <h2>People &amp; Office Hours</h2>
+      <ul>
+        <li><strong>Instructor</strong>: Bryce Boe
+          (<a href="/">web</a>, <a href="mailto:bboe@cs.ucsb.edu">email</a>)
+          <ul>
+            <li>Tuesday, 14:15 - 15:15 in GSL</li>
+            <li>Thursday, 11:15 - 12:15 in GSL</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Jane Iedemska
+          (<a href="mailto:jane@iedemska.com">email</a>)
+          <ul>
+            <li>Wednesday, 11:30 - 12:30 in Phelps 1413</li>
+            <li>Thursday, 14:30 - 15:30 in Phelps 1413</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebarbox">
+      <h2>Deadlines</h2>
+      <h3>All deadlines are at 23:59:59 on the due date.</h3>
+      <ul>
+        <li>2013/06/25 -- <a href="/cs24_m13/hw1">Homework 1</a></li>
+        <li>2013/06/26 -- <a href="/cs24_m13/lab1">Lab 1</a></li>
+        <li>2013/06/28 -- Course Drop with Refund</li>
+        <li>2013/07/03 -- <a href="/cs24_m13/lab2">Lab 2</a></li>
+        <li>2013/07/10 -- <a href="/cs24_m13/lab3">Lab 3</a></li>
+        <li>2013/07/16 -- <a href="/cs24_m13/proj1">Project 1</a></li>
+        <li>2013/07/17 -- <a href="/cs24_m13/lab4">Lab 4</a></li>
+        <li>2013/08/01 -- <a href="/cs24_m13/lab5">Lab 5</a></li>
+        <li>2013/08/07 -- <a href="/cs24_m13/lab6">Lab 6</a></li>
+        <li>2013/08/10 -- <a href="/cs24_m13/proj2">Project 2 (Part 1)</a></li>
+        <li>2013/08/14 -- <a href="/cs24_m13/lab7">Lab 7</a></li>
+        <li>2013/08/17 -- <a href="/cs24_m13/proj2#part-2">Project 2 (Part 2)</a></li>
+        <li>2013/08/21 -- <a href="/cs24_m13/lab8">Lab 8</a></li>
+        <li>2013/08/30 -- <a href="/cs24_m13/proj3">Project 3</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+<h2 id="lab-4-introduction-to-c">Lab 4: Introduction to C++</h2>
+
+<h3 id="goals-for-this-lab">Goals for this lab</h3>
+
+<p>By the time you have completed this lab, you should be able to</p>
+
+<ul>
+  <li>create your own class with custom constructors and destructor</li>
+  <li>create and use methods for your class</li>
+</ul>
+
+<p>The purpose of this lab is to get you familiar with C++ basics.</p>
+
+<h3 id="lab-pairing">Lab pairing</h3>
+
+<p>For this lab you may work with a partner. Please, team up with the same person
+you were working on the previous labs. When working with a partner, I strongly
+encourage you follow the pair programming method of working together.</p>
+
+<h3 id="lab-preparation">Lab preparation</h3>
+
+<p>After logging in, create the directory for this lab:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> cs24/lab4
+</code></pre></div></div>
+
+<p>Change into the lab2 directory and copy the files you will need for this lab:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>cs24/lab4
+<span class="nb">cp</span> ~bboe/public_html/cs24_m13/code/lab4/<span class="k">*</span> <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>Open up README.txt with your favorite text editor and be sure to add your and
+your partner’s name so that you both receive credit.</p>
+
+<h3 id="building-myvec-class">Building MyVec class</h3>
+
+<p>You are provided with the files Makefile, main.cpp, and vec.h. In this lab, you
+will need to add all the functionality that main.cpp expects from the MyVec
+class. Given all methods declarations in vec.h, you will have to write the
+corresponding implementations in vec.cpp.</p>
+
+<h4 id="step-1-add-the-constructors">Step 1: Add the constructors</h4>
+
+<p>Completing this step will allow you to build the program main by running make.
+You will need to declare and define the two constructors and a destructor. The
+first one should only take array size, the second one should also take a
+pointer to some int array. Both of the constructors should allocate memory for
+integer array (do <em>not</em> use <code class="language-plaintext highlighter-rouge">vector</code> template). The destructor should delete
+allocated memory.  Here is an example of allocating and releasing memory in
+C++:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="o">*</span><span class="n">tmp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="mi">2048</span><span class="p">];</span>
+<span class="k">delete</span> <span class="p">[]</span><span class="n">tmp</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Note: starting from this lab you are not allowed to use <code class="language-plaintext highlighter-rouge">malloc</code> (or associated
+functions), <code class="language-plaintext highlighter-rouge">realloc</code> or <code class="language-plaintext highlighter-rouge">free</code>. Please, use appropriate C++ syntax.</p>
+
+<h4 id="step-2-add-the-getters-and-setters">Step 2: Add the getters and setters</h4>
+
+<p>Next you will need to define the getters and setters for your class.  Once you
+have done that, comment out the appropriate lines in main.cpp to verify you
+have correctly done the implementation.</p>
+
+<h4 id="step-3-add-instance-method-add_immediate">Step 3: Add instance method add_immediate</h4>
+
+<p>Next, you will need to implement this method in order to be able to add two
+vectors.  This method takes a constant reference to another vector as an input
+and stores result in the initial object. When you use the method, you will be
+making a call</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">vec_0</span><span class="p">.</span><span class="n">add_immediate</span><span class="p">(</span><span class="n">vec_1</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>The result should be stored in <code class="language-plaintext highlighter-rouge">vec_0</code>.</p>
+
+<p>Here are few examples of how vector addition works.  For two vectors of the
+same size let:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vec_0 = (1, 2, 3), vec_1 = (4, 5, 6)
+</code></pre></div></div>
+
+<p>After calling <code class="language-plaintext highlighter-rouge">vec_0.add_immediate(vec_1)</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vec_0 = (5, 7, 9)
+</code></pre></div></div>
+
+<p>For two vectors of two different sizes let:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vec_0 = (1, 2), vec_1 = (4, 5, 6)
+</code></pre></div></div>
+
+<p>After calling <code class="language-plaintext highlighter-rouge">vec_0.add_immediate(vec_1)</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vec_0 = (5, 7)
+</code></pre></div></div>
+
+<p>Another example of two different sized vectors:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vec_0 = (1, 2, 3), vec_1 = (4, 5)
+</code></pre></div></div>
+
+<p>After calling <code class="language-plaintext highlighter-rouge">vec_0.add_immediate(vec_1)</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vec_0 = (5, 7, 3)
+</code></pre></div></div>
+
+<p><em>Hint</em>: You might want to use the <code class="language-plaintext highlighter-rouge">std::min</code> function to help you in this
+step. Here’s an example usage:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">min_size</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">27</span><span class="p">);</span>  <span class="c1">// returns 4 as it is the smaller value</span>
+</code></pre></div></div>
+
+<p>Once you have implemented this method, comment out the appropriate lines in
+<code class="language-plaintext highlighter-rouge">main.cpp</code> to verify you have correctly done the implementation.</p>
+
+<h3 id="submitting-the-project">Submitting the project</h3>
+
+<p>Only one person in a group need submit the project. If both members of a group
+submit we will only score the last submission made between the two group
+members. Please review the
+<a href="/cs24_m13/submission">submission instructions</a> as needed. On the submission site
+you will find the command you need to use to submit the project. Note that you
+may resubmit this project as many times as necessary up until the deadline.</p>
+
+  </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
+      <div id="credits">
+        <p><span class="small">Template design by <a href="https://andreasviklund.com/">Andreas Viklund</a></span></p>
+      </div>
+    </div>
+  </body>
+</html>

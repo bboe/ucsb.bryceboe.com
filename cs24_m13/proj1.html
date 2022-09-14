@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/variant-multi.css" title="Variant Multi" media="all" />
+    <link rel="stylesheet" type="text/css" href="/public/monokai.sublime.css" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>Project 1 &raquo; CS24 Summer 2013</title>
+  </head>
+  <body>
+    <div id="container980">
+<div id="header">
+  <h1><a href="/cs24_m13/">Computer Science 24, Summer 2013</a></h1>
+  <h2>Problem Solving with Computers II</h2>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="/cs24_m13/schedule">lecture schedule</a></li>
+    <li><a href="/cs24_m13/submission">submission instructions</a></li>
+  </ul>
+</div>
+
+<div id="main">
+  <div id="sidebar">
+    <div class="sidebarbox">
+      <h2>People &amp; Office Hours</h2>
+      <ul>
+        <li><strong>Instructor</strong>: Bryce Boe
+          (<a href="/">web</a>, <a href="mailto:bboe@cs.ucsb.edu">email</a>)
+          <ul>
+            <li>Tuesday, 14:15 - 15:15 in GSL</li>
+            <li>Thursday, 11:15 - 12:15 in GSL</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Jane Iedemska
+          (<a href="mailto:jane@iedemska.com">email</a>)
+          <ul>
+            <li>Wednesday, 11:30 - 12:30 in Phelps 1413</li>
+            <li>Thursday, 14:30 - 15:30 in Phelps 1413</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebarbox">
+      <h2>Deadlines</h2>
+      <h3>All deadlines are at 23:59:59 on the due date.</h3>
+      <ul>
+        <li>2013/06/25 -- <a href="/cs24_m13/hw1">Homework 1</a></li>
+        <li>2013/06/26 -- <a href="/cs24_m13/lab1">Lab 1</a></li>
+        <li>2013/06/28 -- Course Drop with Refund</li>
+        <li>2013/07/03 -- <a href="/cs24_m13/lab2">Lab 2</a></li>
+        <li>2013/07/10 -- <a href="/cs24_m13/lab3">Lab 3</a></li>
+        <li>2013/07/16 -- <a href="/cs24_m13/proj1">Project 1</a></li>
+        <li>2013/07/17 -- <a href="/cs24_m13/lab4">Lab 4</a></li>
+        <li>2013/08/01 -- <a href="/cs24_m13/lab5">Lab 5</a></li>
+        <li>2013/08/07 -- <a href="/cs24_m13/lab6">Lab 6</a></li>
+        <li>2013/08/10 -- <a href="/cs24_m13/proj2">Project 2 (Part 1)</a></li>
+        <li>2013/08/14 -- <a href="/cs24_m13/lab7">Lab 7</a></li>
+        <li>2013/08/17 -- <a href="/cs24_m13/proj2#part-2">Project 2 (Part 2)</a></li>
+        <li>2013/08/21 -- <a href="/cs24_m13/lab8">Lab 8</a></li>
+        <li>2013/08/30 -- <a href="/cs24_m13/proj3">Project 3</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+<h2 id="project-1-list-abstract-data-type-adt">Project 1: List Abstract Data Type (ADT)</h2>
+
+<p>In this project, you will individually (no partners for non-lab assignments) be
+required to implement a <code class="language-plaintext highlighter-rouge">List</code> ADT in two ways. You will implement the List ADT
+using arrays, and using linked lists.</p>
+
+<h3 id="goals-for-this-project">Goals for this project</h3>
+
+<p>By the time you have completed this project, you should:</p>
+
+<ul>
+  <li>understand what an abstract data type is</li>
+  <li>understand how the concept of separate compilation works (<code class="language-plaintext highlighter-rouge">.h</code> and <code class="language-plaintext highlighter-rouge">.c</code>
+files) – review the <a href="/~bboe/cs24_m13/code/week3/separate_compilation">separate compilation
+example</a> if necessasry</li>
+  <li>become familiar with working with linked structures (necessary for the
+remainder of this class)</li>
+  <li>be able to discuss the trade-offs in performance between an array-based
+implementation and a linked-list implementation of the List ADT</li>
+</ul>
+
+<h3 id="project-preparation">Project Preparation</h3>
+
+<p>Before you begin, let’s prepare a cs24 directory in your home directory if you
+don’t already have one. In that directory we’ll create a subdirectory for the
+files for this project. Note that these instructions assume you are using
+either a CSIL machine or one of the lab machines:</p>
+
+<p>After logging in, create the directory (assuming you haven’t already done so):</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> cs24/proj1
+</code></pre></div></div>
+
+<p>Change the permissions of the cs24 directory such that only your account can
+access the files inside this directory. This step is <strong>incredibly</strong>
+important. If omitted, other students can peek at your work and you may be held
+partially responsible. It should also go without saying that you may <strong>not</strong>
+give other students access to your account. If you’ve done that in the past
+please <a href="https://accounts.engr.ucsb.edu/maintain/login">change your password</a> at
+this time.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod </span>700 cs24
+</code></pre></div></div>
+
+<p>Change into the proj1 directory and copy the files you will need for this
+project:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>cs24/proj1
+<span class="nb">cp</span> ~bboe/public_html/cs24_m13/code/proj1/<span class="k">*</span> <span class="nb">.</span>
+</code></pre></div></div>
+
+<h3 id="the-provided-files">The provided files</h3>
+
+<p>You are provided with the following files:</p>
+
+<ul>
+  <li>
+    <p><strong>Makefile</strong>: If you haven’t seen a makefile before, this is a special file
+that contains the command-lines arugments required to build the project. By
+typing in <code class="language-plaintext highlighter-rouge">make</code> in the terminal both executables for this assignment will
+attempt to build. You can also run <code class="language-plaintext highlighter-rouge">make array</code> to just build the
+<code class="language-plaintext highlighter-rouge">array_list</code> binary, or <code class="language-plaintext highlighter-rouge">make linked</code> to just build the <code class="language-plaintext highlighter-rouge">linked_list</code> binary.</p>
+  </li>
+  <li>
+    <p><strong>main.c</strong>: This is a complete example program that can be used to test your
+implementations of the List ADT. While you do not need to modify this file,
+you are expected to understand <strong>100%</strong> of the code in it. Pay particular
+attention to how we can easily switch between using the array-based
+implementation and the linked-implementation by using MACRO-conditionals
+around the <code class="language-plaintext highlighter-rouge">#include</code> for the <code class="language-plaintext highlighter-rouge">.h</code> file.</p>
+  </li>
+  <li>
+    <p><strong>array_list.h</strong>: This file provides the interface to the array-based
+implementation of the <code class="language-plaintext highlighter-rouge">List</code> ADT. You may <em>not</em> modify this file, thus you
+must work with the <code class="language-plaintext highlighter-rouge">List</code> structure as provided.</p>
+  </li>
+  <li>
+    <p><strong>linked_list.h</strong>: This file provides the interface to the linked list-based
+implementation of the <code class="language-plaintext highlighter-rouge">List</code> ADT.  You may <em>not</em> modify this file, thus you
+must work with the <code class="language-plaintext highlighter-rouge">List</code> structure as provided.</p>
+  </li>
+</ul>
+
+<h3 id="tips">Tips</h3>
+
+<h4 id="resizing-the-array-when-creating-the-array-based-implementation-it-should">Resizing the array When creating the array-based implementation it should</h4>
+<p>be apparent that you will need to start with some initial size array that will
+need to be dynamically <em>expanded</em> when the List needs to store more items than
+available in the array. First, it’s usually a good idea to work with initial
+sizes that are a power of two, so 2, 4, 8, 16, 32 are all good starting
+sizes. To dynamically resize the array you will want to look at the
+<a href="https://pubs.opengroup.org/onlinepubs/009696899/functions/realloc.html">realloc</a>
+function that’s part of the malloc family.</p>
+
+<p>You can choose any scheme you want for how much to increase the size of the
+array, but keep in mind a trade-off between time complexity (how much time it
+takes to copy items), and space complexity (how much wasted space you have). In
+general, the accepted approach is to double the size each time the limit is
+reached. There’s no need to reduce the size of the array as items are removed,
+but you’re free to do it if you want.</p>
+
+<h4 id="list_output-format">list_output format</h4>
+
+<p>The format string for the list_output function needs to be</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"%3d: %s\n"
+</code></pre></div></div>
+
+<p>Where the first parameter is the position of the item (0 through <code class="language-plaintext highlighter-rouge">size-1</code>), and
+the second is the item itself.</p>
+
+<h3 id="completing-the-project">Completing the project</h3>
+
+<p>For this project you need to complete the two files: <code class="language-plaintext highlighter-rouge">array_list.c</code> and
+<code class="language-plaintext highlighter-rouge">linked_list.c</code>. In both files you need to write the code for each of the
+following functions (as declared in both the <code class="language-plaintext highlighter-rouge">.h</code> files):</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">char *list_at(struct List *list, int position)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">struct List *list_construct()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">void list_destruct(struct List *list)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">int list_get_size(struct List *list)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">int list_is_empty(struct List *list)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">void list_output(struct List *list)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">int list_push_back(struct List *list, char *item)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">char *list_remove_at(struct List *list, int position)</code></li>
+</ul>
+
+<p>To get started, you first need to define all the functions and provide minimal
+functionality for each. For example, I suggest you start by creating
+<code class="language-plaintext highlighter-rouge">array_list.c</code> first and define <strong>all</strong> of the functions such that they
+minimally return the error case. Once <strong>all</strong> of the functions are defined for
+<code class="language-plaintext highlighter-rouge">array_list.c</code> you should be able to compile the program via <code class="language-plaintext highlighter-rouge">make array</code>
+without receiving any warnings.</p>
+
+<p>When you can compile without errors and warnings, implement each function one
+at a time and test each individually to convince yourself that the function
+works as expected. You may want to write your own test program (or modify
+main.c) to perform more testing than what is provided. You can implement the
+functions in any order you wish. However, I strongly encourage you to think
+about the dependencies between functions and implement the ones without
+dependencies first.</p>
+
+<h3 id="deallocating-memory-8-of-project-grade">Deallocating Memory (8% of project grade)</h3>
+
+<p>None of the project tests verify that you properly deallocate memory. Thus we
+will manually inspect both <code class="language-plaintext highlighter-rouge">array_list.c</code> and <code class="language-plaintext highlighter-rouge">linked_list.c</code> to verify that
+you have properly implemented your <code class="language-plaintext highlighter-rouge">list_destruct</code> functions and any other
+functions that require memory deallocation (hint: there is one other function
+in one of the implementations).</p>
+
+<h3 id="submitting-the-project">Submitting the project</h3>
+
+<p>Please review the <a href="/cs24_m13/submission">submission instructions</a> as
+needed. On the submission site you will find the command you need to use to
+submit the project. Note that you may resubmit this project as many times as
+necessary up until the deadline.</p>
+
+  </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
+      <div id="credits">
+        <p><span class="small">Template design by <a href="https://andreasviklund.com/">Andreas Viklund</a></span></p>
+      </div>
+    </div>
+  </body>
+</html>

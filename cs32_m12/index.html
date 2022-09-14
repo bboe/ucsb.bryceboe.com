@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/variant-multi.css" title="Variant Multi" media="all" />
+    <link rel="stylesheet" type="text/css" href="/public/monokai.sublime.css" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>CS32 Summer 2012</title>
+  </head>
+  <body>
+    <div id="container980">
+<div id="header">
+  <h1><a href="/cs32_m12/">Computer Science 32, Summer 2012</a></h1>
+  <h2>Object-Oriented Design and Implementation</h2>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="/cs32_m12/schedule">lecture schedule</a></li>
+    <li><a href="/cs32_m12/automated_feedback">automated feedback</a></li>
+    <li><a href="/cs32_m12/bourne">bourne shell scripting</a></li>
+  </ul>
+</div>
+
+<div id="main">
+  <div id="sidebar">
+    <div class="sidebarbox">
+      <h2>People &amp; Office Hours</h2>
+      <ul>
+        <li><strong>Instructor</strong>: Bryce Boe
+          (<a href="/">web</a>, <a href="mailto:bboe@cs.ucsb.edu">email</a>)
+          <ul>
+            <li>Monday, 14:15 - 15:15 in GSL</li>
+            <li>Wednesday, 11:15 - 12:15 in GSL</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Saeed Mahani
+          <ul>
+            <li>Tuesday, 14:00 - 15:00 in CSIL</li>
+            <li>Thursday, 13:00 - 14:00 in CSIL</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebarbox">
+      <h2>Tentative Deadlines</h2>
+      <h3>All deadlines are at 23:59:59 on the due date.</h3>
+      <ul>
+        <li>2012/08/06 -- <a href="/cs32_m12/hw1">Homework 1</a></li>
+        <li>2012/08/09 -- <a href="/cs32_m12/lab1">Lab 1</a></li>
+        <li>2012/08/10 -- Drop with Refund</li>
+        <li>2012/08/12 -- <a href="/cs32_m12/hw2">Homework 2</a></li>
+        <li>2012/08/16 -- <a href="/cs32_m12/lab2">Lab 2</a></li>
+        <li>2012/08/19 -- <a href="/cs32_m12/project1_part1">Project 1, Part 1</a></li>
+        <li>2012/08/23 -- <a href="/cs32_m12/lab3">Lab 3</a></li>
+        <li>2012/08/26 -- <a href="/cs32_m12/project1_part2">Project 1, Part 2</a></li>
+        <li>2012/08/30 -- <a href="/cs32_m12/lab4">Lab 4</a></li>
+        <li>2012/09/06 -- <a href="/cs32_m12/lab5">Lab 5</a></li>
+        <li>2012/09/13 -- <a href="/cs32_m12/project2">Project 2</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+<h2 id="announcements">Announcements</h2>
+
+<p><strong>Piazza</strong>: Join the class
+<a href="https://piazza.com/ucsb/summer2012/cs32">discussion</a> on Piazza. All CS32
+related questions must be asked through Piazza when not asked in-person;
+emailed questions will not be answered. Snail-mailed questions require a
+stamped and addressed return envelope. However, such questions will likely not
+receive a timely response.</p>
+
+<p>As of July 30 the course is full. No additional students will be added to the
+class at this time.</p>
+
+<h2 id="syllabus">Syllabus</h2>
+
+<h3 id="dates-and-times">Dates and Times</h3>
+
+<p><strong>Lectures</strong>: Monday, Tuesday, and Wednesday 12:30 - 13:55 in Phelps 2510<br />
+<strong>Labs</strong>: Thursday 14:30 - 15:55 in ESB 1003 (Cooper Lab)<br />
+<strong>Final</strong>: Wednesday August 12 12:30 - 13:55 in Phelps 2510</p>
+
+<h3 id="course-description">Course Description</h3>
+
+<p>Advanced topics in object-oriented computing. Topics
+include encapsulation, data hiding, inheritance, polymorphism, compilation,
+linking and loading, memory management, and debugging; recent advances in
+design and development tools, practices, libraries, and operating system
+support.</p>
+
+<h3 id="required-texts">Required Texts</h3>
+
+<ul>
+  <li><strong>Problem Solving with C++</strong>, <em>8th edition</em><br />
+Author: Walter Savitch (<a href="https://en.wikipedia.org/wiki/Walter_Savitch">Wikipedia info</a>)
+ISBN: 9780132162739<br />
+Links: <a href="https://www.amazon.com/dp/0132162733/">Amazon</a>
+<em>Note</em>: Previous editions of the textbook are suitable for the
+class. However, you will need to be aware of any discrepancies.</li>
+  <li><strong>Computer Science 32 Reader</strong><br />
+Available at the Alternative Digital Printing in the UCEN<br />
+<em>Note</em>: The reader from spring 2012 is identical save for the cover page.</li>
+</ul>
+
+<h3 id="student-learning-outcomes">Student Learning Outcomes</h3>
+
+<ul>
+  <li>By the end of this course, you will be able to use the shell to start
+processes in all possible input/output redirection states.</li>
+  <li>By the end of this course, you will have designed an object-oriented project
+that demonstrates the use of templates, inheritance, polymorphism, friend
+classes and operator overloading.</li>
+  <li>By the end of this course, you will be able to justify the selection of a
+particular sort algorithm for a given task.</li>
+  <li>By the end of this course, you will be able to step-through the process the
+operating system performs to load a program into memory.</li>
+  <li>By the end of this course, you will be able to identify where in a process’s
+memory structure a defined variable is located.</li>
+</ul>
+
+<h3 id="assignments-and-grading">Assignments and Grading</h3>
+
+<ul>
+  <li>24% Projects (2, split evenly)</li>
+  <li>24% Labs (5, split evenly)</li>
+  <li>24% Final</li>
+  <li>16% Midterm</li>
+  <li>08% Homeworks (2, split evenly)</li>
+  <li>04% Participation</li>
+</ul>
+
+<p>You are expected to work individually on all assignments save for the labs.</p>
+
+<p>Participation points can be gained both through participation in class and
+online, via Piazza. Additionally, participation points can be earned by being
+the first student to notify me of any errors (grammar, spelling, code, etc.) on
+any of the course material.</p>
+
+<h3 id="policies">Policies</h3>
+
+<h4 id="late-submissions">Late Submissions</h4>
+
+<p>All submissions are considered late when the submission log date (from
+<code class="language-plaintext highlighter-rouge">turnin</code>) is later than the deadline. The submission log date is the time of
+the CSIL server under normal-operating conditions. Late submissions will be
+penalized <strong>one percentage point</strong> for every <strong>five-minute</strong> interval late. The
+following are a few examples for clarity assuming a deadline of <code class="language-plaintext highlighter-rouge">23:59:59</code> on
+the previous day:</p>
+
+<ul>
+  <li>A submission recorded at <code class="language-plaintext highlighter-rouge">00:00:00</code> will receive <code class="language-plaintext highlighter-rouge">99%</code> of its assigned
+score. The same is true for a submission received at <code class="language-plaintext highlighter-rouge">00:04:59</code>.</li>
+  <li>A submission recorded at <code class="language-plaintext highlighter-rouge">00:45:00</code> will receive <code class="language-plaintext highlighter-rouge">90%</code> of its assigned score.</li>
+  <li>A submission recorded at <code class="language-plaintext highlighter-rouge">04:05:00</code> will receive <code class="language-plaintext highlighter-rouge">50%</code> of its assigned score.</li>
+  <li>A submission recorded at <code class="language-plaintext highlighter-rouge">08:15:00</code> or later following or a <code class="language-plaintext highlighter-rouge">23:59:59</code>
+deadline will receive a <strong>zero</strong>.</li>
+</ul>
+
+<h4 id="grading-petitions">Grading Petitions</h4>
+
+<p>Grading petitions apply only to handwritten work. If you feel such work was
+incorrectly graded, you may ask for it to be re-graded only after the following
+conditions are met:</p>
+
+<ul>
+  <li>24 hours have passed since the work has been returned to you.</li>
+  <li>You have written a clear, detailed argument in favor of your answer. In your
+argument, you need to demonstrate a clear understanding of the expected answer
+and compare the two.</li>
+</ul>
+
+<p>When both these conditions are met, please deliver both your written work and
+written argument to the instructor.</p>
+
+<p>Note that you needn’t follow this procedure if your answer matches the expected
+answer and it was marked incorrect. In that case, you may indicate the mistake
+to the instructor during office hours.</p>
+
+<h4 id="lecture-attendance">Lecture Attendance</h4>
+
+<p>Lecture attendance is not mandatory but always encouraged.</p>
+
+<h4 id="labs">Labs</h4>
+
+<p>Attendance at the first lab is mandatory so that you can be paired up with
+another student. This pairing will persist throughout the class, and may only
+be changed with instructor approval. Subsequent lab attendance is not required,
+but strongly encouraged. Each lab is due by <code class="language-plaintext highlighter-rouge">23:59:59</code> on the day of the
+lab. Only one student in the pair needs to submit the project.</p>
+
+<h3 id="academic-integrity">Academic Integrity</h3>
+
+<p>Students of this course are expected to support the ideal of academic integrity
+as described on UCSB’s Office of Judicial Affairs
+<a href="https://studentconduct.sa.ucsb.edu/academic-integrity">website</a>. Students
+discovered to be cheating, plagiarizing or colluding will at the very least
+receive a zero on the assignment and may be suspended from UCSB pending
+severity.</p>
+
+<p>Below are some examples of violations of academic integrity. Note that this
+list isn’t exhaustive:</p>
+
+<ul>
+  <li>Showing any portion of your code to another student</li>
+  <li>Viewing any portion of another student’s code</li>
+  <li>Copying another student’s work</li>
+  <li>Modifying another student’s work to make it “your own”</li>
+  <li>Copying or modifying anyone else’s work without attribution</li>
+</ul>
+
+<p>The following are some examples of acceptable forms of help:</p>
+
+<ul>
+  <li>Discussing your assignment with the Professor and TA</li>
+  <li>Discussing the general details of the assignment with others</li>
+</ul>
+
+<h3 id="online-interaction">Online Interaction</h3>
+
+<p>All announcements and online discussion will occur via
+<a href="https://piazza.com/class#summer2012/cs32">Piazza</a>. CS32 related questions
+asked via email will not be answered. Personal questions or questions that
+contain too much information specific to your implementation should
+be sent as a <strong>private</strong> question via Piazza (see
+“<a href="https://piazza.com/features#">Ask questions privately to instructors</a>”).</p>
+
+<p>You are encouraged and will be rewarded with participation points for
+non-anonymously asking and responding to questions via Piazza. While you may
+currently post questions or provide feedback anonymously, this feature will be
+removed if it becomes abused. Finally, as a hopefully unnecessary reminder,
+please be respectful to your peers when responding to questions.</p>
+
+<h3 id="excluded-topics">Excluded Topics</h3>
+
+<p>Given that this course is normally taught in 10 weeks instead of 6 weeks, there
+are a number of topics that won’t be covered. It is strongly encouraged that
+you familiarize yourself with this material in order to be on par with students
+who take CS32 in other quarters.</p>
+
+<p>We are skipping the following sections in the reader:</p>
+
+<ul>
+  <li>Unix Programming Tools</li>
+  <li>Program Building</li>
+  <li>Libraries</li>
+</ul>
+
+<p>Similarly, we are skipping chapter 18, <em>The Standard Template
+Library</em>, in the textbook.</p>
+
+<p>The following chapters from the textbook are skipped because they should mostly
+be review from CS16 and CS24:</p>
+
+<ul>
+  <li>Chapters 1-9, Basic programing concepts</li>
+  <li>Chapter 13, <em>Pointers and Linked Lists</em></li>
+  <li>Chapter 14, <em>Recursion</em></li>
+</ul>
+
+<p>Finally, chapter 12, <em>Separate Compilation and Namespaces</em>, and chapter 16,
+<em>Exception Handling</em>, are not typically covered in this class; therefore, we
+are also excluding them.</p>
+
+  </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
+      <div id="credits">
+        <p><span class="small">Template design by <a href="https://andreasviklund.com/">Andreas Viklund</a></span></p>
+      </div>
+    </div>
+  </body>
+</html>

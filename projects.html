@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/andreas08.css" title="Andreas08" media="all" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>Projects &raquo; Bryce Boe @ CS.UCSB</title>
+  </head>
+  <body>
+    <div id="container" >
+      <div id="header">
+        <h1>Bryce Boe</h1>
+        <h2>Computer Science Ph.D.</h2>
+      </div>
+
+<nav id="navigation">
+  <ul>
+    <li><a href="/">
+      Home
+    </a></li>
+    <li><a href="/cv">
+      Curriculum Vitae
+    </a></li>
+    <li><a href="/projects">
+      Projects
+    </a></li>
+  </ul>
+</nav>
+
+
+      <div id="content">
+        <h2>My Projects</h2>
+
+<h3>submit</h3>
+
+<p>submit is a web service that is intented to be used for online submission of
+programming assignments. When configured, submitted projects can be
+automatically assessed. submit is a significantly more sophisticated version of
+<em>auto_grade</em> making it drastically simpler for students to see their feedback
+and for instructors to configure their
+projects. (<a href="https://github.com/ucsb-cs/submit">Source</a>, <a href="https://submit.cs.ucsb.edu">Web
+service</a>)</p>
+
+<h3>taevals</h3>
+
+<p>taevals is a <a href="https://cloud.google.com/appengine/">Google AppEngine</a> application
+I wrote when I was the Lead TA to lessen the burden of completing the midterm
+TA evaluations. An important factor of TA evaluations is anonymity and thus
+taevals was designed with anonymity in mind. While it is easy to say an
+application should be trusted, I took this one step further and made the code
+available on Github under the <a href="https://opensource.org/licenses/bsd-license.php">New BSD
+License</a>. More information
+about taevals can be found on its <a href="https://github.com/ucsb-cs/taevals">GitHub
+page</a>.</p>
+
+<h3>turnin_helper</h3>
+
+<p>turnin_helper is an incredibly useful tool I wrote to assist in grading course
+projects. It is intended to work in tandem with UCSB CS's turnin program. See
+the project's README for everything you'll need to
+know. (<a href="https://github.com/ucsb-cs/turnin_helper">Source</a>)</p>
+
+<h4>Features</h4>
+
+<ul>
+<li>Automatic extraction of students' latest submission</li>
+<li>Execute make (of any target) on extracted submissions</li>
+<li>Email all students a private message about their project appended with a
+generic message about the project</li>
+</ul>
+
+<h3>auto_grade</h3>
+
+<p>I wrote auto_grade in Winter 2009 following writing turnin_helper to minimize
+my effort in grading student's projects for CS160, Compilers.  Though
+auto_grade reduces grading time a great deal of effort is needed at the start
+of a project to define the inputs and outputs. The primary benefit of
+auto_grade is that it provides immediate feedback to the students in a manor
+that is completely objective. (<a href="https://github.com/ucsb-cs/auto_grade">Source</a>)</p>
+
+<h4>Features</h4>
+
+<ul>
+<li>Immediate extraction, build, and score of student's submission</li>
+<li>Scoring based on diff output and exit status codes</li>
+<li>Immediate feedback to students via email which can contain information such
+as number of test cases passed as well as a variable amount of diff lines</li>
+<li>Option to set max running time of program</li>
+<li>Ability to assign different point values for different inputs, thus
+supporting extra credit inputs</li>
+</ul>
+
+<h3>CRAWL-E</h3>
+
+<p>CRAWL-E is a web crawling framework that seamlessly supports distributed
+crawling across multiple threads as well as multiple machines. I wrote CRAWL-E
+in order to collect data from both <a href="https://www.overstock.com/">Overstock.com</a>
+and <a href="https://www.facebook.com">Facebook</a> when I was working in <a href="https://people.cs.uchicago.edu/~ravenben/">Professor Ben
+Zhao's</a> lab. For a short while after, I continued to improve
+CRAWL-E as issues appear and features are requested. CRAWL-E is released under
+the open source <a href="https://opensource.org/licenses/bsd-license.php">New BSD
+License</a>. More information
+about CRAWL-E can be found along with its
+<a href="https://github.com/bboe/crawl-e">source</a>.</p>
+
+      </div>
+
+      <div id="subcontent">
+        <div class="topimage"><img src="/public/me_0411.jpg" alt="me" /></div>
+        <div class="topimage"><img src="/public/email.jpg" alt="email" /></div>
+        <div class="centerurl"><a href="https://twitter.com/bboe">Twitter @bboe</a></div>
+        <div class="centerurl"><a href="https://github.com/bboe">GitHub: bboe</a></div>
+        <div class="centerurl"><a href="https://scholar.google.com/citations?user=T83k-n8AAAAJ">Google Scholar</a></div>
+        <div class="centerurl"><a href="/public/bboe_ssh.pub">My SSH Public Key</a></div>
+        <div class="centerurl"><a href="/public/bboe_gpg.pub">My GPG Public Key</a></div>
+        <div class="centerurl"><a href="https://bryceboe.com">bryceboe.com</a></div>
+      </div>
+
+      <div id="footer">
+        <p>&copy; 2008-2022 <a href="#">Bryce Boe</a> | Design
+          by <a href="https://andreasviklund.com">Andreas Viklund</a></p>
+      </div>
+    </div>
+  </body>
+</html>

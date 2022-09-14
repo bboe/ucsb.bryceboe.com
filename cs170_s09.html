@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/andreas08.css" title="Andreas08" media="all" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>CS170 S09 &raquo; Bryce Boe @ CS.UCSB</title>
+  </head>
+  <body>
+    <div id="container" >
+      <div id="header">
+        <h1>Bryce Boe</h1>
+        <h2>Computer Science Ph.D.</h2>
+      </div>
+
+<nav id="navigation">
+  <ul>
+    <li><a href="/">
+      Home
+    </a></li>
+    <li><a href="/cv">
+      Curriculum Vitae
+    </a></li>
+    <li><a href="/projects">
+      Projects
+    </a></li>
+  </ul>
+</nav>
+
+
+      <div id="content">
+        <h2>CS170 Information</h2>
+<ul>
+  <li><a href="#teams">Teams</a></li>
+  <li><a href="#section">Section Slides / Extras</a></li>
+  <li><a href="#patches">Making Patches</a></li>
+  <li><a href="#md5">Turnin for Demo</a></li>
+  <li><a href="#proj6_ec">Project 6 Extra Credit</a></li>
+</ul>
+
+<a id="teams"></a>
+<h3>Teams</h3>
+<dl>
+  <dt>Team: Sweet Home Alabama</dt>
+    <dd>Hackers: David Sigal and Rob Cohn</dd>
+  <dt>Team: I Love Rock 'n Roll</dt>
+    <dd>Hackers: Matt Hubert and Chris Hall</dd>
+  <dt>Team: Paradise City</dt>
+    <dd>Hackers: Matt Tobin and Brendan Shanks</dd>
+  <dt>Team: Brown Eyed Girl</dt>
+    <dd>Hackers: Erik Clarizio and Christian Banzon</dd>
+  <dt>Team: (Don't Fear) The Reaper</dt>
+    <dd>Hackers: Paul Clark and Paul Santana</dd>
+  <dt>Team: Roxanne</dt>
+    <dd>Hackers: Bryce Furlong and Ewei Chao</dd>
+  <dt>Team: White Room</dt>
+    <dd>Hackers: Shan Randhawa and Jovan Chohan</dd>
+  <dt>Team: La Bamba</dt>
+    <dd>Hackers: Maciej Baranski and Eric Liskay</dd>
+  <dt>Team: Spirit in the Sky</dt>
+    <dd>Hackers: Garrett Schultz and Kyle Shobe</dd>
+  <dt>Team: Baba O'riley</dt>
+    <dd>Hackers: Saeed Mahani and Julian Claudino</dd>
+  <dt>Team: Higher Ground</dt>
+    <dd>Hackers: Rene Hernandez and Vincent Garcia</dd>
+  <dt>Team: Foreplay/Long Time</dt>
+    <dd>Hackers: Shaun de Saint-Erne and Prudhvi Chaitanya</dd>
+  <dt>Team: Don't Stop Believin'</dt>
+    <dd>Hackers: Cody Walker and Carl Minden</dd>
+  <dt>Team: Walk This Way</dt>
+    <dd>Hackers: Adam Greenfield and Chris Chiu</dd>
+  <dt>Team: More than a Feeling</dt>
+    <dd>Hackers: Daniel Ring and Aaron Gottlieb</dd>
+  <dt>Team: The Final Countdown</dt>
+    <dd>Hackers: Salmaun Masooman and Max Ramirez</dd>
+  <dt>Team: Solo 1</dt>
+    <dd>Hackers: Ian Whitfield</dd>
+  <dt>Team: Solo 2</dt>
+    <dd>Hackers: Jacob Topper</dd>
+  <dt>Team: Solo 3</dt>
+    <dd>Hackers: James Betker</dd>
+  <dt>Team: Solo 4</dt>
+    <dd>Hackers: Jesse Farless</dd>
+  <dt>Team: Solo 5</dt>
+    <dd>Hackers: Monica Acevedo</dd>
+  <dt>Team: Solo 8</dt>
+    <dd>Hackers: Tamir Arad</dd>
+  <dt>Team: Duo 1</dt>
+    <dd>Hackers: Chris Bruner and Akhsar Kharebov</dd>
+</dl>
+<a id="section"></a>
+<h3>Section Slides / Extras</h3>
+<dl>
+  <dt>2009-05-29</dt>
+  <dd>Slides (<a href="/public/slides/cs170-2009-05-29.pdf">pdf</a> /
+    <a href="/public/slides/cs170-2009-05-29.pptx">pptx</a>)</dd>
+  <dt>2009-05-01</dt>
+  <dd>Slides (<a href="/public/slides/cs170-2009-05-01.pdf">pdf</a> /
+    <a href="/public/slides/cs170-2009-05-01.pptx">pptx</a>)</dd>
+  <dt>2009-04-24</dt>
+  <dd>Slides (<a href="/public/slides/cs170-2009-04-24.pdf">pdf</a> /
+    <a href="/public/slides/cs170-2009-04-24.pptx">pptx</a>)</dd>
+</dl>
+<a id="patches"></a>
+<h3>Making Patches for project submission or email questions</h3>
+<p>Setup Step Part 1 -- On a csil machine
+  <ol>
+    <li>Somewhere in your sandbox copy
+      <strong>/cs/sandbox/student/bboe/minix_3.1.3a_src.tar.gz</strong>. This is a
+      clean copy of minix <strong>3.1.3a</strong> source.</li>
+    <li>Extract the source: <strong>tar -xvzf minix_3.1.3a_src.tar.gz</strong>
+    </li>
+    <li>Make a copy of the source to use as your clean version: <strong>cp -r
+        minix_3.1.3a_src minix_clean</strong></li>
+  </ol>
+</p>
+<p>Setup Step Part 2 -- On your minix machine
+  <ol>
+    <li>Install openssh, and rsync via packman. They are packages 69, and 82 if
+      you use the CD install.</li>
+    <li>Run <strong>make clean</strong> on your src directory as you don't
+      want to rsync binaries</li>
+    <li>rsync your modified source directory to csil: <strong>cd /usr/; rsync
+        -rptuv src/
+        {username}@csil.cs.ucsb.edu:{pathtosandbox}/minix_3.1.3a_src/</strong>
+      <br/>make sure to replace <strong>{username}</strong> with your csil
+      username, and <strong>{pathtosandbox}</strong> with the path to your
+      sandbox.</li>
+  </ol>
+</p>
+<p>At this point you have a synced up copy of your edited source folder. Now
+  say you've made modifications and want to submit, or email me a question
+  about your code, do the following:
+  <ol>
+    <li>From minix run <strong>make clean</strong> on /usr/src</li>
+    <li>rsync again from your minix machine (see part 2 step 2)</li>
+    <li>From csil make your patch from your sandbox via: <strong>diff -ruNp
+        minix_clean/ minix_3.1.3a_src/ >
+        patch</strong></li>
+  </ol>
+</p>
+<p>
+  Another useful thing this process grants you is the ability to edit from a
+  CSIL machine rather than through the somewhat buggy minix terminal (don't
+  open emacs then do ctrl+z). All you have to do is rsync files in the
+  opposite direction by switching the arguments: <strong>rsync -auv
+    {username}@csil.cs.ucsb.edu:{pathtosandbox}/minix_3.1.3a_src/ src/</strong>
+</p>
+<p>With rsync's -u option you can be sure that you're always only
+  replacing outdated files, so in case you accidentally rsync the wrong
+  direction your work wont be lost.
+</p>
+
+<a id="md5"></a>
+<h3>Turnin for Demo</h3>
+<p>Since it's much quicker for you to demo the projects than for me to patch
+  and compile your projects, please include a md5sum of your virtual machine
+  drive image(s) with your turnin. This allows me to verify that you have not
+  modified your project between the turnin and demo. Include the sum(s) in your
+  design document.</p>
+
+<p>A md5sum can be generated via <strong>md5sum minix.img</strong>. Once you
+  have generated the sum, you <strong>cannot boot into the image</strong>, so
+  make sure the virtual machine is turned off prior to generating the sum.</p>
+<p>You might also want to make a copy of your hdd image and compute the md5
+  sum from that. Of course you will have to boot up from that image for the
+  demo then.</p>
+
+<a id="proj6_ec"></a>
+<h3>Project 6 Extra Credit</h3>
+<p>There are two ways to receive extra credit for this project described below.
+  Note that these two options are mutually exclusive.</p>
+<ol>
+  <li>For 1.5 * your score submit your project by 23:59:59 on
+    Sunday June 7 and demo your project either that Tuesday or Wednesday. This
+    gives you a maximum possible score of 150/100 on this project.</li>
+  <li>Any combination of the following three thus giving you a maximum possible
+    score of 109/100 on this project.
+    <ul>
+      <li>3pts - Immediate files utilize the full 40 bytes</li>
+      <li>3pts - Files shrunk to &lt; 32 bytes become immediate (truncate)</li>
+      <li>3pts - Old files are converted to immediate if &lt; 32 bytes</li>
+    </ul>
+  </li>
+</ol>
+
+      </div>
+
+      <div id="subcontent">
+        <div class="topimage"><img src="/public/me_0411.jpg" alt="me" /></div>
+        <div class="topimage"><img src="/public/email.jpg" alt="email" /></div>
+        <div class="centerurl"><a href="https://twitter.com/bboe">Twitter @bboe</a></div>
+        <div class="centerurl"><a href="https://github.com/bboe">GitHub: bboe</a></div>
+        <div class="centerurl"><a href="https://scholar.google.com/citations?user=T83k-n8AAAAJ">Google Scholar</a></div>
+        <div class="centerurl"><a href="/public/bboe_ssh.pub">My SSH Public Key</a></div>
+        <div class="centerurl"><a href="/public/bboe_gpg.pub">My GPG Public Key</a></div>
+        <div class="centerurl"><a href="https://bryceboe.com">bryceboe.com</a></div>
+      </div>
+
+      <div id="footer">
+        <p>&copy; 2008-2022 <a href="#">Bryce Boe</a> | Design
+          by <a href="https://andreasviklund.com">Andreas Viklund</a></p>
+      </div>
+    </div>
+  </body>
+</html>

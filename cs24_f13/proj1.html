@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/variant-multi.css" title="Variant Multi" media="all" />
+    <link rel="stylesheet" type="text/css" href="/public/monokai.sublime.css" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>Project 1 &raquo; CS24 Fall 2013</title>
+  </head>
+  <body>
+    <div id="container980">
+<div id="header">
+  <h1><a href="/cs24_f13/">Computer Science 24, Fall 2013</a></h1>
+  <h2>Problem Solving with Computers II</h2>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="/cs24_f13/schedule">lecture schedule</a></li>
+    <li><a href="/cs24_f13/submission">submission instructions</a></li>
+    <li><a href="/cs24_f13/gdb">gdb tutorial</a></li>
+  </ul>
+</div>
+
+<div id="main">
+  <div id="sidebar">
+    <div class="sidebarbox">
+      <h2>People &amp; Office Hours</h2>
+      <ul>
+        <li><strong>Instructor</strong>: Bryce Boe
+          (<a href="/">web</a>, <a href="mailto:bboe@cs.ucsb.edu">email</a>)
+          <ul>
+            <li>Tuesday, 15:30 - 16:30 in HFH 1152</li>
+            <li>Wednesday, 11:00 - 12:00 in HFH 1152</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Geoffrey Douglas
+          <ul>
+            <li>Wednesday, 15:00 - 17:00 in Phelps 1413</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Jon Sun
+          <ul>
+            <li>Thursday, 10:00 - 12:00 in Phelps 1413</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Dani Kudrow
+          <ul>
+            <li>Thursday, 15:00 - 17:00 in Phelps 1413</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebarbox">
+      <h2>Deadlines</h2>
+      <h3>All deadlines are at 23:59:59 on the due date unless otherwise noted.</h3>
+      <ul>
+        <li>2013/09/30 -- <a href="/cs24_f13/lab1">Lab 1</a></li>
+        <li>2013/10/02 -- Drop deadline (no fee)</li>
+        <li>2013/10/08 -- <a href="/cs24_f13/lab2">Lab 2</a></li>
+        <li>2013/10/14 -- <a href="/cs24_f13/lab3">Lab 3</a></li>
+        <li>2013/10/20 -- <a href="/cs24_f13/proj1">Project 1</a></li>
+        <li>2013/10/22 -- <a href="/cs24_f13/lab4">Lab 4</a></li>
+        <li>2013/10/23 23:45 -- Drop deadline ($3 fee)</li>
+        <li>2013/10/28 -- <a href="/cs24_f13/lab5">Lab 5</a></li>
+        <li>2013/10/30 14:00 -- Midterm Examination</li>
+        <li>2013/11/04 -- <a href="/cs24_f13/lab6">Lab 6</a></li>
+        <li>2013/11/13 -- <a href="/cs24_f13/lab7">Lab 7</a></li>
+        <li>2013/11/18 -- <a href="/cs24_f13/lab8">Lab 8</a></li>
+        <li>2013/11/22 -- <a href="/cs24_f13/proj2">Project 2</a></li>
+        <li>2013/11/25 -- <a href="/cs24_f13/lab9">Lab 9</a></li>
+        <li>2013/12/02 -- <a href="/cs24_f13/lab10">Lab 10</a></li>
+        <li>2013/12/06 -- <a href="/cs24_f13/proj3">Project 3</a></li>
+        <li>2013/12/09 16:00 -- Final Examination</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+<h2 id="project-1-list-abstract-data-type-adt">Project 1: List Abstract Data Type (ADT)</h2>
+
+<p>In this project, you (and at most one partner) will be required to implement a
+<code class="language-plaintext highlighter-rouge">List</code> ADT in two ways. You will implement the List ADT using arrays, and using
+linked lists.</p>
+
+<h3 id="important-updates">Important Updates</h3>
+
+<ul>
+  <li>Your initial array size may not exceed 32 entries (realloc must be called at
+least once to store 33 items).</li>
+  <li>You may not use <strong>static</strong> or <strong>global</strong> variables. Any state that you need
+to maintain persistance for is available through the proper <code class="language-plaintext highlighter-rouge">struct List</code>.</li>
+  <li>Even though there isn’t a test for it, you must check to ensure all memory
+allocations succeed. If a memory allocation fails you must handle it
+gracefully as indicated by the function.</li>
+</ul>
+
+<h3 id="goals-for-this-project">Goals for this project</h3>
+
+<p>By the time you have completed this project, you should:</p>
+
+<ul>
+  <li>understand what an abstract data type is</li>
+  <li>understand how the concept of separate compilation works (<code class="language-plaintext highlighter-rouge">.h</code> and <code class="language-plaintext highlighter-rouge">.c</code>
+files) – review the <a href="/~bboe/cs24_f13/examples/week2/separate_compilation">separate compilation
+example</a> if necessary</li>
+  <li>become familiar with working with linked structures (necessary for the
+remainder of this class)</li>
+  <li>be able to discuss the trade-offs in performance between an array-based
+implementation and a linked-list implementation of the List ADT</li>
+</ul>
+
+<h3 id="project-preparation">Project Preparation</h3>
+
+<p>Before you begin, let’s prepare a cs24 directory in your home directory if you
+don’t already have one. In that directory we’ll create a subdirectory for the
+files for this project. Note that these instructions assume you are using
+either a CSIL machine or one of the lab machines:</p>
+
+<p>After logging in, create the directory (assuming you haven’t already done so):</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> cs24/proj1
+</code></pre></div></div>
+
+<p>Change the permissions of the cs24 directory such that only your account can
+access the files inside this directory. This step is <strong>incredibly</strong>
+important. If omitted, other students can peek at your work and you may be held
+partially responsible. It should also go without saying that you may <strong>not</strong>
+give other students access to your account. If you’ve done that in the past
+please <a href="https://accounts.engr.ucsb.edu/maintain/login">change your password</a> at
+this time.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod </span>700 cs24
+</code></pre></div></div>
+
+<p>Change into the proj1 directory and copy the files you will need for this
+project:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>cs24/proj1
+<span class="nb">cp</span> ~bboe/public_html/cs24_f13/code/proj1/<span class="k">*</span> <span class="nb">.</span>
+</code></pre></div></div>
+
+<h3 id="the-provided-files">The provided files</h3>
+
+<p>You are provided with the following files:</p>
+
+<ul>
+  <li>
+    <p><strong>list.h</strong>: This file provides the interface to the <code class="language-plaintext highlighter-rouge">List</code> ADT. You may <em>not</em>
+modify this file, thus you must work with the <code class="language-plaintext highlighter-rouge">List</code> structure as
+provided. This file provides the declarations for all the functions you must
+implement. The comments in this file indicate exactly how each function
+should perform. Read this entire file and understand it. Pay particular
+attention to how we can easily switch between using the array-based
+implementation and the linked-implementation by using MACRO-conditionals
+around the structure declaration(s).</p>
+  </li>
+  <li>
+    <p><strong>main.c</strong>: This is a complete example program that can be used to test your
+implementations of the List ADT. While you do not need to modify this file,
+you are expected to understand <strong>100%</strong> of the code in it.</p>
+  </li>
+  <li>
+    <p><strong>Makefile</strong>: If you haven’t seen a makefile before, this is a special file
+that contains the command-line arguments required to build the project. By
+executing <code class="language-plaintext highlighter-rouge">make</code> in the terminal you will see the list of available make
+options. When working on the array-based implementation you will likely want
+to run <code class="language-plaintext highlighter-rouge">make array</code> and <code class="language-plaintext highlighter-rouge">make test_array</code>. For the link-based implementation
+<code class="language-plaintext highlighter-rouge">make linked</code> and <code class="language-plaintext highlighter-rouge">make test_linked</code>.</p>
+  </li>
+  <li>
+    <p><strong>test_list.c</strong>: This program provides unit-like testing of individual
+functions and has been provided to you as a convenience. You are not expected
+to know exactly how the code in this program works (it makes use of passing
+function pointers around). The submission system uses a version of this file
+that defines many more tests (<strong>NOTE</strong>: the test numbers do not correspond
+between the submission system and the numbers in this file). You are
+encouraged to add your own tests to this file to help you test your program
+without the help of the submission system. To add a test you need to (1)
+define a function that takes a <code class="language-plaintext highlighter-rouge">struct List *</code> as its only argument, and
+returns an integer, 0 for failure and non-zero for success. You then (2) need
+to add the name of the function, and an <em>output name</em> to the <code class="language-plaintext highlighter-rouge">TESTS</code> array.</p>
+  </li>
+</ul>
+
+<h3 id="completing-the-project">Completing the project</h3>
+
+<p>For this project you need to create and complete the two files: <code class="language-plaintext highlighter-rouge">array_list.c</code>
+and <code class="language-plaintext highlighter-rouge">linked_list.c</code>. In both files you need to write the code for each of the
+following functions (as declared in both the <code class="language-plaintext highlighter-rouge">.h</code> files):</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">char *list_at(struct List *list, int position)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">struct List *list_construct()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">void list_destruct(struct List *list)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">int list_get_size(struct List *list)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">int list_is_empty(struct List *list)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">void list_output(struct List *list)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">int list_push_back(struct List *list, char *item)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">char *list_remove_at(struct List *list, int position)</code></li>
+</ul>
+
+<h4 id="getting-started">Getting Started</h4>
+
+<p>The very first thing you should do is finish reading this document. There is
+useful information that you’ll want to be aware of so you can refer back to it
+when you reach the appropriate point.</p>
+
+<p>The second thing you should do is read all the comments in <code class="language-plaintext highlighter-rouge">list.h</code> so it is
+clear what each function should do. Always make sure you understand what it is
+that you are being asked to do before attempting to do it.</p>
+
+<p>Once you understand what you are being asked to do, literally draw out some of
+the operations. What should the structure look like after it’s allocated? What
+does the structure look like after a number of insert operations? What about
+after a number of remove operations? What are the error cases that you need to
+handle in each function?</p>
+
+<p>Only after you’ve got an idea in your head about how the functions should
+create/manipulate/destroy the structure(s) should you start coding.</p>
+
+<p>To start coding, you first need to define all the functions that are declared
+in <code class="language-plaintext highlighter-rouge">list.h</code> in their respective <code class="language-plaintext highlighter-rouge">.c</code> files: <code class="language-plaintext highlighter-rouge">array_list.c</code> for the array-based
+implementation, and <code class="language-plaintext highlighter-rouge">linked_list.c</code> for the link-based implementation. A proper
+definition requires a minimal implementation, so functions that have a non-void
+return type must return something of that type, and functions that are void
+must at least have an empty body, <code class="language-plaintext highlighter-rouge">{}</code>. In general when defining a minimal
+version of a function that returns a value, you should return a value that
+indicates failure.</p>
+
+<p>Once <strong>all</strong> of the functions are defined for <code class="language-plaintext highlighter-rouge">array_list.c</code> you should be able
+to compile the program via <code class="language-plaintext highlighter-rouge">make array</code> without receiving any errors and
+warnings.</p>
+
+<p>When you can compile without errors and warnings, implement each function one
+at a time and test each individually to convince yourself that the function
+works as expected. Use the provided <code class="language-plaintext highlighter-rouge">test_list.c</code> and <code class="language-plaintext highlighter-rouge">main.c</code> programs to help
+you test your functions. You can implement the functions in any order you
+wish. However, I strongly encourage you to think about the dependencies between
+functions and implement the ones without dependencies first.</p>
+
+<h3 id="sample-execution">Sample Execution</h3>
+
+<p>You are provided with two programs to help you test your code. Here we’ll give
+a sample of how to compile and run both.</p>
+
+<h4 id="test_listc">test_list.c</h4>
+
+<p>If you want to test your array list implementation using the <code class="language-plaintext highlighter-rouge">test_list.c</code>
+program, you will want to compile via:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ make test_array
+</code></pre></div></div>
+
+<p>Assuming there are no errors (can’t proceed) and warnings (you should always
+fix your warnings) then you can run the test program a few ways:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./test_array 0 -1
+</code></pre></div></div>
+
+<p>The above will attempt to run all tests available, starting at test 0, and
+running through the remainder (a negative second argument means run the
+remainder). Assuming your program works correctly you should see output like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Test 00: construct_destruct             Passed
+Test 01: at_0_after_push_back_one       Passed
+Test 02: at_minus1_after_construct      Passed
+Test 03: at_minus1_after_push_back_one  Passed
+Test 04: at_neg1_after_push_back_one    Passed
+Test 05: at_plus1_after_construct       Passed
+Test 06: at_plus1_after_push_back_one   Passed
+Test 07: get_size_after_construct       Passed
+Test 08: get_size_after_push_back_one   Passed
+Test 09: is_empty_after_construct       Passed
+Test 10: is_empty_after_push_back_one   Passed
+Test 11: output_after_construct         Passed
+Test 12: output_after_push_back_one     Passed
+Test 13: push_back_remove_at_0          Passed
+Test 14: push_back_remove_at_neg1       Passed
+Test 15: remove_at_0_after_construct    Passed
+Test 16: remove_at_neg1_after_construct Passed
+</code></pre></div></div>
+
+<p>It’s possible that your program segfaults (or results in some other crash) on
+one of the tests. In such a case the output might look like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Test 00: construct_destruct             Passed
+Test 01: at_0_after_push_back_one       Segmentation fault (core dumped)
+</code></pre></div></div>
+
+<p>First, this is a hint that something broken in your code as a result of the
+<code class="language-plaintext highlighter-rouge">at_0_after_push_back_one</code> test. You should look at what that test does in
+<code class="language-plaintext highlighter-rouge">test_list.c</code> and fix it. However, should you want to see the result of the
+other tests, you can run the test program like so:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./test_array 2 -1
+Test 02: at_minus1_after_construct      Passed
+Test 03: at_minus1_after_push_back_one  Passed
+Test 04: at_neg1_after_push_back_one    Segmentation fault (core dumped)
+</code></pre></div></div>
+
+<p>Note that we changed the <code class="language-plaintext highlighter-rouge">0</code> to a <code class="language-plaintext highlighter-rouge">2</code> to begin testing at test 2. In the output
+that follows you see that we result in another segfault on test 4,
+<code class="language-plaintext highlighter-rouge">at_neg1_after_push_back_one</code>. We can then start at test 5 if we so desired,
+and continue this process to see all the tests that result in segfaults.</p>
+
+<p>The testing process is the same for the link-based implementation. However,
+rather than running <code class="language-plaintext highlighter-rouge">make test_array</code> in combination with <code class="language-plaintext highlighter-rouge">./test_array</code> you
+will want to use <code class="language-plaintext highlighter-rouge">make test_linked</code> in combination with <code class="language-plaintext highlighter-rouge">./test_linked</code>.</p>
+
+<h4 id="mainc">main.c</h4>
+
+<p><code class="language-plaintext highlighter-rouge">main.c</code> defines a program that allows you to enter in strings from standard
+input (or a given file) and add them to the list. It then outputs the contents
+of various items in the list, and attempts to remove each. If you want to test
+your array-based implementation compile via <code class="language-plaintext highlighter-rouge">make array</code> (<code class="language-plaintext highlighter-rouge">make linked</code> for the
+link-based implementation). Execute via:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./array_list
+</code></pre></div></div>
+
+<p>(replace <code class="language-plaintext highlighter-rouge">./array_list</code> with <code class="language-plaintext highlighter-rouge">./linked_list</code> if you compiled via <code class="language-plaintext highlighter-rouge">make linked</code>)
+You will be prompted to enter strings via standard input. Assuming you insert
+the same strings as I have entered (shown along with the output) a sample run
+might look like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Enter a string to add to the list (or empty to stop): one apple
+Enter a string to add to the list (or empty to stop): two bananas
+Enter a string to add to the list (or empty to stop): three something elses
+Enter a string to add to the list (or empty to stop): 
+  0: one apple
+  1: two bananas
+  2: three something elses
+ First+: one apple
+ First-: one apple
+Middle+: two bananas
+Middle-: three something elses
+  Last+: three something elses
+  Last-: three something elses
+     -1: (null)
+     +1: (null)
+remove -1: (null)
+remove +1: (null)
+Removed: two bananas
+  0: one apple
+  1: three something elses
+Removed: one apple
+  0: three something elses
+Removed: three something elses
+</code></pre></div></div>
+
+<p>You can also give a file as the input to the program. Execute like so:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./array_list Makefile
+</code></pre></div></div>
+
+<h3 id="tips-and-recommendations">Tips and recommendations</h3>
+
+<h4 id="negative-position-values">Negative position values</h4>
+
+<p>Both <code class="language-plaintext highlighter-rouge">list_at</code> and <code class="language-plaintext highlighter-rouge">list_remove_at</code> require you to handle negative position
+values. While you can attempt to add additional conditionals to handle the
+positional value as both negative in positive in both of these functions, it’s
+much simpler (trust me) to simply convert negative values into a positive
+value. Because this conversion code should be identical in both <code class="language-plaintext highlighter-rouge">list_at</code> and
+<code class="language-plaintext highlighter-rouge">list_remove_at</code>, it makes sense to move that functionality into its own
+function. You’ll have to duplicate that function in both of your <code class="language-plaintext highlighter-rouge">*.c</code> files,
+but you should only have to write it once.</p>
+
+<h4 id="resizing-the-array">Resizing the array</h4>
+
+<p>When creating the array-based implementation it should be apparent that you
+will need to start with some initial size array that will need to be
+dynamically <em>expanded</em> when the List needs to store more items than available
+in the array. First, it’s usually a good idea to work with initial sizes that
+are a power of two, so 2, 4, 8, 16, 32 are all good starting sizes. To
+dynamically resize the array you will want to look at the
+<a href="https://pubs.opengroup.org/onlinepubs/009696899/functions/realloc.html">realloc</a>
+function that’s part of the malloc family as it’ll save you from having to (1)
+call <code class="language-plaintext highlighter-rouge">malloc</code> and (2) copy all the existing elements.</p>
+
+<p>You can choose any scheme you want for how much to increase the size of the
+array, but keep in mind a trade-off between time complexity (how much time it
+takes to copy items), and space complexity (how much wasted space you have). In
+general, the accepted approach is to double the size each time the limit is
+reached. There’s no need to reduce the size of the array as items are removed,
+but you’re free to do it if you want.</p>
+
+<h3 id="submitting-the-project">Submitting the project</h3>
+
+<p>Please review the <a href="/cs24_f13/submission">submission instructions</a> as needed. On the
+submission site you will find the command you need to use to submit the
+project. Note that you may resubmit this project as many times as necessary up
+until the deadline. If you are working with a partner, make sure to group up
+using the submission system.</p>
+
+  </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
+      <div id="credits">
+        <p><span class="small">Template design by <a href="https://andreasviklund.com/">Andreas Viklund</a></span></p>
+      </div>
+    </div>
+  </body>
+</html>

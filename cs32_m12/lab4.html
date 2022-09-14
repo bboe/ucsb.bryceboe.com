@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/variant-multi.css" title="Variant Multi" media="all" />
+    <link rel="stylesheet" type="text/css" href="/public/monokai.sublime.css" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>Lab 4 &raquo; CS32 Summer 2012</title>
+  </head>
+  <body>
+    <div id="container980">
+<div id="header">
+  <h1><a href="/cs32_m12/">Computer Science 32, Summer 2012</a></h1>
+  <h2>Object-Oriented Design and Implementation</h2>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="/cs32_m12/schedule">lecture schedule</a></li>
+    <li><a href="/cs32_m12/automated_feedback">automated feedback</a></li>
+    <li><a href="/cs32_m12/bourne">bourne shell scripting</a></li>
+  </ul>
+</div>
+
+<div id="main">
+  <div id="sidebar">
+    <div class="sidebarbox">
+      <h2>People &amp; Office Hours</h2>
+      <ul>
+        <li><strong>Instructor</strong>: Bryce Boe
+          (<a href="/">web</a>, <a href="mailto:bboe@cs.ucsb.edu">email</a>)
+          <ul>
+            <li>Monday, 14:15 - 15:15 in GSL</li>
+            <li>Wednesday, 11:15 - 12:15 in GSL</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Saeed Mahani
+          <ul>
+            <li>Tuesday, 14:00 - 15:00 in CSIL</li>
+            <li>Thursday, 13:00 - 14:00 in CSIL</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebarbox">
+      <h2>Tentative Deadlines</h2>
+      <h3>All deadlines are at 23:59:59 on the due date.</h3>
+      <ul>
+        <li>2012/08/06 -- <a href="/cs32_m12/hw1">Homework 1</a></li>
+        <li>2012/08/09 -- <a href="/cs32_m12/lab1">Lab 1</a></li>
+        <li>2012/08/10 -- Drop with Refund</li>
+        <li>2012/08/12 -- <a href="/cs32_m12/hw2">Homework 2</a></li>
+        <li>2012/08/16 -- <a href="/cs32_m12/lab2">Lab 2</a></li>
+        <li>2012/08/19 -- <a href="/cs32_m12/project1_part1">Project 1, Part 1</a></li>
+        <li>2012/08/23 -- <a href="/cs32_m12/lab3">Lab 3</a></li>
+        <li>2012/08/26 -- <a href="/cs32_m12/project1_part2">Project 1, Part 2</a></li>
+        <li>2012/08/30 -- <a href="/cs32_m12/lab4">Lab 4</a></li>
+        <li>2012/09/06 -- <a href="/cs32_m12/lab5">Lab 5</a></li>
+        <li>2012/09/13 -- <a href="/cs32_m12/project2">Project 2</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+<h2 id="lab-4-inheritance-in-c">Lab 4, Inheritance in C++</h2>
+
+<h3 id="goals-for-this-lab">Goals for this lab</h3>
+
+<p>By the time you have completed this lab, you should be able to</p>
+
+<ul>
+  <li>Explain how data and functions are inherited</li>
+  <li>Work with base class and derived class objects in applications</li>
+  <li>Identify proper and improper use of inheritance</li>
+</ul>
+
+<h3 id="pairing-reminder">Pairing Reminder</h3>
+
+<p>You must work as a pair on the labs. If you were paired up last week, you need
+to work with the same pair. If you did not get paired up last week, or your
+pair is no longer in the class, please see the TA.</p>
+
+<h3 id="lab-preparation">Lab Preparation</h3>
+
+<p>Change into the cs32 directory, and create a lab directory:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd cs32
+mkdir lab4
+</code></pre></div></div>
+
+<p>Change into the lab4 directory and copy files you will need for this lab:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd lab4
+cp ~cs32/public_html/code/lab4/* .
+</code></pre></div></div>
+
+<h3 id="step-1-using-inheritance">Step 1: Using inheritance</h3>
+
+<p>Compile <code class="language-plaintext highlighter-rouge">simple.cpp</code> and run the resulting program. Start playing with the
+commented lines and understand how inheritance works.</p>
+
+<p>For example, uncomment the line labelled <code class="language-plaintext highlighter-rouge">A1</code> (line number 47 in the original
+file) to see another way the class <code class="language-plaintext highlighter-rouge">Child</code> can access the variable named <code class="language-plaintext highlighter-rouge">age</code>
+in class <code class="language-plaintext highlighter-rouge">Parent</code> - in this case, by using the <strong>inherited</strong> method named
+<code class="language-plaintext highlighter-rouge">getAge()</code>. Be sure to notice that no object is specified in the call to
+<code class="language-plaintext highlighter-rouge">getAge()</code>. Do you know which object is <em>implicitly</em> specified in that call?
+Then uncomment the <code class="language-plaintext highlighter-rouge">A2</code> and <code class="language-plaintext highlighter-rouge">A3</code> lines, both of which access the inherited
+<code class="language-plaintext highlighter-rouge">age</code> data in other ways. Go ahead and compile it now to verify it still is
+syntactically correct, but no sense running it until you start making the <code class="language-plaintext highlighter-rouge">B</code>
+labelled changes.</p>
+
+<p>Uncomment the <code class="language-plaintext highlighter-rouge">B1</code> section next, then compile and run. Trace what just
+happened: a <code class="language-plaintext highlighter-rouge">Child</code> object was used to invoke two <code class="language-plaintext highlighter-rouge">Child</code> methods, but those
+methods in turn invoked <code class="language-plaintext highlighter-rouge">Parent</code> methods to affect the inherited variable
+<code class="language-plaintext highlighter-rouge">age</code>. Now uncomment the <code class="language-plaintext highlighter-rouge">B2</code> section, compile and run again. Then pause and
+reflect on what that code does: a <code class="language-plaintext highlighter-rouge">Child</code> object was used to invoke a <code class="language-plaintext highlighter-rouge">Parent</code>
+method directly (<code class="language-plaintext highlighter-rouge">C.increaseAge()</code>), proof that the <code class="language-plaintext highlighter-rouge">Child</code> class inherited the
+public interface of class <code class="language-plaintext highlighter-rouge">Parent</code>. Uncomment the <code class="language-plaintext highlighter-rouge">B3</code> section next, and
+compile and run another time. This section demonstrates how the <code class="language-plaintext highlighter-rouge">Child</code> object
+can be used to invoke a <code class="language-plaintext highlighter-rouge">Parent</code> class method even when that same method is
+<em>redefined</em> (or <em>overridden</em> if the function was virtual) in the <code class="language-plaintext highlighter-rouge">Child</code> class,
+and it demonstrates how using the method without scope resolution (<code class="language-plaintext highlighter-rouge">Parent::</code>)
+will <strong>hide</strong> the Parent method that has the same name.</p>
+
+<p>Uncomment the <code class="language-plaintext highlighter-rouge">B4</code> section, and try to compile again. Oops. Why? What type of
+object is being asked to do the work in this section, a <code class="language-plaintext highlighter-rouge">Child</code> or a <code class="language-plaintext highlighter-rouge">Parent</code>?
+Whereas a <code class="language-plaintext highlighter-rouge">Child</code> inherits all of the <code class="language-plaintext highlighter-rouge">Parent</code>’s interface, the <code class="language-plaintext highlighter-rouge">Parent</code> does
+not have any of the <code class="language-plaintext highlighter-rouge">Child</code>’s additional features - in this case, <code class="language-plaintext highlighter-rouge">P</code> does not
+have a <code class="language-plaintext highlighter-rouge">printAge()</code> method. Does it?</p>
+
+<p>For now, turn the <code class="language-plaintext highlighter-rouge">B4</code> section back into a comment.</p>
+
+<p>Now uncomment the <code class="language-plaintext highlighter-rouge">C1</code> area (function <code class="language-plaintext highlighter-rouge">printSSN()</code> in class <code class="language-plaintext highlighter-rouge">Child</code>) and
+compile the program. The error you get is self-explanatory, but ask your TA in
+case you don’t understand the problem. You will fix this problem one way in the
+next step.</p>
+
+<h3 id="step-2-protected-members">Step 2: Protected members</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">Child</code> methods that worked with the inherited <code class="language-plaintext highlighter-rouge">age</code> variable did not
+suffer from the same problem as you saw for <code class="language-plaintext highlighter-rouge">printSSN()</code> above, because age is
+declared <strong>protected</strong> in class <code class="language-plaintext highlighter-rouge">Parent</code> instead of <strong>private</strong> like <code class="language-plaintext highlighter-rouge">ssn</code>. The
+protected access specifier allows derived classes access, but not other classes
+(to other classes it means the same as private). Purists avoid this type of
+access, but you might as well learn about it now, and then learn to get around
+the problem a better way.</p>
+
+<p>We’ll keep the rest of these instructions short - we believe you will figure
+out what to do quickly on your own.</p>
+
+<p>Change the qualifier of the <code class="language-plaintext highlighter-rouge">ssn</code> variable on <code class="language-plaintext highlighter-rouge">simple.cpp</code> from step 1, and
+modify the constructors accordingly to give an initial value of <code class="language-plaintext highlighter-rouge">1024</code> to the
+variable. Then invoke the <code class="language-plaintext highlighter-rouge">printSSN()</code> function from main on the instace of
+<code class="language-plaintext highlighter-rouge">C</code>.</p>
+
+<p>The output your program produces at this point should be exactly:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sizeof(Parent) = 8
+sizeof(Child) = 8
+This is Parent::increaseAge: My age: 7 And now I am one year older
+Parent::age 8
+getAge() 8
+Parent::getAge() 8
+age 8
+This is Parent::increaseAge: My age: 8 And now I am one year older
+Parent::age 9
+getAge() 9
+Parent::getAge() 9
+age 9
+SetAge method from Parent class
+SetAge method from Parent class
+This is Child::setAge
+Parent::age 55
+getAge() 55
+Parent::getAge() 55
+age 55
+My SSN number is: 1024
+</code></pre></div></div>
+
+<h3 id="step-3-redefining-versus-overloading">Step 3: Redefining versus Overloading</h3>
+
+<p>Open up <code class="language-plaintext highlighter-rouge">overloading.cpp</code> and add to this program a new member variable
+<code class="language-plaintext highlighter-rouge">months</code> - in class <code class="language-plaintext highlighter-rouge">Baby</code> only.  Modify the constructor in order to initialize
+<code class="language-plaintext highlighter-rouge">months</code> accordingly.  Then add a new <strong>overloaded</strong> version of the function
+<code class="language-plaintext highlighter-rouge">setAge()</code> to the <code class="language-plaintext highlighter-rouge">Baby</code> class (leave the existing one alone). This function
+should take into account not only the years but also the additional months of a
+baby’s age and it should print accordingly the age exactly like the following
+(with variable years and months of course):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This is overloaded Baby::setAge: I am &lt;AGE&gt; and &lt;MONTHS&gt; months
+</code></pre></div></div>
+
+<p>Last add a <strong>redefined</strong> version of the fuction <code class="language-plaintext highlighter-rouge">printAge()</code> to the <code class="language-plaintext highlighter-rouge">Baby</code>
+class in order to print something identical to the following:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Baby::age: I am &lt;AGE&gt; and &lt;MONTHS&gt; months
+</code></pre></div></div>
+
+<p>Finally, uncomment the last two statements in main to test out these
+features. Your completed program should produce output identical to the
+following:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SetAge method from Parent class
+This is Baby::setAge
+Baby::age: I am 2 and 0 months
+This is my age:2
+This is Baby::increaseAge. I won't tell you my age, because I have redifined my parent's function
+Baby::age: I am 3 and 0 months
+This is my age:3
+This is overloaded Baby::setAge: I am 3 and 5 months
+Baby::age: I am 3 and 5 months
+</code></pre></div></div>
+
+<h3 id="submission-instructions">Submission Instructions</h3>
+
+<p>Please make only one submission per pair; this isn’t essential, it just makes
+life easier for the TA.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~cs32/submit lab4@cs32 overloading.cpp simple.cpp
+</code></pre></div></div>
+
+<p>You may submit up to 20 times. Please check the feedback email to ensure you
+submitted correctly, and are satisfied with your final score. If you are not,
+feel free to revise and submit again. Please also review the
+<a href="/cs32_m12/automated_feedback">automated feedback</a> instructions as needed.</p>
+
+<h3 id="special-thanks">Special Thanks</h3>
+
+<p>Special thanks to <a href="https://sites.cs.ucsb.edu/~mikec/">Michael Costanzo</a> for
+allowing me use of his CS32 material. This lab was copied almost verbatim from
+his Spring 2012 CS32 class.</p>
+
+  </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
+      <div id="credits">
+        <p><span class="small">Template design by <a href="https://andreasviklund.com/">Andreas Viklund</a></span></p>
+      </div>
+    </div>
+  </body>
+</html>

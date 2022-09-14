@@ -1,0 +1,15 @@
+Card a feather: -2
+Card falling space debris: -30
+Card "Problem Solving with C++": -15
+Card minor healing potion: 6
+AccumulatorCard boomerang (AC): -3 -3
+KillMultiplierCard sharpshooter (KM): -10
+ReflectorCard apples (RF): -15 3
+SnowballCard a duck (SB): -15
+SnowballCard unicorn blood (SB): 15
+TransformationCard Dr. Jekyll/Mr. Hyde (TF): 15
+
+AttackNextPlayer Next: 0
+AttackWeakestPlayer Weakest: 1
+HumanPlayer Human: 2
+AttackStrongest3xPlayer 3x: 0

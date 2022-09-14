@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/variant-multi.css" title="Variant Multi" media="all" />
+    <link rel="stylesheet" type="text/css" href="/public/monokai.sublime.css" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>Lab 2 &raquo; CS24 Fall 2013</title>
+  </head>
+  <body>
+    <div id="container980">
+<div id="header">
+  <h1><a href="/cs24_f13/">Computer Science 24, Fall 2013</a></h1>
+  <h2>Problem Solving with Computers II</h2>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="/cs24_f13/schedule">lecture schedule</a></li>
+    <li><a href="/cs24_f13/submission">submission instructions</a></li>
+    <li><a href="/cs24_f13/gdb">gdb tutorial</a></li>
+  </ul>
+</div>
+
+<div id="main">
+  <div id="sidebar">
+    <div class="sidebarbox">
+      <h2>People &amp; Office Hours</h2>
+      <ul>
+        <li><strong>Instructor</strong>: Bryce Boe
+          (<a href="/">web</a>, <a href="mailto:bboe@cs.ucsb.edu">email</a>)
+          <ul>
+            <li>Tuesday, 15:30 - 16:30 in HFH 1152</li>
+            <li>Wednesday, 11:00 - 12:00 in HFH 1152</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Geoffrey Douglas
+          <ul>
+            <li>Wednesday, 15:00 - 17:00 in Phelps 1413</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Jon Sun
+          <ul>
+            <li>Thursday, 10:00 - 12:00 in Phelps 1413</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Dani Kudrow
+          <ul>
+            <li>Thursday, 15:00 - 17:00 in Phelps 1413</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebarbox">
+      <h2>Deadlines</h2>
+      <h3>All deadlines are at 23:59:59 on the due date unless otherwise noted.</h3>
+      <ul>
+        <li>2013/09/30 -- <a href="/cs24_f13/lab1">Lab 1</a></li>
+        <li>2013/10/02 -- Drop deadline (no fee)</li>
+        <li>2013/10/08 -- <a href="/cs24_f13/lab2">Lab 2</a></li>
+        <li>2013/10/14 -- <a href="/cs24_f13/lab3">Lab 3</a></li>
+        <li>2013/10/20 -- <a href="/cs24_f13/proj1">Project 1</a></li>
+        <li>2013/10/22 -- <a href="/cs24_f13/lab4">Lab 4</a></li>
+        <li>2013/10/23 23:45 -- Drop deadline ($3 fee)</li>
+        <li>2013/10/28 -- <a href="/cs24_f13/lab5">Lab 5</a></li>
+        <li>2013/10/30 14:00 -- Midterm Examination</li>
+        <li>2013/11/04 -- <a href="/cs24_f13/lab6">Lab 6</a></li>
+        <li>2013/11/13 -- <a href="/cs24_f13/lab7">Lab 7</a></li>
+        <li>2013/11/18 -- <a href="/cs24_f13/lab8">Lab 8</a></li>
+        <li>2013/11/22 -- <a href="/cs24_f13/proj2">Project 2</a></li>
+        <li>2013/11/25 -- <a href="/cs24_f13/lab9">Lab 9</a></li>
+        <li>2013/12/02 -- <a href="/cs24_f13/lab10">Lab 10</a></li>
+        <li>2013/12/06 -- <a href="/cs24_f13/proj3">Project 3</a></li>
+        <li>2013/12/09 16:00 -- Final Examination</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+<h2 id="lab-2-gdb-introduction-and-c-review">Lab 2: GDB Introduction and C Review</h2>
+
+<p><strong>Note</strong>: You have an additional day for this lab as it requires a bit more
+work than we initially hoped for.</p>
+
+<h3 id="goals-for-this-lab">Goals for this lab</h3>
+
+<p>By the time you have completed this lab, you should:</p>
+
+<ul>
+  <li>completely understand how char arrays are used to represent c-strings</li>
+  <li>be comfortable writing your own c-string manipulation functions</li>
+  <li>be able to use gdb to discover where and why your program is crashing</li>
+</ul>
+
+<p>The purpose of this lab is to get you back in the swing of things by completing
+small coding exercises in C involving c-strings and malloc.</p>
+
+<p>To get full credit for this lab, you need to complete all of the functions
+specified.</p>
+
+<h3 id="lab-pairing">Lab Pairing</h3>
+
+<p>For this lab you may work with a partner. If you do work with a partner (please
+do), you will need to use the same partner throughout the quarter. When working
+with a partner, I strongly encourage you follow the pair programming method of
+working together. If you are not familiar with pair programming please <a href="https://www.youtube.com/watch?v=rG_U12uqRhE">watch
+this video</a>.</p>
+
+<p>To facilitate your submissions as a pair you <strong>MUST</strong> pair up using the
+submission system. When you visit the project page from where you can view all
+your submission you should see a link to a page where you can join a group. Of
+the two people in the group, one of you must invite the other, and the other
+must confirm the invitation. Once you group up, any submissions that either
+you, or your partner have already made will be visible to each other in
+addition to all future submissions.</p>
+
+<h3 id="lab-preparation">Lab Preparation</h3>
+
+<p>At this point, everyone should have a COE account. If you do not, you need to
+make that a priority and should partner up with someone who already has an
+account.</p>
+
+<p>Before you begin, let’s prepare a cs24 directory in your home directory if you
+don’t already have one. In that directory we’ll create a subdirectory for the
+files for this lab. Note that these instructions assume you are using either a
+CSIL machine or one of the lab machines:</p>
+
+<p>After logging in, create the directory (assuming you haven’t already done so):</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> cs24/lab2
+</code></pre></div></div>
+
+<p>Change the permissions of the cs24 directory such that only your account can
+access the files inside this directory. This step is <strong>incredibly</strong>
+important. If omitted, other students can peek at your work and you may be held
+partially responsible. It should also go without saying that you may <strong>not</strong>
+give other students access to your account. If you’ve done that in the past
+please <a href="https://accounts.engr.ucsb.edu/maintain/login">change your password</a> at
+this time.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod </span>700 cs24
+</code></pre></div></div>
+
+<p>Change into the lab2 directory and copy the files you will need for this lab:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>cs24/lab2
+<span class="nb">cp</span> ~bboe/public_html/cs24_f13/code/lab2/<span class="k">*</span> <span class="nb">.</span>
+</code></pre></div></div>
+
+<h3 id="getting-your-feet-wet-with-gdb">Getting your feet wet with gdb</h3>
+
+<p>For the first part of the lab you will use gdb to figure out how to execute
+<code class="language-plaintext highlighter-rouge">gdb_puzzle</code>. The first thing you will want to do is try to execute
+<code class="language-plaintext highlighter-rouge">gdb_puzzle</code> by running:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./gdb_puzzle
+</code></pre></div></div>
+
+<p>You should notice that the program segfaults. That’s because the program
+expects to be executed with a specific command line argument to run
+successfully.</p>
+
+<p>The first thing you will want to do is to read the awesome <a href="gdb">gdb tutorial</a>
+that Dani has written. That should walk you through the gdb commands you will
+need to use to figure out the proper command line argument to use to execute
+<code class="language-plaintext highlighter-rouge">gdb_puzzle</code>.</p>
+
+<p>Once you have discovered the command line arguments that should follow
+<code class="language-plaintext highlighter-rouge">./gdb_puzzle</code> create a text file called <code class="language-plaintext highlighter-rouge">part1.txt</code> and place the extra
+arguments on a single-line in that file.</p>
+
+<p>For instance if you discover that running <code class="language-plaintext highlighter-rouge">./gdb_puzzle hello world</code> is the
+correct command to solve the challenge (it is not) then the contents of
+<code class="language-plaintext highlighter-rouge">part1.txt</code> should be <code class="language-plaintext highlighter-rouge">hello world</code>. You can verify that you have created this
+file correctly by running:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xargs ./gdb_puzzle &lt; part1.txt
+</code></pre></div></div>
+
+<p>If you see the same <em>correct</em> output, then you have a valid <code class="language-plaintext highlighter-rouge">part1.txt</code>
+suitable for submission on the submission site.</p>
+
+<p>It is important that you go through the process of using gdb, as anytime you
+have a segfault in your code this quarter, the first thing either myself, or
+the TAs will ask you is where in your code did the execution segfault, and how
+did it get there.</p>
+
+<h3 id="building-string-functions">Building string functions</h3>
+
+<p>The second task for this lab is to complete three functions that operate on
+c-strings. The purpose is to practice two things: the first is to treat
+c-strings as nothing more than an array of characters ending with the
+null-terminating character, or <code class="language-plaintext highlighter-rouge">'\0'</code> (also 0 as a 1-byte number). That means
+c-strings are arbitrarily long and functions that operate on c-strings continue
+processing bytes (characters) until a <code class="language-plaintext highlighter-rouge">'\0'</code> is found. The second purpose is to
+reinforce the difference between pointers and arrays.</p>
+
+<h3 id="cstring_fun">cstring_fun</h3>
+
+<p>Take a look at <code class="language-plaintext highlighter-rouge">cstring_fun.c</code>. In this file, you must fill in the missing code
+in the following three functions. <strong>NOTE</strong> that you may not make use of any of
+the functions in string.h.</p>
+
+<p>You are to complete three functions:</p>
+
+<ul>
+  <li>
+    <p><strong>stringlength</strong> - counts the number of characters in a string, not counting
+the terminating character</p>
+  </li>
+  <li>
+    <p><strong>countchars</strong> - counts the number of occurrences of a character in the
+string</p>
+  </li>
+  <li>
+    <p><strong>safestringconcat</strong> - allocates new memory, copies in two strings
+concatenated, and returns the resulting pointer</p>
+  </li>
+</ul>
+
+<p>The reason you are writing <code class="language-plaintext highlighter-rouge">safestringconcat</code> is a) to practice allocating
+memory and b) to emphasize that <code class="language-plaintext highlighter-rouge">strcat</code> in the strings library does NOT do
+this - instead, it adds the second string to the first one WITHOUT allocating
+more memory. That is dangerous if you are not aware of it.</p>
+
+<h4 id="compile-and-test-your-implementation">Compile and test your implementation</h4>
+
+<p>I suggest you complete and test each function individually. That is, start with
+code that compiles (the template) and slowly add functionality and verify that
+the code continues to compile as you make changes. When you’ve completed a unit
+of work (i.e., one of the three functions) test your program to verify that
+function works correctly before moving on (this is also a good point to make a
+submission). You will not receive partial credit for <code class="language-plaintext highlighter-rouge">units</code> that don’t work.</p>
+
+<p>To compile <code class="language-plaintext highlighter-rouge">cstring_fun</code> execute:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>clang -g cstring_fun.c
+</code></pre></div></div>
+
+<p>Note that the <code class="language-plaintext highlighter-rouge">-g</code> argument to the clang compiler (this is consistent with gcc
+as well) means to build the executable (<code class="language-plaintext highlighter-rouge">a.out</code> in this case) with debugging
+information which allows you to more easily use gdb to discover what line any
+segfaults occur on.</p>
+
+<p>If the compilation fails make the necessary changes and then repeat until your
+code compiles successfully.</p>
+
+<p>To run the executable, execute:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./a.out
+</code></pre></div></div>
+
+<p>Verify that your code produces the expected results. If not repeat this process
+until it does. If you code crashes, you should now know how to use gdb to
+locate the line it crashes on.</p>
+
+<h4 id="gotchas">Gotchas</h4>
+
+<ul>
+  <li>Remember that fgets retains the <code class="language-plaintext highlighter-rouge">\n</code>, so your stringlength will be one more
+than what you think.</li>
+</ul>
+
+<h3 id="submitting-the-assignment">Submitting the assignment</h3>
+
+<p>Only one person in a group need submit the assignment but make sure that both
+you and your partner can view the submission on the submission site. If you
+cannot, you need to complete the making a group process. Please review the
+<a href="/cs24_f13/submission">submission instructions</a> as needed. Note that you may resubmit
+this assignment as many times as necessary up until the deadline.</p>
+
+<h3 id="special-thanks">Special Thanks</h3>
+
+<p>Special thanks to Diana Franklin for allowing
+me use of her CS24 material. Portions of this lab were adapted from one of her
+Spring 2013 CS24 labs.</p>
+
+  </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
+      <div id="credits">
+        <p><span class="small">Template design by <a href="https://andreasviklund.com/">Andreas Viklund</a></span></p>
+      </div>
+    </div>
+  </body>
+</html>

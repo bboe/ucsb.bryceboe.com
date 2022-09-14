@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/variant-multi.css" title="Variant Multi" media="all" />
+    <link rel="stylesheet" type="text/css" href="/public/monokai.sublime.css" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>Lab 7 &raquo; CS24 Fall 2013</title>
+  </head>
+  <body>
+    <div id="container980">
+<div id="header">
+  <h1><a href="/cs24_f13/">Computer Science 24, Fall 2013</a></h1>
+  <h2>Problem Solving with Computers II</h2>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="/cs24_f13/schedule">lecture schedule</a></li>
+    <li><a href="/cs24_f13/submission">submission instructions</a></li>
+    <li><a href="/cs24_f13/gdb">gdb tutorial</a></li>
+  </ul>
+</div>
+
+<div id="main">
+  <div id="sidebar">
+    <div class="sidebarbox">
+      <h2>People &amp; Office Hours</h2>
+      <ul>
+        <li><strong>Instructor</strong>: Bryce Boe
+          (<a href="/">web</a>, <a href="mailto:bboe@cs.ucsb.edu">email</a>)
+          <ul>
+            <li>Tuesday, 15:30 - 16:30 in HFH 1152</li>
+            <li>Wednesday, 11:00 - 12:00 in HFH 1152</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Geoffrey Douglas
+          <ul>
+            <li>Wednesday, 15:00 - 17:00 in Phelps 1413</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Jon Sun
+          <ul>
+            <li>Thursday, 10:00 - 12:00 in Phelps 1413</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Dani Kudrow
+          <ul>
+            <li>Thursday, 15:00 - 17:00 in Phelps 1413</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebarbox">
+      <h2>Deadlines</h2>
+      <h3>All deadlines are at 23:59:59 on the due date unless otherwise noted.</h3>
+      <ul>
+        <li>2013/09/30 -- <a href="/cs24_f13/lab1">Lab 1</a></li>
+        <li>2013/10/02 -- Drop deadline (no fee)</li>
+        <li>2013/10/08 -- <a href="/cs24_f13/lab2">Lab 2</a></li>
+        <li>2013/10/14 -- <a href="/cs24_f13/lab3">Lab 3</a></li>
+        <li>2013/10/20 -- <a href="/cs24_f13/proj1">Project 1</a></li>
+        <li>2013/10/22 -- <a href="/cs24_f13/lab4">Lab 4</a></li>
+        <li>2013/10/23 23:45 -- Drop deadline ($3 fee)</li>
+        <li>2013/10/28 -- <a href="/cs24_f13/lab5">Lab 5</a></li>
+        <li>2013/10/30 14:00 -- Midterm Examination</li>
+        <li>2013/11/04 -- <a href="/cs24_f13/lab6">Lab 6</a></li>
+        <li>2013/11/13 -- <a href="/cs24_f13/lab7">Lab 7</a></li>
+        <li>2013/11/18 -- <a href="/cs24_f13/lab8">Lab 8</a></li>
+        <li>2013/11/22 -- <a href="/cs24_f13/proj2">Project 2</a></li>
+        <li>2013/11/25 -- <a href="/cs24_f13/lab9">Lab 9</a></li>
+        <li>2013/12/02 -- <a href="/cs24_f13/lab10">Lab 10</a></li>
+        <li>2013/12/06 -- <a href="/cs24_f13/proj3">Project 3</a></li>
+        <li>2013/12/09 16:00 -- Final Examination</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+<h2 id="lab-7-binary-search-trees">Lab 7: Binary Search Trees</h2>
+
+<h3 id="deadline-note">Deadline Note</h3>
+
+<p>This lab is a bit more complex than some of the previous labs, thus you will
+have until Wednesday (2013/11/13) just before midnight (23:59:59) to complete
+this lab.</p>
+
+<h3 id="goals-for-this-lab">Goals for this lab</h3>
+
+<p>By the time you have completed this lab, you should</p>
+
+<ul>
+  <li>learn about Tree ADT</li>
+  <li>implement parts of the Binary Search Tree ADT</li>
+  <li>get familiar with using Stack and Queue ADT</li>
+  <li>understand depth first and breadth first tree traversals</li>
+</ul>
+
+<p>The purpose of this lab is for you to get familiar with the tree ADT. A tree is
+another basic abstract data type, which is widely used in computer
+science. Because of the tree-like structure, there are multiple ways to
+traverse data in a tree.  In this lab you will get familiar with and implement
+some frequently used BST operations.</p>
+
+<h3 id="lab-pairing">Lab pairing</h3>
+
+<p>For this lab you may work with a partner. To facilitate your submissions as a
+pair you <strong>MUST</strong> pair up using the submission system. When you visit the
+project page from where you can view all your submission you should see a link
+to a page where you can join a group. Of the two people in the group, one of
+you must invite the other, and the other must confirm the invitation. Once you
+group up, any submissions that either you, or your partner have already made
+will be visible to each other in addition to all future submissions.</p>
+
+<h3 id="lab-preparation">Lab preparation</h3>
+
+<p>After logging in, create the directory for this lab:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> cs24/lab7
+</code></pre></div></div>
+
+<p>Change into the lab7 directory and copy the files you will need for this lab:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>cs24/lab7
+<span class="nb">cp</span> ~bboe/public_html/cs24_f13/code/lab7/<span class="k">*</span> <span class="nb">.</span>
+</code></pre></div></div>
+
+<h3 id="trees-and-binary-search-trees">Trees and Binary Search Trees</h3>
+
+<h4 id="trees">Trees</h4>
+
+<p>A tree, in general is a data structure that, similar to a List, consists of
+nodes with data and, this time, one or more pointers to other nodes. However, a
+tree structure has an important requirement: no two pointers point to the same
+node. This property is important, because tree must not have any loops.  From
+the requirement it follows that each node may have only one parent (the node,
+that is pointing to it), except for the very top one, which is called root. The
+root has no parents, (similar to the head node in the List).  Nodes that don’t
+have any children (no nodes pointed to) are called leaf nodes.  (Similar to the
+tail node in the List).  More about the trees are on the <a href="https://en.wikipedia.org/wiki/Tree_(data_structure)">wiki
+page</a>.</p>
+
+<h4 id="binary-trees-binary-search-trees">Binary Trees, Binary Search Trees</h4>
+
+<p>There is a special type of tree called the Binary Tree. Each of its nodes must
+have no more than two children, usually distinguished as left and right. Among
+the Binary Trees there are Binary Search Trees, for which there are additional
+requirements, enforcing data in the tree to be structured in some way. First of
+all, there must be no duplicate nodes in the tree (nodes with the same data
+value). Secondly, for every node its left subtree (a tree that has its left
+child as a root) should consist only of nodes whose values (the data contained
+within it) are all less than its value.  Additionally, for every node its right
+subtree (a tree that has its right child as a root) should consist only of
+nodes with values greater than its value.  Finally, left and right subtrees
+should also be a BST themselves.  More on
+<a href="https://en.wikipedia.org/wiki/Binary_search_tree">BSTs</a>. Below is an example
+BST created when inserting the following integers: 5, 3, 7, 4, 2, 6, 8</p>
+
+<p>Insert the 5:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     5
+</code></pre></div></div>
+
+<p>Insert the 3:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     5
+   -/
+  3
+</code></pre></div></div>
+
+<p>Insert the 7:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     5
+   -/ \-
+  3     7
+</code></pre></div></div>
+
+<p>Insert the 4:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     5
+   -/ \-
+  3     7
+   \
+    4
+</code></pre></div></div>
+
+<p>Insert the 2:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     5
+   -/ \-
+  3     7
+ / \
+2   4
+</code></pre></div></div>
+
+<p>Insert the 6:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     5
+   -/ \-
+  3     7
+ / \   /
+2   4 6
+</code></pre></div></div>
+
+<p>And finally, insert the 8:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     5
+   -/ \-
+  3     7
+ / \   / \
+2   4 6   8
+</code></pre></div></div>
+
+<h4 id="inserting-and-searching-in-bst">Inserting and searching in BST</h4>
+
+<p>Since the data in a BST follows the aforementioned structure, BSTs have an
+advantage in search operation over the List.  The search algorithm itself is
+very easy. You start at the root node and compare its data with one you are
+looking for. If it matches, you return and appriopriate value. When it does not
+match and the value you are searching for is greater than the node’s value
+traverse down the right child (why?). If the value you are searching for is
+less than the node’s value traverse down the left child (why?). This process is
+repeated until a match is found, or there are no children in the appropriate
+search direction.</p>
+
+<p>When inserting a node in a BST it is important that the new tree still has
+original properties.  Therefore, it is important to select proper position for
+a new node. The insertion algorithm is similar to search, for except when we
+will reach a NULL pointer, we create a node and insert it in that position.</p>
+
+<h4 id="templates-in-c">Templates in C++</h4>
+
+<p>Thus far we have discussed abstract data values in the BST node without
+mentioning the type we want to store specifically. In theory, BST nodes can
+contain data of any type: integers, chars, strings, etc. But in C++ , when you
+declare a node class, you must specify the data type in the very beginning. If
+later we want to have the same structure with a different data type, we will
+have to duplicate the code and only change the type.  We will have to keep
+adding code for every new type we want to use. For someone writing code, this
+quite inefficient and error prone. To avoid this routine, C++ provides
+templates. Templates allow you to create functions and classes with a generic
+type.  The type is then passed as template parameter to the newly created
+function or class. Here is an example.</p>
+
+<p>Creating a template class:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="p">&gt;</span>
+<span class="n">Node</span><span class="p">{</span>
+  <span class="nl">private:</span>
+    <span class="n">T</span> <span class="n">data</span><span class="p">;</span>
+  <span class="nl">public:</span>
+    <span class="n">Node</span><span class="p">(</span><span class="n">T</span> <span class="n">data</span><span class="p">)</span><span class="o">:</span> <span class="n">data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>Creating an integer and char nodes:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Node</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">node_int</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="n">Node</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">node_char</span><span class="p">(</span><span class="sc">'z'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>For more on templates see the
+<a href="/cs24_f13/examples/week6/templates.cpp">week 6 example</a> and/or
+<a href="https://www.cplusplus.com/doc/tutorial/templates/">this tutorial</a>.</p>
+
+<h3 id="creating-a-bst">Creating a BST</h3>
+
+<p>For this lab you are given a few source files and your goal is to complete the
+implementation of the BST class in <code class="language-plaintext highlighter-rouge">bst.cpp</code>. The specification for each of
+those functions (and all the other BST functions) are provided in <code class="language-plaintext highlighter-rouge">bst.h</code>.</p>
+
+<p>Initially, when you create a BST, the constructor should create only a root
+pointer equal to NULL (an empty tree).  If you want to grow your tree, you
+should implement and use the <code class="language-plaintext highlighter-rouge">insert</code> method for creating and adding nodes to
+the tree.</p>
+
+<h3 id="breadth-first-search-vs-depth-first-search">Breadth First Search vs Depth First Search</h3>
+
+<p>After you’ve created your BST, it is time to traverse it!  As you might notice,
+there are multiple possibilities to traverse the BST because at every step you
+have an option to move to the left child or to the right child or to the node
+on the same level (same number of nodes away from the root as the current one).</p>
+
+<p>Commonly, <strong>depth first search</strong> (traversal) is the one where you consistently
+move towards left or right children and when you’ve reached the leaf node go
+one level up and move towards the child you haven’t checked out (the right or
+left one, respectively).  If you’ve checked out all of the <em>descendants</em> of
+this node, go one level up.</p>
+
+<p>For example, a depth first traversal of the above tree will output nodes in the
+following order (this assumes you first output the node you are “visiting” and
+then “visit” the left hand side before the right hand side):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5 3 2 4 7 6 8 
+</code></pre></div></div>
+
+<p>The provided <code class="language-plaintext highlighter-rouge">stack_output</code> function (in <code class="language-plaintext highlighter-rouge">bst.h</code>) output should match the above
+exactly (note that there is trailing space before the newline (for
+simplicity). More on <a href="https://en.wikipedia.org/wiki/Depth-first_search">dfs</a>.</p>
+
+<p>Depth first traversal of a tree can be conveniently implemented with the help
+of stack. We initialize the stack with the root node, and then loop until the
+stack is empty. The first step of the loop is to do “something” with the value
+of the node we’re currently looking at (may be to output it in the case of
+<code class="language-plaintext highlighter-rouge">stack_output</code>) and then we push both of its children (if they exist) on to the
+stack. Note that because of the way items are added/removed from the stack we
+push the right-hand side on before the left-hand side to acheive the expected
+left-to-right output.</p>
+
+<p><strong>Breadth first search</strong> (traversal) is the one where you consistently move to
+the nodes on the same level from left to right or in opposite directions. For
+example, a breadth first traversal of the above tree will output nodes in the
+following order:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5 3 7 2 4 6 8 
+</code></pre></div></div>
+
+<p>Your <code class="language-plaintext highlighter-rouge">queue_output</code> function output should match the above output exactly (note
+that there is trailing space before you output the newline. More on
+<a href="https://en.wikipedia.org/wiki/Breadth-first_search">bfs</a>.</p>
+
+<p>Conveniently, breadth first search can be implemented by using queues rather
+than stacks in a manor similar to how depth first search was implemented
+(replace <code class="language-plaintext highlighter-rouge">push</code> with <code class="language-plaintext highlighter-rouge">enqueue</code> and <code class="language-plaintext highlighter-rouge">pop</code> with <code class="language-plaintext highlighter-rouge">dequeue</code>).</p>
+
+<h3 id="provided-files">Provided Files</h3>
+
+<ul>
+  <li>
+    <p><em>Makefile</em> A simple makefile for building the lab. Just run <code class="language-plaintext highlighter-rouge">make</code> to compile
+everything.</p>
+  </li>
+  <li>
+    <p><em>bst.h</em> - This file contains the definition of the BST class. You do not have
+to modify this file but you are responsible for understanding all of the
+code.</p>
+  </li>
+  <li>
+    <p>_data_structures.h This file contains the definitions for the BinaryNode
+class as well as the Queue and Stack data structures.  You do not have to
+modify this file but you are responsible for understanding all of the code.</p>
+  </li>
+  <li>
+    <p><em>bst.cpp</em> This file contains stubs for the functions that you will implement.
+To complete the lab you must write the following methods for BST:</p>
+
+    <ul>
+      <li>destructor</li>
+      <li>insert</li>
+      <li>queue_output (BFS traversal)</li>
+    </ul>
+  </li>
+  <li>
+    <p><em>driver.cpp</em> Provides an interface for inserting nodes into the BST (based
+off the command line arguments), and testing whether or not the integers 0
+through 10 are contained in the BST.</p>
+  </li>
+</ul>
+
+<h3 id="hints">Hints</h3>
+
+<h4 id="traversing-the-bst-using-a-stack-or-queue">Traversing the BST using a Stack or Queue</h4>
+
+<p>The linear structure of a List allows us to traverse the elements without
+having to keep track of the ones we’ve already visited. However BSTs do not
+afford us this convenience. Consider the BST in the example above:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      5
+    -/ \-
+   3     7
+  / \   / \
+ 2   4 6   8
+</code></pre></div></div>
+
+<p>Let’s say we are in the midst of a DFS and we are currently at node 4. How are
+we to find the next node (7)? Trying to individually store each node we
+traverse would lead to messy and inefficient code. A much better solution is to
+store the nodes in another data structure to keep track of them. Consider a DFS
+using a stack. We initialize by pushing 5 onto the stack:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      5         Stack: 5
+    -/ \-
+   3     7
+  / \   / \
+ 2   4 6   8
+</code></pre></div></div>
+
+<p>We then iterate over the following steps until the stack is empty:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>WHILE stack is not empty:
+	POP the last element
+	PUSH its left child
+	PUSH its RIGHT child
+	PRINT the element
+END WHILE
+</code></pre></div></div>
+
+<p>After 1 iteration (the star indicates that we’ve printed this node):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     *5         Stack: 3 7
+    -/ \-
+   3     7
+  / \   / \
+ 2   4 6   8
+</code></pre></div></div>
+
+<p>After 2 iterations:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     *5         Stack: 2 4 7
+    -/ \-
+  *3     7
+  / \   / \
+ 2   4 6   8
+</code></pre></div></div>
+
+<p>After 2 iterations:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     *5         Stack: 4 7
+    -/ \-
+  *3     7
+  / \   / \
+*2   4 6   8
+</code></pre></div></div>
+
+<p>After 3 iterations:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     *5         Stack: 7
+    -/ \-
+  *3     7
+  / \   / \
+*2  *4 6   8
+</code></pre></div></div>
+
+<p>After 4 iterations:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     *5         Stack: 6 8
+    -/ \-
+  *3    *7
+  / \   / \
+*2  *4 6   8
+</code></pre></div></div>
+
+<p>Until we’ve traversed all of the elements. In this lab you will have to perform
+a BFS in a similar manner using a Queue.</p>
+
+<h4 id="declaring-the-stack-and-queue">Declaring the Stack and Queue</h4>
+
+<p>To implement <code class="language-plaintext highlighter-rouge">queue_output</code> and <code class="language-plaintext highlighter-rouge">stack_output</code> you need to respectively declare
+both a templated version of the Stack class, and one of the Queue class. If the
+Stack, or Queue needed to store integers, you could declare them like:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">stack_variable_name</span><span class="p">;</span>
+<span class="n">Queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">queue_variable_name</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>However, you want to store a pointer to the proper tree node type,
+<code class="language-plaintext highlighter-rouge">BinaryNode</code>. To make things slightly more confusing, the BinaryNode type is
+also templated so you need to specify what type the BinaryNode should be. If
+you knew for certain the BinaryNode is to store a character, then you might
+declare the Stack and Queue like:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Stack</span><span class="o">&lt;</span><span class="n">BinaryNode</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;*&gt;</span> <span class="n">char_stack</span><span class="p">;</span>
+<span class="n">Queue</span><span class="o">&lt;</span><span class="n">BinaryNode</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;*&gt;</span> <span class="n">char_queue</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>However, your BST implementation is templated so it should work with whatever
+type the <em>user</em> of your program uses. That’s where the magic <code class="language-plaintext highlighter-rouge">T</code> variable as
+declared in the line <code class="language-plaintext highlighter-rouge">template &lt;class T&gt;</code> comes in handy. <code class="language-plaintext highlighter-rouge">T</code> specifies what
+type the class holds so you can simply replace <code class="language-plaintext highlighter-rouge">char</code> in our previous example
+with <code class="language-plaintext highlighter-rouge">T</code> like the following in order to declare the Stack and Queue for the
+respective functions:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Stack</span><span class="o">&lt;</span><span class="n">BinaryNode</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*&gt;</span> <span class="n">stack</span><span class="p">;</span>
+<span class="n">Queue</span><span class="o">&lt;</span><span class="n">BinaryNode</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;*&gt;</span> <span class="n">queue</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="submitting-the-project">Submitting the project</h3>
+
+<p>Only one person in a group need submit the assignment but make sure that both
+you and your partner can view the submission on the submission site. If you
+cannot, you need to complete the making a group process. Please review the
+<a href="/cs24_f13/submission">submission instructions</a> as needed. Note that you may resubmit
+this assignment as many times as necessary up until the deadline.</p>
+
+  </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
+      <div id="credits">
+        <p><span class="small">Template design by <a href="https://andreasviklund.com/">Andreas Viklund</a></span></p>
+      </div>
+    </div>
+  </body>
+</html>

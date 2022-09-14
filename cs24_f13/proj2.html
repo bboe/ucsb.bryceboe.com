@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/variant-multi.css" title="Variant Multi" media="all" />
+    <link rel="stylesheet" type="text/css" href="/public/monokai.sublime.css" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>Project 2 &raquo; CS24 Fall 2013</title>
+  </head>
+  <body>
+    <div id="container980">
+<div id="header">
+  <h1><a href="/cs24_f13/">Computer Science 24, Fall 2013</a></h1>
+  <h2>Problem Solving with Computers II</h2>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="/cs24_f13/schedule">lecture schedule</a></li>
+    <li><a href="/cs24_f13/submission">submission instructions</a></li>
+    <li><a href="/cs24_f13/gdb">gdb tutorial</a></li>
+  </ul>
+</div>
+
+<div id="main">
+  <div id="sidebar">
+    <div class="sidebarbox">
+      <h2>People &amp; Office Hours</h2>
+      <ul>
+        <li><strong>Instructor</strong>: Bryce Boe
+          (<a href="/">web</a>, <a href="mailto:bboe@cs.ucsb.edu">email</a>)
+          <ul>
+            <li>Tuesday, 15:30 - 16:30 in HFH 1152</li>
+            <li>Wednesday, 11:00 - 12:00 in HFH 1152</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Geoffrey Douglas
+          <ul>
+            <li>Wednesday, 15:00 - 17:00 in Phelps 1413</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Jon Sun
+          <ul>
+            <li>Thursday, 10:00 - 12:00 in Phelps 1413</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Dani Kudrow
+          <ul>
+            <li>Thursday, 15:00 - 17:00 in Phelps 1413</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebarbox">
+      <h2>Deadlines</h2>
+      <h3>All deadlines are at 23:59:59 on the due date unless otherwise noted.</h3>
+      <ul>
+        <li>2013/09/30 -- <a href="/cs24_f13/lab1">Lab 1</a></li>
+        <li>2013/10/02 -- Drop deadline (no fee)</li>
+        <li>2013/10/08 -- <a href="/cs24_f13/lab2">Lab 2</a></li>
+        <li>2013/10/14 -- <a href="/cs24_f13/lab3">Lab 3</a></li>
+        <li>2013/10/20 -- <a href="/cs24_f13/proj1">Project 1</a></li>
+        <li>2013/10/22 -- <a href="/cs24_f13/lab4">Lab 4</a></li>
+        <li>2013/10/23 23:45 -- Drop deadline ($3 fee)</li>
+        <li>2013/10/28 -- <a href="/cs24_f13/lab5">Lab 5</a></li>
+        <li>2013/10/30 14:00 -- Midterm Examination</li>
+        <li>2013/11/04 -- <a href="/cs24_f13/lab6">Lab 6</a></li>
+        <li>2013/11/13 -- <a href="/cs24_f13/lab7">Lab 7</a></li>
+        <li>2013/11/18 -- <a href="/cs24_f13/lab8">Lab 8</a></li>
+        <li>2013/11/22 -- <a href="/cs24_f13/proj2">Project 2</a></li>
+        <li>2013/11/25 -- <a href="/cs24_f13/lab9">Lab 9</a></li>
+        <li>2013/12/02 -- <a href="/cs24_f13/lab10">Lab 10</a></li>
+        <li>2013/12/06 -- <a href="/cs24_f13/proj3">Project 3</a></li>
+        <li>2013/12/09 16:00 -- Final Examination</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+<h2 id="project-2-virtual-directory-trees">Project 2: Virtual Directory Trees</h2>
+
+<p>In this project, you and your partner will complete the binary search tree
+(BST) implementation you started in <a href="/cs24_f13/lab7">lab 7</a>. You will also implement a
+few functions for a shell that supports the creation of a virtual directory
+hierarchy where there is a root directory, <code class="language-plaintext highlighter-rouge">/</code>, that can contain zero or more
+subdirectories each of which can contain zero or more subdirectories and so on.</p>
+
+<h3 id="goals-for-this-project">Goals for this project</h3>
+
+<p>By the time you have completed this project, you should:</p>
+
+<ul>
+  <li>fully understand the use and implementation of a binary search tree</li>
+  <li>understand how to use recursion to traverse a binary tree</li>
+  <li>be comfortable working with a general tree (a directory can have any number
+of subdirectories)</li>
+</ul>
+
+<h3 id="project-preparation">Project Preparation</h3>
+
+<p>To begin create a proj2 directory (assuming you haven’t already done so):</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> cs24/proj2
+</code></pre></div></div>
+
+<p>Change into the proj2 directory and copy the files you will need for this
+project:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>cs24/proj2
+<span class="nb">cp</span> ~bboe/public_html/cs24_f13/code/proj2/<span class="k">*</span> <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>The first thing you will want to do is copy the appropriate functions from your
+lab 7 <code class="language-plaintext highlighter-rouge">bst.cpp</code> to the <code class="language-plaintext highlighter-rouge">bst.cpp</code> for this project.</p>
+
+<h3 id="building-and-testing-the-project">Building and testing the project</h3>
+
+<p>To build the project run:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make
+</code></pre></div></div>
+
+<p>If successful that will produce <code class="language-plaintext highlighter-rouge">virtual_directory</code> which you can run via:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./virtual_directory
+</code></pre></div></div>
+
+<p>This program has its own set of commands which you can list via the command
+<code class="language-plaintext highlighter-rouge">help</code>. You will need to implement each of those additional commands (by
+default they do nothing).</p>
+
+<h3 id="understanding-the-assignment">Understanding the assignment</h3>
+
+<p>The first thing you will want to do is understand what it is your are
+attempting to build. The files you copied contains a reference implementation
+that will run on the CSIL machines. Below is a complete sample execution of the
+reference implementation:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./reference
+&gt; ls
+&gt; mkdir foo
+&gt; ls
+foo 
+&gt; pwd
+/
+&gt; mkdir blah
+&gt; mkdir zebra
+&gt; ls
+blah foo zebra 
+&gt; cd foo
+foo&gt; mkdir bar
+foo&gt; cd bar
+bar&gt; pwd
+/foo/bar
+bar&gt; cd ..
+foo&gt; cd ..
+&gt; rmdir foo
+&gt; ls
+blah zebra 
+</code></pre></div></div>
+
+<h3 id="understanding-the-code">Understanding the code</h3>
+
+<p>There are two core pieces of code you need to understand. The first is
+<code class="language-plaintext highlighter-rouge">virtual_directory.cpp</code>. This file contains the code that converts the user
+input into the commands to work with the virtual directory tree. All the code
+to handle the user input has already been written, however, you need to take
+note of how the input is converted into functions that you are to write. Also
+pay particular attention to the fact that the root directory is created on
+start-up and that the variable <code class="language-plaintext highlighter-rouge">cwd</code> points to the current (or sometimes called
+present) working directory.</p>
+
+<p>That brings us to the second important part of the code, <code class="language-plaintext highlighter-rouge">directory.h</code>. In this
+file you will see the interface for the Directory class. The three attributes
+of a Directory are its <code class="language-plaintext highlighter-rouge">name</code>, its <code class="language-plaintext highlighter-rouge">parent</code> and its <code class="language-plaintext highlighter-rouge">subdirs</code> or
+subdirectories. Note is that we are using our <strong>BST</strong> class to store pointers,
+well wrapped pointers (for comparison and output purposes), to other Directory
+instances. Recall that a <strong>BST</strong> as well as a <strong>List</strong> is an implementation of
+a generic container ADT. We are using the <strong>BST</strong> because we want (1) ordered
+listings and (2) better than <strong>O</strong>(n) insertion, look-ups and removals. Avoid
+confusing the general tree of directories, and the BST that is used to merely
+hold a set of subdirectories.</p>
+
+<p>The functions you must write in <code class="language-plaintext highlighter-rouge">virtual_directory.cpp</code> should directly
+interact with functions that are part of the <code class="language-plaintext highlighter-rouge">Directory</code> class. You must write
+some of those functions (in <code class="language-plaintext highlighter-rouge">directory.cpp</code>) many of which will interact with
+the <code class="language-plaintext highlighter-rouge">BST</code> class.</p>
+
+<h3 id="suggested-approach">Suggested Approach</h3>
+
+<p>Before beginning make sure you received 100% on lab 7 as this assignment
+depends on your <code class="language-plaintext highlighter-rouge">BST::insert</code> and <code class="language-plaintext highlighter-rouge">BST::~BST</code> working properly. The following
+is the approach I suggest you take in completing this assignment as there are a
+lot of dependencies between parts (e.g., <code class="language-plaintext highlighter-rouge">rmdir</code> cannot be tested until both
+<code class="language-plaintext highlighter-rouge">mkdir</code> and <code class="language-plaintext highlighter-rouge">ls</code> work 100%).</p>
+
+<h4 id="part-1-goal-complete-by-friday-november-15">Part 1 (Goal: complete by Friday, November 15)</h4>
+
+<p><strong>1: ls and mkdir</strong></p>
+
+<p>The first thing to do is to get the commands <code class="language-plaintext highlighter-rouge">ls</code> and <code class="language-plaintext highlighter-rouge">mkdir</code> to work
+properly. This will allow you add to root’s (<code class="language-plaintext highlighter-rouge">/</code>) subdirectories and produce
+the correct output. You should be able to pass all the <code class="language-plaintext highlighter-rouge">root_mkdir</code> tests
+in addition to a few others (~12/55) on the submission system at this point.</p>
+
+<p><strong>Note</strong>: You will need to use recursion over the BST of subdirectories in
+order to output the items in the sorted order. You can skip the sorting until
+later if you wish. In such a case you will want to use either a stack or queue
+to output all the nodes. This will allow you to verify that your other
+operations work. However, you won’t be able to pass many tests on the
+submission system.</p>
+
+<p><strong>2: cd</strong></p>
+
+<p>Once you can list directories you need to implement the <code class="language-plaintext highlighter-rouge">cd</code> command to change
+directories. After completing this function you should additionally pass all
+the <code class="language-plaintext highlighter-rouge">mkdir_chrdir</code> tests (~22/55).</p>
+
+<p><strong>3: pwd</strong></p>
+
+<p>Finally write the functionality for the <code class="language-plaintext highlighter-rouge">pwd</code> command. At this point you should
+pass just under half of the tests (~26/55) and have a pretty good feel for how
+all the pieces interact.</p>
+
+<h4 id="part-2-start-after-part-1-is-complete">Part 2: Start after part 1 is complete</h4>
+
+<p>The second part of the assignment is technically much more difficult than the
+first, despite only having one more command, <code class="language-plaintext highlighter-rouge">rmdir</code>, to implement.</p>
+
+<p><strong>1: rmdir</strong></p>
+
+<p>Implement everything necessary to remove a subdirectory. You will need to
+complete the <code class="language-plaintext highlighter-rouge">BST::remove</code> function for this to work properly. You <strong>must</strong> use
+recursion (you will need a helper function) to complete this process. (You can
+also implement it iteratively if you so desire but you must demonstrate that
+you can do it recursively).</p>
+
+<p>When rmdir is completed you should pass 52/55 of the tests (assuming everything
+works up to this point).</p>
+
+<p><strong>2: Directory::~Directory</strong></p>
+
+<p>The last thing to do is to make sure that when a Directory is deallocated it
+does not leak any memory. Completing this part will reward you with those last
+three points.</p>
+
+<h4 id="extra-credit">Extra Credit</h4>
+
+<p>Once you receive 100% you can implement additional commands for up to 15% extra
+credit (2.1% of the overall grade). The amount of extra credit will depend on
+the quantity and relative difficulty of the extra commands. Please message
+“instructors” on Piazza to discuss any extra credit ideas you may have.</p>
+
+<h3 id="submitting-the-project">Submitting the project</h3>
+
+<p>Please review the <a href="/cs24_f13/submission">submission instructions</a> as needed. On the
+submission site you will find the command you need to use to submit the
+project. Note that you may resubmit this project as many times as necessary up
+until the deadline. If you are working with a partner, make sure to group up
+using the submission system.</p>
+
+  </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
+      <div id="credits">
+        <p><span class="small">Template design by <a href="https://andreasviklund.com/">Andreas Viklund</a></span></p>
+      </div>
+    </div>
+  </body>
+</html>

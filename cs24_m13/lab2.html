@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/variant-multi.css" title="Variant Multi" media="all" />
+    <link rel="stylesheet" type="text/css" href="/public/monokai.sublime.css" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>Lab 2 &raquo; CS24 Summer 2013</title>
+  </head>
+  <body>
+    <div id="container980">
+<div id="header">
+  <h1><a href="/cs24_m13/">Computer Science 24, Summer 2013</a></h1>
+  <h2>Problem Solving with Computers II</h2>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="/cs24_m13/schedule">lecture schedule</a></li>
+    <li><a href="/cs24_m13/submission">submission instructions</a></li>
+  </ul>
+</div>
+
+<div id="main">
+  <div id="sidebar">
+    <div class="sidebarbox">
+      <h2>People &amp; Office Hours</h2>
+      <ul>
+        <li><strong>Instructor</strong>: Bryce Boe
+          (<a href="/">web</a>, <a href="mailto:bboe@cs.ucsb.edu">email</a>)
+          <ul>
+            <li>Tuesday, 14:15 - 15:15 in GSL</li>
+            <li>Thursday, 11:15 - 12:15 in GSL</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Jane Iedemska
+          (<a href="mailto:jane@iedemska.com">email</a>)
+          <ul>
+            <li>Wednesday, 11:30 - 12:30 in Phelps 1413</li>
+            <li>Thursday, 14:30 - 15:30 in Phelps 1413</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebarbox">
+      <h2>Deadlines</h2>
+      <h3>All deadlines are at 23:59:59 on the due date.</h3>
+      <ul>
+        <li>2013/06/25 -- <a href="/cs24_m13/hw1">Homework 1</a></li>
+        <li>2013/06/26 -- <a href="/cs24_m13/lab1">Lab 1</a></li>
+        <li>2013/06/28 -- Course Drop with Refund</li>
+        <li>2013/07/03 -- <a href="/cs24_m13/lab2">Lab 2</a></li>
+        <li>2013/07/10 -- <a href="/cs24_m13/lab3">Lab 3</a></li>
+        <li>2013/07/16 -- <a href="/cs24_m13/proj1">Project 1</a></li>
+        <li>2013/07/17 -- <a href="/cs24_m13/lab4">Lab 4</a></li>
+        <li>2013/08/01 -- <a href="/cs24_m13/lab5">Lab 5</a></li>
+        <li>2013/08/07 -- <a href="/cs24_m13/lab6">Lab 6</a></li>
+        <li>2013/08/10 -- <a href="/cs24_m13/proj2">Project 2 (Part 1)</a></li>
+        <li>2013/08/14 -- <a href="/cs24_m13/lab7">Lab 7</a></li>
+        <li>2013/08/17 -- <a href="/cs24_m13/proj2#part-2">Project 2 (Part 2)</a></li>
+        <li>2013/08/21 -- <a href="/cs24_m13/lab8">Lab 8</a></li>
+        <li>2013/08/30 -- <a href="/cs24_m13/proj3">Project 3</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+<h2 id="lab-2-testing-a-program">Lab 2: Testing a program</h2>
+
+<h3 id="goals-for-this-lab">Goals for this lab</h3>
+
+<p>By the time you have completed this lab, you should</p>
+
+<ul>
+  <li>get expirience in testing a program</li>
+  <li>get familiar with possible error cases in the code</li>
+</ul>
+
+<p>The purpose of this lab is to get you familiar with simple code testing.</p>
+
+<h3 id="lab-pairing">Lab Pairing</h3>
+
+<p>For this lab (and all following labs), you may work with a partner. If you do
+work with a partner (please do), you will need to use the same partner
+throughout the quarter. When working with a partner, I strongly encourage you
+follow the pair programming method of working together. If you are not familiar
+with pair programming please
+<a href="https://www.youtube.com/watch?v=rG_U12uqRhE">watch this video</a>.</p>
+
+<h3 id="lab-preparation">Lab Preparation</h3>
+
+<p>Before you begin, let’s create a subdirectory for the files for this lab. Note
+that these instructions assume you are using either a CSIL machine or one of
+the lab machines:</p>
+
+<p>After logging in, create the directory (assuming you haven’t already done so):</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> cs24/lab2
+</code></pre></div></div>
+
+<p>Change into the lab2 directory and copy the files you will need for this lab:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>cs24/lab2
+<span class="nb">cp</span> ~bboe/public_html/cs24_m13/code/lab2/<span class="k">*</span> <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>Open up README.txt with your favorite text editor and be sure to add your and
+your partner’s name so that you both receive credit.</p>
+
+<h3 id="testing-the-code">Testing the code</h3>
+
+<p>In this lab you are given an executable named <code class="language-plaintext highlighter-rouge">find_bugs</code>. This is a buggy
+version (intentionally) of a program to evaluate a single math expression in
+infix-notation entered via standard input. The program operates only on base10
+integers, and only performs addition (+), subtraction (-), and division
+(/). The operator and the numbers must be separated by a single space.</p>
+
+<p>For example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./find_bugs
+&gt;Enter arithmetical expression
+&gt;1 + 2
+3
+</code></pre></div></div>
+
+<p>However, some of the inputs might break the normal operation of the
+executable. In this case you will see the output:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>BUG FOUND: Save as input_[n].txt
+</code></pre></div></div>
+
+<p>Please store your input in the corresponding txt file.</p>
+
+<p>There is no source code for this executable, so that you can’t see all the
+issues right away.  However, I can tell you that there are 9 known bugs in the
+code. Try to catch them all!</p>
+
+<h3 id="submitting-the-project">Submitting the project</h3>
+
+<p>Only one person in a group need submit the project. If both members of a group
+submit we will only score the last submission made between the two group
+members. Please review the
+<a href="/cs24_m13/submission">submission instructions</a> as needed. On the submission site
+you will find the command you need to use to submit the project. Note that you
+may resubmit this project as many times as necessary up until the deadline.</p>
+
+  </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
+      <div id="credits">
+        <p><span class="small">Template design by <a href="https://andreasviklund.com/">Andreas Viklund</a></span></p>
+      </div>
+    </div>
+  </body>
+</html>

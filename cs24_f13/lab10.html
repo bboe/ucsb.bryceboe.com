@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/variant-multi.css" title="Variant Multi" media="all" />
+    <link rel="stylesheet" type="text/css" href="/public/monokai.sublime.css" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>Lab 10 &raquo; CS24 Fall 2013</title>
+  </head>
+  <body>
+    <div id="container980">
+<div id="header">
+  <h1><a href="/cs24_f13/">Computer Science 24, Fall 2013</a></h1>
+  <h2>Problem Solving with Computers II</h2>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="/cs24_f13/schedule">lecture schedule</a></li>
+    <li><a href="/cs24_f13/submission">submission instructions</a></li>
+    <li><a href="/cs24_f13/gdb">gdb tutorial</a></li>
+  </ul>
+</div>
+
+<div id="main">
+  <div id="sidebar">
+    <div class="sidebarbox">
+      <h2>People &amp; Office Hours</h2>
+      <ul>
+        <li><strong>Instructor</strong>: Bryce Boe
+          (<a href="/">web</a>, <a href="mailto:bboe@cs.ucsb.edu">email</a>)
+          <ul>
+            <li>Tuesday, 15:30 - 16:30 in HFH 1152</li>
+            <li>Wednesday, 11:00 - 12:00 in HFH 1152</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Geoffrey Douglas
+          <ul>
+            <li>Wednesday, 15:00 - 17:00 in Phelps 1413</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Jon Sun
+          <ul>
+            <li>Thursday, 10:00 - 12:00 in Phelps 1413</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Dani Kudrow
+          <ul>
+            <li>Thursday, 15:00 - 17:00 in Phelps 1413</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebarbox">
+      <h2>Deadlines</h2>
+      <h3>All deadlines are at 23:59:59 on the due date unless otherwise noted.</h3>
+      <ul>
+        <li>2013/09/30 -- <a href="/cs24_f13/lab1">Lab 1</a></li>
+        <li>2013/10/02 -- Drop deadline (no fee)</li>
+        <li>2013/10/08 -- <a href="/cs24_f13/lab2">Lab 2</a></li>
+        <li>2013/10/14 -- <a href="/cs24_f13/lab3">Lab 3</a></li>
+        <li>2013/10/20 -- <a href="/cs24_f13/proj1">Project 1</a></li>
+        <li>2013/10/22 -- <a href="/cs24_f13/lab4">Lab 4</a></li>
+        <li>2013/10/23 23:45 -- Drop deadline ($3 fee)</li>
+        <li>2013/10/28 -- <a href="/cs24_f13/lab5">Lab 5</a></li>
+        <li>2013/10/30 14:00 -- Midterm Examination</li>
+        <li>2013/11/04 -- <a href="/cs24_f13/lab6">Lab 6</a></li>
+        <li>2013/11/13 -- <a href="/cs24_f13/lab7">Lab 7</a></li>
+        <li>2013/11/18 -- <a href="/cs24_f13/lab8">Lab 8</a></li>
+        <li>2013/11/22 -- <a href="/cs24_f13/proj2">Project 2</a></li>
+        <li>2013/11/25 -- <a href="/cs24_f13/lab9">Lab 9</a></li>
+        <li>2013/12/02 -- <a href="/cs24_f13/lab10">Lab 10</a></li>
+        <li>2013/12/06 -- <a href="/cs24_f13/proj3">Project 3</a></li>
+        <li>2013/12/09 16:00 -- Final Examination</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+<h2 id="lab-10-word-frequency-counter">Lab 10: Word Frequency Counter</h2>
+
+<h3 id="goals-for-this-lab">Goals for this lab</h3>
+
+<p>By the time you have completed this lab, you should:</p>
+
+<ul>
+  <li>know what a hash table is</li>
+  <li>understand that the C++ standard template library (STL) provides
+implementations of the data structures we discussed in this class (use them!)</li>
+  <li>have experience working with a few STL classes</li>
+</ul>
+
+<h3 id="lab-pairing">Lab pairing</h3>
+
+<p>For this lab you may work with a partner. To facilitate your submissions as a
+pair you <strong>MUST</strong> pair up using the submission system. When you visit the
+project page from where you can view all your submission you should see a link
+to a page where you can join a group. Of the two people in the group, one of
+you must invite the other, and the other must confirm the invitation. Once you
+group up, any submissions that either you, or your partner have already made
+will be visible to each other in addition to all future submissions.</p>
+
+<h3 id="lab-preparation">Lab preparation</h3>
+
+<p>After logging in, create the directory for this lab:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> cs24/lab10
+</code></pre></div></div>
+
+<p>Change into the lab directory and copy the files you will need for this lab:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>cs24/lab10
+<span class="nb">cp</span> ~bboe/public_html/cs24_f13/code/lab10/<span class="k">*</span> <span class="nb">.</span>
+</code></pre></div></div>
+
+<h3 id="hash-table">Hash table</h3>
+
+<h4 id="definition">Definition</h4>
+
+<p>A hash table is an incredibly useful container data structure. A hash table is
+an unordered mapping between a unique key and a value. The operations <code class="language-plaintext highlighter-rouge">insert</code>,
+<code class="language-plaintext highlighter-rouge">contains</code>, and <code class="language-plaintext highlighter-rouge">remove</code> each run in constant time on average. The speed is
+acheived by utilizing a clever storage mechanism in combination with an
+intentional abundance of storage space.</p>
+
+<h4 id="internal-structure">Internal structure</h4>
+
+<p>In a nutshell, values (and their associated keys) stored within a hash table
+are stored at some position in an array. That position is calculated by passing
+the key through a hash function which returns values ranging from zero to one
+less than the size of the array.</p>
+
+<p>For example, assume we have a small hash table to identify if a given number is
+odd or even.  It will have two records in its array:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 "Even"
+1 "Odd"
+</code></pre></div></div>
+
+<p>Say we have the hash function <code class="language-plaintext highlighter-rouge">return key % 2 == 0</code> that returns <code class="language-plaintext highlighter-rouge">0</code> if the key
+is divisible by 2, and <code class="language-plaintext highlighter-rouge">1</code> otherwise. Thus given any number we can look up its
+value in the hash table, which in this contrived example tells us whether the
+number is odd or even.</p>
+
+<p>In the previous example we use our simple example to fetch or access a
+value. Hash tables can also be utilized to store or update a value. For
+instance we can also use hash tables to count the number of odds and evens in
+some given sequence.</p>
+
+<p>Now our table array has the following records:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0 # evens
+1 # odds
+</code></pre></div></div>
+
+<p>If we are encountering an even or an odd at some point in the code, we can
+simply increase corresponding number in the table via <code class="language-plaintext highlighter-rouge">array[hash_result]++;</code></p>
+
+<p>In this case, our key maps to a value that corresponds to the number of similar
+(odd or even) numbers.</p>
+
+<p>In class we will discuss in more depth the implementation details of hash
+tables. However, for the lab you will just need to use an existing hash
+table. Hash tables, in general, can store many more than 2 items, in fact they
+can store an unbounded number of items with the right implementation.</p>
+
+<h3 id="standard-template-library-stl">Standard Template Library (STL)</h3>
+
+<p>Throughout this class we have implemented a number of data structures. When we
+started working with C++ we made those data structures generic by templating
+them. As it turns out, in the real world you seldom need to write the
+implementation for a data structure as they are often provided either directly
+by the language, or through a library for the language. In C++, the standard
+template library, or STL, provides some form of all the data structures we
+discuss in this class (among others).</p>
+
+<p>The following are some you will want to use in this lab.</p>
+
+<h4 id="vector">vector</h4>
+
+<p>One such ADT is the <code class="language-plaintext highlighter-rouge">vector</code> class that allows you to create a dynamic array of
+an arbitrary type and provides methods for insertion and removal (similar to
+our array-based List implementation). The following is an example utilizing a
+vector of integers:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">nums</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>  <span class="c1">// create array of 3 ints, each initialized to 5</span>
+                             <span class="c1">// nums = [5, 5, 5]</span>
+    <span class="n">nums</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>       <span class="c1">// add 6 in the end</span>
+                             <span class="c1">// nums = [5, 5, 5, 6]</span>
+    <span class="n">nums</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>         <span class="c1">// remove the last element</span>
+                             <span class="c1">// nums = [5, 5, 5]</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;::</span><span class="n">iterator</span> <span class="n">i</span> <span class="o">=</span> <span class="n">nums</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">nums</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>  <span class="c1">// outputs the content of each item in nums</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Aside from the <code class="language-plaintext highlighter-rouge">vector</code> there is one new concept in the above example code: the
+<code class="language-plaintext highlighter-rouge">iterator</code>. In general, an iterator is a pointer-like object that is used to
+traverse through elements in ADTs that support them. They are pointer-like
+because the value stored at the element is obtainable by dereferencing the
+iterator, and incrementing, or decrementing (for iterators that are
+bidirectional) the iterator by one will advance to the next or previous item in
+the ADT.</p>
+
+<p>In the example above, to iterate through a vector of integers we declare (in
+the for loop) <code class="language-plaintext highlighter-rouge">vector&lt;int&gt;::iterator i</code>. We say that we start from the first
+element <code class="language-plaintext highlighter-rouge">i = vector.begin()</code> and we print numbers until <code class="language-plaintext highlighter-rouge">i</code> is pointing to the
+“end” element, which is one after the last in the vector <code class="language-plaintext highlighter-rouge">i != nums.end()</code>.</p>
+
+<h4 id="string">string</h4>
+
+<p>We’ve already seen strings in this class. However, for completeness reference
+the following example if needed.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Assume the standard input stream contains "abc qwe\n345\n"</span>
+    <span class="n">string</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s3</span><span class="p">;</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">s1</span><span class="p">;</span>  <span class="c1">// s1 = "abc"</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">s2</span><span class="p">;</span>  <span class="c1">// s2 = "qwe"</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">s3</span><span class="p">;</span>  <span class="c1">// s3 = "345"</span>
+    <span class="n">s1</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span> <span class="o">+</span> <span class="n">s3</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>  <span class="c1">// abcqwe345\n</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="unordered_map-hash-table">unordered_map (hash table)</h4>
+
+<p>One more example is <code class="language-plaintext highlighter-rouge">unordered_map</code>, which is an implementation of a hash table
+that maps a key to value.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;unordered_map&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">value</span><span class="p">;</span>
+    <span class="n">string</span> <span class="n">key</span><span class="p">(</span><span class="s">"abc"</span><span class="p">);</span>
+    <span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">hash_table</span><span class="p">;</span>  <span class="c1">// initialize the hash table</span>
+
+    <span class="c1">// test if a key is contained in the hash table</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">hash_table</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">!=</span> <span class="n">hash_table</span><span class="p">.</span><span class="n">end</span><span class="p">())</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>  <span class="c1">// 0</span>
+
+    <span class="c1">// Accessing an item that was not previously contained will add it</span>
+    <span class="c1">// using the default constructor (initialize to 0 for type int)</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">hash_table</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>  <span class="c1">// 0</span>
+
+    <span class="c1">// test if a key is contained in the hash table</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">hash_table</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">!=</span> <span class="n">hash_table</span><span class="p">.</span><span class="n">end</span><span class="p">())</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>  <span class="c1">// 1</span>
+
+    <span class="n">hash_table</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>  <span class="c1">// Increment the key</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">hash_table</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>  <span class="c1">// 1</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The first thing to note in this example is that the <code class="language-plaintext highlighter-rouge">unordered_map</code> class
+requires two template arguments. The first represents the type of the <em>key</em>, in
+this case a string, and the second represents the type of the <em>value</em>, in this
+case an int.</p>
+
+<p>If we want to iterate through the table (you will have to do some form of this
+for the lab), then we have to create appropriate iterator
+<code class="language-plaintext highlighter-rouge">unordered_map&lt;string, int&gt;::iterator it = hash_table.begin();</code></p>
+
+<p>Each element returned by the hash table iterator is of type <code class="language-plaintext highlighter-rouge">pair</code> that
+contains two attributes: <code class="language-plaintext highlighter-rouge">first</code>, the key; and <code class="language-plaintext highlighter-rouge">second</code>, the value.  To refer
+separately to the key try <code class="language-plaintext highlighter-rouge">it-&gt;first</code>, for the value try <code class="language-plaintext highlighter-rouge">it-&gt;second</code>.</p>
+
+<p><strong>NOTE</strong>: The <code class="language-plaintext highlighter-rouge">unordered_map</code> class does not exist in older versions of
+C++. Thus in order to compile this program (and your lab10 program) you will
+need to add <code class="language-plaintext highlighter-rouge">-std=c++11</code> to the clang compile line.</p>
+
+<h4 id="sort">sort</h4>
+
+<p>Finally, the STL provides a numper of often used/needed algorithms. For
+example, in this lab we will be using the <code class="language-plaintext highlighter-rouge">sort</code> function. The sort function
+will sort elements in ascending order, unless provided a <em>sorting</em> function
+that specifies how individual elements should be compared.</p>
+
+<p>For example, if we wanted to output the elements of our hash table in reverse
+(descending) order based on the key we would do the following:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;unordered_map&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">bool</span> <span class="nf">sort_reverse</span><span class="p">(</span><span class="k">const</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">first</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+  <span class="c1">// Initialize the hash table with some fun values</span>
+  <span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">ht</span> <span class="o">=</span> <span class="p">{{</span><span class="s">"Bananas"</span><span class="p">,</span> <span class="mi">10</span><span class="p">},</span> <span class="p">{</span><span class="s">"Apples"</span><span class="p">,</span> <span class="mi">16</span><span class="p">},</span>
+                                   <span class="p">{</span><span class="s">"Pears"</span><span class="p">,</span> <span class="mi">8</span><span class="p">},</span> <span class="p">{</span><span class="s">"Zebras"</span><span class="p">,</span> <span class="mi">1</span><span class="p">}};</span>
+
+  <span class="c1">// unorderd_map iterators cannot be sorted so we must copy its contents</span>
+  <span class="c1">// into a something sortable -- here we use a vector</span>
+  <span class="n">vector</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">values</span><span class="p">(</span><span class="n">ht</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">ht</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+  <span class="c1">// sort all of the values in the vector using the function `reverse` for</span>
+  <span class="c1">// comparisons</span>
+  <span class="n">sort</span><span class="p">(</span><span class="n">values</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">values</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">sort_reverse</span><span class="p">);</span>
+
+  <span class="c1">// Output the items</span>
+  <span class="c1">// The `auto` keyword in C++11 will automatically determine its type.</span>
+  <span class="c1">// In this case its type is: vector&lt;pair&lt;string, int&gt; &gt;::iterator</span>
+  <span class="k">for</span><span class="p">(</span><span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">values</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">it</span> <span class="o">!=</span> <span class="n">values</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">it</span><span class="p">)</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">first</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span> <span class="o">&lt;&lt;</span> <span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="writing-frequencycpp">Writing frequency.cpp</h3>
+
+<p>In this lab you will write a program that calculates number of occurrences of
+unique words given via standard input. The program should print out statistics
+of the encountered words. The order of the output should be such that the most
+frequently used words are listed first, and words of the same frequency are
+sorted according to however strings are sorted by default (lexicographically).</p>
+
+<p>Words can include punctuation and are separated by any form of
+whitespace. Using <code class="language-plaintext highlighter-rouge">cin &gt;&gt; term</code> where term is a string will handle the
+whitespace issue for you. All comparisons should be case insensitive, meaning
+that <code class="language-plaintext highlighter-rouge">IS</code>, <code class="language-plaintext highlighter-rouge">Is</code>, <code class="language-plaintext highlighter-rouge">iS</code>, and <code class="language-plaintext highlighter-rouge">is</code> should all be counted as one word, <code class="language-plaintext highlighter-rouge">is</code>. You
+will need to write a function that converts a string to its lowercase form. You
+probably want to use the <code class="language-plaintext highlighter-rouge">tolower</code> function to help you with that.</p>
+
+<p>For example <code class="language-plaintext highlighter-rouge">echo "ASD aSd asd sdf dfg." | ./a.out</code> should produce the output:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3 asd
+1 dfg.
+1 sdf
+</code></pre></div></div>
+
+<p>It is also worth noting that the result of <code class="language-plaintext highlighter-rouge">cin &gt;&gt; term</code> can be used as a
+boolean expression indicating whether or not the the input of type term
+succeeded. The expression will evaluate to false when EOF is reached.</p>
+
+<h3 id="submitting-the-assignment">Submitting the assignment</h3>
+
+<p>Only one person in a group need submit the assignment but make sure that both
+you and your partner can view the submission on the submission site. If you
+cannot, you need to complete the making a group process. Please review the
+<a href="/cs24_f13/submission">submission instructions</a> as needed. Note that you may resubmit
+this assignment as many times as necessary up until the deadline.</p>
+
+  </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
+      <div id="credits">
+        <p><span class="small">Template design by <a href="https://andreasviklund.com/">Andreas Viklund</a></span></p>
+      </div>
+    </div>
+  </body>
+</html>

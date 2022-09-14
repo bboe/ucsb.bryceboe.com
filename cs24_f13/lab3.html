@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/variant-multi.css" title="Variant Multi" media="all" />
+    <link rel="stylesheet" type="text/css" href="/public/monokai.sublime.css" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>Lab 3 &raquo; CS24 Fall 2013</title>
+  </head>
+  <body>
+    <div id="container980">
+<div id="header">
+  <h1><a href="/cs24_f13/">Computer Science 24, Fall 2013</a></h1>
+  <h2>Problem Solving with Computers II</h2>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="/cs24_f13/schedule">lecture schedule</a></li>
+    <li><a href="/cs24_f13/submission">submission instructions</a></li>
+    <li><a href="/cs24_f13/gdb">gdb tutorial</a></li>
+  </ul>
+</div>
+
+<div id="main">
+  <div id="sidebar">
+    <div class="sidebarbox">
+      <h2>People &amp; Office Hours</h2>
+      <ul>
+        <li><strong>Instructor</strong>: Bryce Boe
+          (<a href="/">web</a>, <a href="mailto:bboe@cs.ucsb.edu">email</a>)
+          <ul>
+            <li>Tuesday, 15:30 - 16:30 in HFH 1152</li>
+            <li>Wednesday, 11:00 - 12:00 in HFH 1152</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Geoffrey Douglas
+          <ul>
+            <li>Wednesday, 15:00 - 17:00 in Phelps 1413</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Jon Sun
+          <ul>
+            <li>Thursday, 10:00 - 12:00 in Phelps 1413</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Dani Kudrow
+          <ul>
+            <li>Thursday, 15:00 - 17:00 in Phelps 1413</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebarbox">
+      <h2>Deadlines</h2>
+      <h3>All deadlines are at 23:59:59 on the due date unless otherwise noted.</h3>
+      <ul>
+        <li>2013/09/30 -- <a href="/cs24_f13/lab1">Lab 1</a></li>
+        <li>2013/10/02 -- Drop deadline (no fee)</li>
+        <li>2013/10/08 -- <a href="/cs24_f13/lab2">Lab 2</a></li>
+        <li>2013/10/14 -- <a href="/cs24_f13/lab3">Lab 3</a></li>
+        <li>2013/10/20 -- <a href="/cs24_f13/proj1">Project 1</a></li>
+        <li>2013/10/22 -- <a href="/cs24_f13/lab4">Lab 4</a></li>
+        <li>2013/10/23 23:45 -- Drop deadline ($3 fee)</li>
+        <li>2013/10/28 -- <a href="/cs24_f13/lab5">Lab 5</a></li>
+        <li>2013/10/30 14:00 -- Midterm Examination</li>
+        <li>2013/11/04 -- <a href="/cs24_f13/lab6">Lab 6</a></li>
+        <li>2013/11/13 -- <a href="/cs24_f13/lab7">Lab 7</a></li>
+        <li>2013/11/18 -- <a href="/cs24_f13/lab8">Lab 8</a></li>
+        <li>2013/11/22 -- <a href="/cs24_f13/proj2">Project 2</a></li>
+        <li>2013/11/25 -- <a href="/cs24_f13/lab9">Lab 9</a></li>
+        <li>2013/12/02 -- <a href="/cs24_f13/lab10">Lab 10</a></li>
+        <li>2013/12/06 -- <a href="/cs24_f13/proj3">Project 3</a></li>
+        <li>2013/12/09 16:00 -- Final Examination</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+<h2 id="lab-3-black-box-testing">Lab 3: Black-box testing</h2>
+
+<h3 id="goals-for-this-lab">Goals for this lab</h3>
+
+<p>By the time you have completed this lab, you should:</p>
+
+<ul>
+  <li>have a better understanding of separate compilation</li>
+  <li>understand at a high level the array list implementation</li>
+  <li>be able to think a bit like a black-box attacker</li>
+</ul>
+
+<p>The purpose of this lab is for you to discover bugs in my array-based
+implementation of the list structure.</p>
+
+<h3 id="lab-pairing">Lab Pairing</h3>
+
+<p>For this lab you may work with a partner. To facilitate your submissions as a
+pair you <strong>MUST</strong> pair up using the submission system. When you visit the
+project page from where you can view all your submission you should see a link
+to a page where you can join a group. Of the two people in the group, one of
+you must invite the other, and the other must confirm the invitation. Once you
+group up, any submissions that either you, or your partner have already made
+will be visible to each other in addition to all future submissions.</p>
+
+<h3 id="lab-preparation">Lab Preparation</h3>
+
+<p>At this point, everyone should have a COE account. If you do not, you need to
+make that a priority and should partner up with someone who already has an
+account.</p>
+
+<p>Before you begin, let’s prepare a cs24 directory in your home directory if you
+don’t already have one. In that directory we’ll create a subdirectory for the
+files for this lab. Note that these instructions assume you are using either a
+CSIL machine or one of the lab machines:</p>
+
+<p>After logging in, create the directory (assuming you haven’t already done so):</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> cs24/lab3
+</code></pre></div></div>
+
+<p>Change the permissions of the cs24 directory such that only your account can
+access the files inside this directory. This step is <strong>incredibly</strong>
+important. If omitted, other students can peek at your work and you may be held
+partially responsible. It should also go without saying that you may <strong>not</strong>
+give other students access to your account. If you’ve done that in the past
+please <a href="https://accounts.engr.ucsb.edu/maintain/login">change your password</a> at
+this time.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod </span>700 cs24
+</code></pre></div></div>
+
+<p>Change into the lab3 directory and copy the files you will need for this lab:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>cs24/lab3
+<span class="nb">cp</span> ~bboe/public_html/cs24_f13/code/lab3/<span class="k">*</span> <span class="nb">.</span>
+</code></pre></div></div>
+
+<h3 id="the-provided-files">The provided files</h3>
+
+<p>In your directory you will find the following files:</p>
+
+<ul>
+  <li>
+    <p>array_list.o – This is my implementation of the array-based version of the
+structure library which contains 4 <em>bugs</em>. The <em>separate compilation</em> concept
+that clang supports is what allows me to provide you with this <em>object</em> file
+and not the source code (you will not be able to find the source using gdb).</p>
+  </li>
+  <li>
+    <p>lab3.c – This is the file you will edit, and the only file you will submit.</p>
+  </li>
+  <li>
+    <p>list.h – This is the same list.h file provided with <a href="proj1">project 1</a>. In
+this file you will find the comments for all the <code class="language-plaintext highlighter-rouge">list_*</code> functions which you
+may find useful.</p>
+  </li>
+  <li>
+    <p>Makefile - This file specifies how the <code class="language-plaintext highlighter-rouge">test_array</code> binary should be
+compiled. Notice that it utilizes <code class="language-plaintext highlighter-rouge">array_list.o</code> to build <code class="language-plaintext highlighter-rouge">test_array</code>.</p>
+  </li>
+  <li>
+    <p>test_list.c - This is almost identical to the <code class="language-plaintext highlighter-rouge">test_list.c</code> provided with
+<a href="proj1">project 1</a>. However, it adds <code class="language-plaintext highlighter-rouge">#include "lab3.c"</code> so that the code you
+write in <code class="language-plaintext highlighter-rouge">lab3.c</code> is incorporated into the test set.</p>
+  </li>
+</ul>
+
+<h3 id="compiling-and-running-the-test-suite">Compiling and running the test suite</h3>
+
+<p>As given, you can compile the <code class="language-plaintext highlighter-rouge">test_array</code> executable by simply running:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make
+</code></pre></div></div>
+
+<p>The, you can run all the tests in the test suite by running:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./test_array 0 20
+</code></pre></div></div>
+
+<p>which will initially provide the output:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Test 00: construct_destruct             Passed
+Test 01: at_0_after_push_back_one       Passed
+Test 02: at_minus1_after_construct      Passed
+Test 03: at_minus1_after_push_back_one  Passed
+Test 04: at_neg1_after_push_back_one    Passed
+Test 05: at_plus1_after_construct       Passed
+Test 06: at_plus1_after_push_back_one   Passed
+Test 07: get_size_after_construct       Passed
+Test 08: get_size_after_push_back_one   Passed
+Test 09: is_empty_after_construct       Passed
+Test 10: is_empty_after_push_back_one   Passed
+Test 11: output_after_construct         Passed
+Test 12: output_after_push_back_one     Passed
+Test 13: push_back_remove_at_0          Passed
+Test 14: push_back_remove_at_neg1       Passed
+Test 15: remove_at_0_after_construct    Passed
+Test 16: remove_at_neg1_after_construct Passed
+Test 17: find_list_at_bug               Failed
+Test 18: find_list_destruct_bug         Failed
+Test 19: find_list_push_back_bug        Failed
+Test 20: find_list_remove_at_bug        Failed
+</code></pre></div></div>
+
+<p>Your task is to update the four functions in <code class="language-plaintext highlighter-rouge">lab3.c</code> such that each of the
+functions triggers the appropriate bug (and only the appropriate bug). When
+completed the final should be:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Test 00: construct_destruct             Passed
+Test 01: at_0_after_push_back_one       Passed
+Test 02: at_minus1_after_construct      Passed
+Test 03: at_minus1_after_push_back_one  Passed
+Test 04: at_neg1_after_push_back_one    Passed
+Test 05: at_plus1_after_construct       Passed
+Test 06: at_plus1_after_push_back_one   Passed
+Test 07: get_size_after_construct       Passed
+Test 08: get_size_after_push_back_one   Passed
+Test 09: is_empty_after_construct       Passed
+Test 10: is_empty_after_push_back_one   Passed
+Test 11: output_after_construct         Passed
+Test 12: output_after_push_back_one     Passed
+Test 13: push_back_remove_at_0          Passed
+Test 14: push_back_remove_at_neg1       Passed
+Test 15: remove_at_0_after_construct    Passed
+Test 16: remove_at_neg1_after_construct Passed
+Test 17: find_list_at_bug               discovered list_at bug
+Failed
+Test 18: find_list_destruct_bug         discovered list_destruct bug
+Failed
+Test 19: find_list_push_back_bug        discovered list_push_back bug
+Failed
+Test 20: find_list_remove_at_bug        discovered list_remove_at bug
+Failed
+</code></pre></div></div>
+
+<p>Notice the addition of the messages <code class="language-plaintext highlighter-rouge">discovered list_??? bug</code> for the
+appropriate function. These messages are output in certain cases the provided
+array-based list structure implementation in <code class="language-plaintext highlighter-rouge">array_list.o</code>.</p>
+
+<h3 id="writing-the-test-cases-to-find-the-bug">Writing the test cases to find the bug</h3>
+
+<p>In each respective function in <code class="language-plaintext highlighter-rouge">lab3.c</code> you have to trigger the exact bug that
+function is looking for. This will require some (maybe a lot) of
+experimenting. Take the time to think about what has already been tested
+(notice that all the existing tests already pass), and more importantly what
+hasn’t been tested. When you think you’re on to something code it up, compile
+it, and then test it locally (you don’t need to submit to test).</p>
+
+<h3 id="hints">Hints</h3>
+
+<p>Note that each function may require more than one <code class="language-plaintext highlighter-rouge">list_*</code> function call, and
+may require calls to <code class="language-plaintext highlighter-rouge">list_*</code> functions other than the one you’re attempting to
+find the bug for. Also, you should <em>not</em> directly manipulate the list structure
+as that will likely result in an unexpected bug which is not part of the
+challenge. It is desirable for libraries to assume their structures are valid,
+hence why it is not ideal to directly manipulate structure contents and why the
+list structure attributes are all prefixed with <code class="language-plaintext highlighter-rouge">_</code>.</p>
+
+<h3 id="circumvention-warning">Circumvention Warning</h3>
+
+<p>So that there is no confusion: if you make a submission that directly outputs
+(or attempts to directly output) one of the expected messages you will receive
+a 0 on this assignment. The <strong>only</strong> acceptable way to pass the tests is
+through the correct cominbation of calls to the <code class="language-plaintext highlighter-rouge">list_*</code> functions.</p>
+
+<h3 id="submitting-the-assignment">Submitting the assignment</h3>
+
+<p>Only one person in a group need submit the assignment but make sure that both
+you and your partner can view the submission on the submission site. If you
+cannot, you need to complete the making a group process. Please review the
+<a href="/cs24_f13/submission">submission instructions</a> as needed. Note that you may resubmit
+this assignment as many times as necessary up until the deadline.</p>
+
+  </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
+      <div id="credits">
+        <p><span class="small">Template design by <a href="https://andreasviklund.com/">Andreas Viklund</a></span></p>
+      </div>
+    </div>
+  </body>
+</html>

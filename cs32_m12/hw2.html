@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/variant-multi.css" title="Variant Multi" media="all" />
+    <link rel="stylesheet" type="text/css" href="/public/monokai.sublime.css" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>Homework 2 &raquo; CS32 Summer 2012</title>
+  </head>
+  <body>
+    <div id="container980">
+<div id="header">
+  <h1><a href="/cs32_m12/">Computer Science 32, Summer 2012</a></h1>
+  <h2>Object-Oriented Design and Implementation</h2>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="/cs32_m12/schedule">lecture schedule</a></li>
+    <li><a href="/cs32_m12/automated_feedback">automated feedback</a></li>
+    <li><a href="/cs32_m12/bourne">bourne shell scripting</a></li>
+  </ul>
+</div>
+
+<div id="main">
+  <div id="sidebar">
+    <div class="sidebarbox">
+      <h2>People &amp; Office Hours</h2>
+      <ul>
+        <li><strong>Instructor</strong>: Bryce Boe
+          (<a href="/">web</a>, <a href="mailto:bboe@cs.ucsb.edu">email</a>)
+          <ul>
+            <li>Monday, 14:15 - 15:15 in GSL</li>
+            <li>Wednesday, 11:15 - 12:15 in GSL</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Saeed Mahani
+          <ul>
+            <li>Tuesday, 14:00 - 15:00 in CSIL</li>
+            <li>Thursday, 13:00 - 14:00 in CSIL</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebarbox">
+      <h2>Tentative Deadlines</h2>
+      <h3>All deadlines are at 23:59:59 on the due date.</h3>
+      <ul>
+        <li>2012/08/06 -- <a href="/cs32_m12/hw1">Homework 1</a></li>
+        <li>2012/08/09 -- <a href="/cs32_m12/lab1">Lab 1</a></li>
+        <li>2012/08/10 -- Drop with Refund</li>
+        <li>2012/08/12 -- <a href="/cs32_m12/hw2">Homework 2</a></li>
+        <li>2012/08/16 -- <a href="/cs32_m12/lab2">Lab 2</a></li>
+        <li>2012/08/19 -- <a href="/cs32_m12/project1_part1">Project 1, Part 1</a></li>
+        <li>2012/08/23 -- <a href="/cs32_m12/lab3">Lab 3</a></li>
+        <li>2012/08/26 -- <a href="/cs32_m12/project1_part2">Project 1, Part 2</a></li>
+        <li>2012/08/30 -- <a href="/cs32_m12/lab4">Lab 4</a></li>
+        <li>2012/09/06 -- <a href="/cs32_m12/lab5">Lab 5</a></li>
+        <li>2012/09/13 -- <a href="/cs32_m12/project2">Project 2</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+<h2 id="homework-2-sorting-algorithms">Homework 2, Sorting Algorithms</h2>
+
+<h3 id="motivation">Motivation</h3>
+
+<p>The goal of this assignment is to encourage you to become a master of a sorting
+algorithm. While many languages have built-in methods for sorting, as a
+Computer Scientist in training (or simply someone taking CS32) there is no
+excuse for not knowing how to properly implement at least one sorting
+algorithm.</p>
+
+<h3 id="the-algorithms">The Algorithms</h3>
+
+<p>You will be assigned to report on one of the following five sort algorithms:</p>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Bubble_sort">Bubble Sort</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Selection_sort">Selection Sort</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Insertion_sort">Insertion Sort</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Merge_sort">Merge Sort</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Heapsort">Heapsort</a></li>
+</ul>
+
+<p>Please check Piazza for your algorithm assignment.</p>
+
+<h3 id="mini-lecture-slides">Mini-lecture slides</h3>
+
+<p>For this homework you are to prepare the slides that would accompany a
+mini-lecture with a duration of 10 to 20 minutes. The goal of the mini-lecture
+is to teach our class all there is to know about the sorting algorithm you have
+been assigned.</p>
+
+<p>Your lecture slides must address each of the following:</p>
+
+<ul>
+  <li>How does the algorithm work? Please provide at least two examples to help
+explain the procedure.</li>
+  <li>What is the running time of the algorithm (best case, average case, worst
+case)? You should be able to explain why the running time is as it is.</li>
+  <li>Are there any special cases that would make the algorithm <em>more</em> efficient?
+Explain.</li>
+  <li>Are there any special cases that would make the algorithm <em>less</em> efficient?
+Explain.</li>
+  <li>Does the algorithm depend on any data structures (aside from the list or
+array the data may already be stored in)? Explain</li>
+  <li>Can the algorithm run in-place, that is, without the need of extra memory?</li>
+</ul>
+
+<h3 id="teaching-the-class">Teaching the class</h3>
+
+<p>If you would like to volunteer to deliver your mini-lecture, you may request
+to do so via Piazza. One volunteer for each sorting algorithm will be selected
+to teach the class. If there are no volunteers, someone will be selected at
+random.</p>
+
+<p>Therefore, if you plan to attend Monday’s lecture (highly recommended), be
+prepared to give your mini-lecture. You should be prepared even if someone
+volunteered for your algorithm, as that student may not show up.</p>
+
+<h3 id="collaboration">Collaboration</h3>
+
+<p>For this assignment you are encouraged to collaborate with the other students
+in the class. Feel free to use Piazza to discuss all the information required
+in your slides. You may not, however, share your lecture slides; please keep
+those private until the submission deadline has passed.</p>
+
+<h3 id="external-resources">External Resources</h3>
+
+<p>In your slides, please feel free to use external resources. However, ensure you
+provide proper attribution to any work you include. Citing the wikipedia
+article is not sufficient, dig deeper to discover the actual source. If you
+aren’t sure how to provide a proper attribution for something, please ask on
+Piazza.</p>
+
+<p>Additionally, linking to external resources from within your slides is strongly
+encouraged as there are a number of excellent sorting algorithm resources
+online.</p>
+
+<h3 id="submission">Submission</h3>
+
+<p>Please submit your material by 10:59:59 Monday morning (08/06) using
+submit. Rename the file containing your slides to one of the following names;
+whichever is appropriate for your filetype:</p>
+
+<ul>
+  <li>cs32_sorting.pdf</li>
+  <li>cs32_sorting.ppt</li>
+  <li>cs32_sorting.pptx</li>
+</ul>
+
+<p>Submit via:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~cs32/submit hw2@cs32 cs32_sorting.{EXT}
+</code></pre></div></div>
+
+<p>Replace <code class="language-plaintext highlighter-rouge">{EXT}</code> with whatever the extension is of your file.</p>
+
+  </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
+      <div id="credits">
+        <p><span class="small">Template design by <a href="https://andreasviklund.com/">Andreas Viklund</a></span></p>
+      </div>
+    </div>
+  </body>
+</html>

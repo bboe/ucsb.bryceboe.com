@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/variant-multi.css" title="Variant Multi" media="all" />
+    <link rel="stylesheet" type="text/css" href="/public/monokai.sublime.css" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>Project 1, Part 1 &raquo; CS32 Summer 2012</title>
+  </head>
+  <body>
+    <div id="container980">
+<div id="header">
+  <h1><a href="/cs32_m12/">Computer Science 32, Summer 2012</a></h1>
+  <h2>Object-Oriented Design and Implementation</h2>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="/cs32_m12/schedule">lecture schedule</a></li>
+    <li><a href="/cs32_m12/automated_feedback">automated feedback</a></li>
+    <li><a href="/cs32_m12/bourne">bourne shell scripting</a></li>
+  </ul>
+</div>
+
+<div id="main">
+  <div id="sidebar">
+    <div class="sidebarbox">
+      <h2>People &amp; Office Hours</h2>
+      <ul>
+        <li><strong>Instructor</strong>: Bryce Boe
+          (<a href="/">web</a>, <a href="mailto:bboe@cs.ucsb.edu">email</a>)
+          <ul>
+            <li>Monday, 14:15 - 15:15 in GSL</li>
+            <li>Wednesday, 11:15 - 12:15 in GSL</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Saeed Mahani
+          <ul>
+            <li>Tuesday, 14:00 - 15:00 in CSIL</li>
+            <li>Thursday, 13:00 - 14:00 in CSIL</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebarbox">
+      <h2>Tentative Deadlines</h2>
+      <h3>All deadlines are at 23:59:59 on the due date.</h3>
+      <ul>
+        <li>2012/08/06 -- <a href="/cs32_m12/hw1">Homework 1</a></li>
+        <li>2012/08/09 -- <a href="/cs32_m12/lab1">Lab 1</a></li>
+        <li>2012/08/10 -- Drop with Refund</li>
+        <li>2012/08/12 -- <a href="/cs32_m12/hw2">Homework 2</a></li>
+        <li>2012/08/16 -- <a href="/cs32_m12/lab2">Lab 2</a></li>
+        <li>2012/08/19 -- <a href="/cs32_m12/project1_part1">Project 1, Part 1</a></li>
+        <li>2012/08/23 -- <a href="/cs32_m12/lab3">Lab 3</a></li>
+        <li>2012/08/26 -- <a href="/cs32_m12/project1_part2">Project 1, Part 2</a></li>
+        <li>2012/08/30 -- <a href="/cs32_m12/lab4">Lab 4</a></li>
+        <li>2012/09/06 -- <a href="/cs32_m12/lab5">Lab 5</a></li>
+        <li>2012/09/13 -- <a href="/cs32_m12/project2">Project 2</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+<h2 id="project-1-part-1-automating-input--output-testing">Project 1, Part 1: Automating Input / Output Testing</h2>
+
+<h3 id="motivation">Motivation</h3>
+
+<p>Software testing is incredibly crucial in the real-world software development
+cycle. Customers of a product want to be assured that, as the product is
+improved (adding features, fixing bugs, optimizing), existing functionality
+continues to work. When software gains complexity, such testing becomes
+incredibly tedious to perform manually. Thus, many companies implement some
+sort of automated testing as part of their development and product release
+cycles. With automated testing, developers need only write the tests for a
+specific feature once, and then the tests can be used throughout the lifecycle
+of the product.</p>
+
+<p>Testing software, whether by manually executing the software or by writing
+tests for an automated testing framework, is a skill that needs to be exercised
+just as much as programming. Thus, in this project, you are going to write a
+basic input/output based automated testing tool. The end-goals are that you
+will adapt this tool for your needs in future assignments, exercise your test
+writing ability, and discover bugs in the code you write.</p>
+
+<h3 id="inputoutput-testing">Input/output testing</h3>
+
+<p>Input/output testing is a type of end-to-end testing that can be used to test
+programs that produce consistent output over multiple runs of the program with
+the same set of inputs. Recall that input to a program can be command line
+arguments, the standard input file stream, and a few others such as environment
+variables. For this project, we will only concern ourselves with the standard
+input file stream.</p>
+
+<p>In input/output testing, we want to enumerate as many inputs as we can, and
+associate them with the output that we expect. For instance, if we are testing
+the program <code class="language-plaintext highlighter-rouge">wc</code> using only the standard input stream (no command line
+arguments), we will want to test a variety of file sizes.</p>
+
+<h4 id="writing-test-case-inputs">Writing test case inputs</h4>
+
+<p>We’ll start by considering ways to test <code class="language-plaintext highlighter-rouge">wc</code> with a zero byte file:</p>
+
+<ol>
+  <li>
+    <p>Redirecting standard input from <code class="language-plaintext highlighter-rouge">/dev/null</code></p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ wc &lt; /dev/null
+       0       0       0
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Piping the output of <code class="language-plaintext highlighter-rouge">echo -n</code> (<code class="language-plaintext highlighter-rouge">-n</code> means no ending new-line)</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ echo -n | wc
+       0       0       0
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>With a zero byte file</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ touch input_zero_byte_file
+ $ wc &lt; input_zero_byte_file
+ 0 0 0
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>Using the last method, creating a file called input_zero_byte_file, allows us
+to save our input state with some descriptive name so that we can re-test the
+program without having to manually re-type the input stream. Let’s take this a
+step further.</p>
+
+<p>First, create a directory <code class="language-plaintext highlighter-rouge">wc</code> to save our tests in and move the existing test
+to the directory:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir wc
+mv </span>input_zero_byte_file <span class="nb">wc</span>/
+</code></pre></div></div>
+
+<p>Now, create a number of test files for various word count lenghts:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"one"</span> <span class="o">&gt;</span> <span class="nb">wc</span>/input_one_word
+<span class="nb">echo</span> <span class="s2">"one two"</span> <span class="o">&gt;</span> <span class="nb">wc</span>/input_two_words
+<span class="nb">echo</span> <span class="s2">"one two three"</span> <span class="o">&gt;</span> <span class="nb">wc</span>/input_three_words
+</code></pre></div></div>
+
+<h4 id="writing-test-case-outputs">Writing test case outputs</h4>
+
+<p>Great! We now have the input files for four tests of the program wc. Now we
+need to define the expected output for each test. For each input file you
+should manually create a corresponding file prefixed with <code class="language-plaintext highlighter-rouge">output_</code> that
+contains the expected output of <code class="language-plaintext highlighter-rouge">wc</code> on the input file. Below is how we can
+create <code class="language-plaintext highlighter-rouge">output_one_word</code>:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"1 1 4"</span> <span class="o">&gt;</span> <span class="nb">wc</span>/output_one_word
+</code></pre></div></div>
+
+<p>You might wonder why we don’t just use <code class="language-plaintext highlighter-rouge">wc</code> to generate the output. Normally
+you won’t be testing a program that has already been written. Instead, you will
+be testing a program that you are in the process of writing. Thus, you should
+always manually create your output files.</p>
+
+<h4 id="running-the-test-cases">Running the test cases</h4>
+
+<p>Now that we have input files and corresponding output files, we want to
+actually run tests against <code class="language-plaintext highlighter-rouge">wc</code>. We will do that by feeding wc an input file,
+and comparing the output to the expected output. We will use the exit status of
+the program <code class="language-plaintext highlighter-rouge">diff</code> to tell us whether or not the programs are identical. For
+the program diff, an exit status of <code class="language-plaintext highlighter-rouge">0</code> means the files are identical, and
+we’ll consider any other exit status a failure.</p>
+
+<p>For the test case <code class="language-plaintext highlighter-rouge">three_words</code> we can run the following:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">wc</span> &lt; <span class="nb">wc</span>/input_three_words | diff <span class="nb">wc</span>/output_three_words - <span class="o">&gt;</span> /dev/null
+<span class="nb">echo</span> <span class="nv">$?</span>
+</code></pre></div></div>
+
+<p>In the above command, we feed the test file <code class="language-plaintext highlighter-rouge">input_three_words</code> to wc. The
+output of that command is then piped into the program diff. The <code class="language-plaintext highlighter-rouge">-</code> argument to
+diff means to use the standard input stream as the second file in the
+comparision. We redirect diff’s output to <code class="language-plaintext highlighter-rouge">/dev/null</code> because, for this
+project, we actually don’t care what the diff output is. We’re only concerned
+if it matches the expected output or not. This information is contained in
+<code class="language-plaintext highlighter-rouge">$?</code>, the exit status of the previous command.</p>
+
+<h4 id="summing-up-the-inputoutput-testing">Summing up the input/output testing</h4>
+
+<p>Up to this point, we have described input/output testing by detailing how to
+write test cases (input and output files), and how to use these test cases to
+verify the program behaves as expected. Combined with the knowledge of shell
+scripting you gained from <a href="/cs32_m12/lab1">lab 1</a>, you should now be
+able to write a shell script to automatically run all the test cases in a given
+directory for some program.</p>
+
+<h3 id="the-automated-testing-tool">The automated testing tool</h3>
+
+<p>The bourne shell script you write should be called <code class="language-plaintext highlighter-rouge">test_it.sh</code>. You can
+prepare the script like so:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'#!/bin/sh'</span> <span class="o">&gt;</span> test_it.sh
+<span class="nb">chmod</span> +x test_it.sh
+</code></pre></div></div>
+
+<p>The script should accept a single argument <code class="language-plaintext highlighter-rouge">DIRECTORY</code> that points to a
+directory containing zero or more subdirectories. Your script should iterate
+over all the subdirectories of <code class="language-plaintext highlighter-rouge">DIRECTORY</code>, ignoring any other files. The name
+of each subdirectory indicates the name of an external program that your script
+will perform automated testing on. We will refer to each of these directories
+as a <code class="language-plaintext highlighter-rouge">test directory</code>. For each <code class="language-plaintext highlighter-rouge">test directory</code> your script should ouput
+<code class="language-plaintext highlighter-rouge">Testing {PROGRAM}</code>, replacing <code class="language-plaintext highlighter-rouge">{PROGAM}</code> with the appropriate external program
+name.</p>
+
+<p>Within each <code class="language-plaintext highlighter-rouge">test directory</code>, there should be zero or more test cases written
+as described in the previous section. For each test, your script needs to
+output whether the test <code class="language-plaintext highlighter-rouge">Passed</code> or <code class="language-plaintext highlighter-rouge">Failed</code>.</p>
+
+<p>For instance, if <code class="language-plaintext highlighter-rouge">test_it.sh</code> is in the same directory as the <code class="language-plaintext highlighter-rouge">wc</code> folder we
+created previously, then running <code class="language-plaintext highlighter-rouge">./test_it.sh .</code> should produce exactly the
+following:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Testing wc
+Passed: one_word
+Passed: three_words
+Passed: two_words
+</code></pre></div></div>
+
+<p>If we modified either <code class="language-plaintext highlighter-rouge">wc/input_two_words</code>, or <code class="language-plaintext highlighter-rouge">wc/output_two_words</code> so that
+the <code class="language-plaintext highlighter-rouge">two_words</code> test no longer passed, then the output should be:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Testing wc
+Passed: one_word
+Passed: three_words
+Failed: two_words
+</code></pre></div></div>
+
+<h4 id="missing-output-files">Missing output files</h4>
+
+<p>While your shell script should ignore any files not beginning with <code class="language-plaintext highlighter-rouge">input_</code> in
+each <code class="language-plaintext highlighter-rouge">test directory</code>, the script should produce a warning message when there
+is no corresponding <code class="language-plaintext highlighter-rouge">output_</code> file for a given <code class="language-plaintext highlighter-rouge">input_</code> file.</p>
+
+<p>For example, if we add the files <code class="language-plaintext highlighter-rouge">input_something</code>, <code class="language-plaintext highlighter-rouge">input_unknown</code>, and
+<code class="language-plaintext highlighter-rouge">something_to_ignore</code> to the <code class="language-plaintext highlighter-rouge">wc</code> folder, the output should be exactly the
+following:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Testing wc
+Passed: one_word
+No output file for wc test 'something', skipping
+Passed: three_words
+Failed: two_words
+No output file for wc test 'unknown', skipping
+</code></pre></div></div>
+
+<h4 id="complete-example">Complete example</h4>
+
+<p>If we have the directory <code class="language-plaintext highlighter-rouge">the_tests</code> with the following structure:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>the_tests/
+    sha1sum/
+        input_test_1
+        input_test_2
+        output_test_1
+        output_test_2
+    some_regular_file
+    wc/
+        input_one_word
+        input_something
+        input_three_words
+        input_two_words
+        input_unknown
+        output_one_word
+        output_three_words
+        output_two_words
+        something_to_ignore
+</code></pre></div></div>
+
+<p>then running <code class="language-plaintext highlighter-rouge">test_it.sh the_tests</code> will produce the following output if the
+<code class="language-plaintext highlighter-rouge">wc</code> test <code class="language-plaintext highlighter-rouge">two_words</code> is the only failing test:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Testing sha1sum
+Passed: test_1
+Passed: test_2
+Testing wc
+Passed: one_word
+No output file for wc test 'something', skipping
+Passed: three_words
+Failed: two_words
+No output file for wc test 'unknown', skipping
+</code></pre></div></div>
+
+<h4 id="error-conditions">Error conditions</h4>
+
+<p>There are two error conditions for the shell script. If either condition isn’t
+met, your script should output the corresponding error message, and exit with
+status code <code class="language-plaintext highlighter-rouge">1</code>. On success, your script should exit with status code <code class="language-plaintext highlighter-rouge">0</code>. The
+following are the error conditions and associated error messages:</p>
+
+<ul>
+  <li>
+    <p>The number of command line arguments is not exactly 1:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Usage: test_it.sh DIRECTORY
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>The provided DIRECTORY is not a directory (replace {DIRECTORY} with whatever
+value was input as a command line argument):</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  {DIRECTORY} is not a directory
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="submission-instructions">Submission instructions</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~cs32/submit pj1part1@cs32 test_it.sh
+</code></pre></div></div>
+
+<p>Please also review the <a href="/cs32_m12/automated_feedback">automated feedback</a>
+instructions as needed.</p>
+
+  </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
+      <div id="credits">
+        <p><span class="small">Template design by <a href="https://andreasviklund.com/">Andreas Viklund</a></span></p>
+      </div>
+    </div>
+  </body>
+</html>

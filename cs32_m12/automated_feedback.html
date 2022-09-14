@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/variant-multi.css" title="Variant Multi" media="all" />
+    <link rel="stylesheet" type="text/css" href="/public/monokai.sublime.css" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>Automated Feedback Instructions &raquo; CS32 Summer 2012</title>
+  </head>
+  <body>
+    <div id="container980">
+<div id="header">
+  <h1><a href="/cs32_m12/">Computer Science 32, Summer 2012</a></h1>
+  <h2>Object-Oriented Design and Implementation</h2>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="/cs32_m12/schedule">lecture schedule</a></li>
+    <li><a href="/cs32_m12/automated_feedback">automated feedback</a></li>
+    <li><a href="/cs32_m12/bourne">bourne shell scripting</a></li>
+  </ul>
+</div>
+
+<div id="main">
+  <div id="sidebar">
+    <div class="sidebarbox">
+      <h2>People &amp; Office Hours</h2>
+      <ul>
+        <li><strong>Instructor</strong>: Bryce Boe
+          (<a href="/">web</a>, <a href="mailto:bboe@cs.ucsb.edu">email</a>)
+          <ul>
+            <li>Monday, 14:15 - 15:15 in GSL</li>
+            <li>Wednesday, 11:15 - 12:15 in GSL</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Saeed Mahani
+          <ul>
+            <li>Tuesday, 14:00 - 15:00 in CSIL</li>
+            <li>Thursday, 13:00 - 14:00 in CSIL</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebarbox">
+      <h2>Tentative Deadlines</h2>
+      <h3>All deadlines are at 23:59:59 on the due date.</h3>
+      <ul>
+        <li>2012/08/06 -- <a href="/cs32_m12/hw1">Homework 1</a></li>
+        <li>2012/08/09 -- <a href="/cs32_m12/lab1">Lab 1</a></li>
+        <li>2012/08/10 -- Drop with Refund</li>
+        <li>2012/08/12 -- <a href="/cs32_m12/hw2">Homework 2</a></li>
+        <li>2012/08/16 -- <a href="/cs32_m12/lab2">Lab 2</a></li>
+        <li>2012/08/19 -- <a href="/cs32_m12/project1_part1">Project 1, Part 1</a></li>
+        <li>2012/08/23 -- <a href="/cs32_m12/lab3">Lab 3</a></li>
+        <li>2012/08/26 -- <a href="/cs32_m12/project1_part2">Project 1, Part 2</a></li>
+        <li>2012/08/30 -- <a href="/cs32_m12/lab4">Lab 4</a></li>
+        <li>2012/09/06 -- <a href="/cs32_m12/lab5">Lab 5</a></li>
+        <li>2012/09/13 -- <a href="/cs32_m12/project2">Project 2</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+<h2 id="automated-feedback-instructions">Automated Feedback Instructions</h2>
+
+<p>The submissions for all assignments in this course are done through an
+automatic submission verification and testing system. It works in tandem with
+the <code class="language-plaintext highlighter-rouge">turnin</code> program you should all be used to. However, in order to trigger
+the feedback, you will need to use a wrapper program when you submit your
+assignments.</p>
+
+<h3 id="submitting-assignments">Submitting Assignments</h3>
+
+<p>Each assignment will contain the specific submission line to use for
+submission. Below is the generic format each will follow:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~cs32/submit ASSIGNMENT_NAME@cs32 FILENAME1 FILENAME2 ...
+</code></pre></div></div>
+
+<p>Upon a successful submission, you should see a report similar to the following:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>These are the regular files being turned in:
+
+              Last Modified   Size   Filename
+              -------------- ------  -------------------------
+           1: 08/01/12 11:52    357  FILENAME1
+
+****************************************************************************
+
+You are about to turnin 1 files [1KB] for ASSIGNMENT_NAME to cs32
+
+*** Do you want to continue? y
+FILENAME1
+
+*** TURNIN OF ASSIGNMENT_NAME TO cs32 COMPLETE! ***
+Sending submission notification... connected to localhost... turnin complete!
+</code></pre></div></div>
+
+<h3 id="receiving-and-parsing-the-feedback">Receiving and Parsing the Feedback</h3>
+
+<p>After a reasonable amount of time, usually within a minute, you will receive an
+email sent to your <code class="language-plaintext highlighter-rouge">@cs.ucsb.edu</code> email address. This email contains a report
+on the verification of your submission, and, given a valid submission, reports
+on your tentative score for the project.</p>
+
+<p>The first section of the report provides feedback on the files you’ve
+submitted. This feedback is provided to ensure that you’ve submitted the
+correct files for the assignment. Furthermore, the feedback details any issues
+with files themselves, such as <em>forbidden</em> keyword detection or file size
+restrictions. Finally, the last part of the report provides verbose output on
+the compilation of the submitted assignment. Any compile errors will result in
+a verification failure. Below is what the feedback might look like for a valid
+submission:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Status: Success
+User: bboe
+Project: hw1
+...Finding most recent submission
+        Found submission: bboe-10.tar.Z
+...Extracting submission
+        fizzbuzz.cpp
+...Verifying files
+        passed fizzbuzz.cpp
+        passed README (missing optional)
+...Making submission
+        make: Entering directory `/cs/class/cs32/TURNIN/hw1/bboe'
+        clang++ fizzbuzz.cpp
+        make: Leaving directory `/cs/class/cs32/TURNIN/hw1/bboe'
+
+Verification: 2 out of 2
+</code></pre></div></div>
+
+<p>Note that in this assignment the submission of a <code class="language-plaintext highlighter-rouge">README</code> file is optional and
+that the compile line used by the automated assessment system is <code class="language-plaintext highlighter-rouge">clang++
+fizzbuzz.cpp</code>. Should the submission not pass verification, you will need to
+correct any errors and then resubmit.</p>
+
+<p>The next section of the feedback reports on the score for a submission. A score
+is made up of the sum of the point values for various test cases. A test case
+represents a unique input to your program that could be from any combination of
+command-line arguments, standard input, or files your program expects to read
+from. Test cases that do not produce the <strong>exact</strong> same output as the reference
+implementation are included in the report with the following information:</p>
+
+<ul>
+  <li>The test name</li>
+  <li>The point value of the test case</li>
+  <li>The <a href="https://en.wikipedia.org/wiki/Diff#Unified_format">unified diff</a> output
+that compares the reference implementation output to yours</li>
+</ul>
+
+<p>Below is a sample of what the feedback you receive may contain:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...Scoring
+        error_negative_value_arg - Failed (1 pt)
+-NUM is too small
+
+        error_zero_value_arg - Failed (1 pt)
+-NUM is too small
+
+        error_too_many_args - Failed (1 pt)
+-Usage: fizzbuzz NUM
++1
++2
++fizz
++4
++buzz
++fizz
++7
++8
++fizz
++buzz
++11
++fizz
+
+        error_no_args - Failed (1 pt)
+-Usage: fizzbuzz NUM
+
+
+Tentative Score: 10 out of 14
+</code></pre></div></div>
+
+<p>In the above example, notice that the tentative score, <code class="language-plaintext highlighter-rouge">10 out of 14</code>, is at
+the end of the report. We can also see that the submission failed four test
+cases. You will need to familiarize yourself with the unified diff output in
+order to determine how your program’s output differs from the expected
+output. The following are explanations of the diff output
+for each failed test case reported in the above example:</p>
+
+<ul>
+  <li><strong>error_negative_value_arg</strong>: The expected output should contain “NUM is too
+small”. However, your program didn’t produce that output. All other output
+matched.</li>
+  <li><strong>error_zero_value_arg</strong>: The explanation is the same as the one above.</li>
+  <li><strong>error_too_many_args</strong>: The expected output is <code class="language-plaintext highlighter-rouge">Usage: fizzbuzz
+NUM</code>. However, your program didn’t produce that output. Instead, it produced
+all the lines prefixed with <code class="language-plaintext highlighter-rouge">+</code>. These lines were not in the expected output.</li>
+  <li><strong>error_no_args</strong>: The explanation is similar to the explanation for
+<strong>error_negative_value_arg</strong>.</li>
+</ul>
+
+<p>Note that the diff output has a limit on both the number of
+lines displayed as well as the number of columns in each line.</p>
+
+<p>Naturally, it is your responsibility to correct any discrepancies so that
+your output matches that of the reference implementation
+<em>character-for-character</em>. This matching includes newlines and other whitespace
+that may be difficult or impossible to view in the feedback email.</p>
+
+  </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
+      <div id="credits">
+        <p><span class="small">Template design by <a href="https://andreasviklund.com/">Andreas Viklund</a></span></p>
+      </div>
+    </div>
+  </body>
+</html>

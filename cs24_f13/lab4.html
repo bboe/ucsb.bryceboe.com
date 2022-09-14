@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/variant-multi.css" title="Variant Multi" media="all" />
+    <link rel="stylesheet" type="text/css" href="/public/monokai.sublime.css" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>Lab 4 &raquo; CS24 Fall 2013</title>
+  </head>
+  <body>
+    <div id="container980">
+<div id="header">
+  <h1><a href="/cs24_f13/">Computer Science 24, Fall 2013</a></h1>
+  <h2>Problem Solving with Computers II</h2>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="/cs24_f13/schedule">lecture schedule</a></li>
+    <li><a href="/cs24_f13/submission">submission instructions</a></li>
+    <li><a href="/cs24_f13/gdb">gdb tutorial</a></li>
+  </ul>
+</div>
+
+<div id="main">
+  <div id="sidebar">
+    <div class="sidebarbox">
+      <h2>People &amp; Office Hours</h2>
+      <ul>
+        <li><strong>Instructor</strong>: Bryce Boe
+          (<a href="/">web</a>, <a href="mailto:bboe@cs.ucsb.edu">email</a>)
+          <ul>
+            <li>Tuesday, 15:30 - 16:30 in HFH 1152</li>
+            <li>Wednesday, 11:00 - 12:00 in HFH 1152</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Geoffrey Douglas
+          <ul>
+            <li>Wednesday, 15:00 - 17:00 in Phelps 1413</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Jon Sun
+          <ul>
+            <li>Thursday, 10:00 - 12:00 in Phelps 1413</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Dani Kudrow
+          <ul>
+            <li>Thursday, 15:00 - 17:00 in Phelps 1413</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebarbox">
+      <h2>Deadlines</h2>
+      <h3>All deadlines are at 23:59:59 on the due date unless otherwise noted.</h3>
+      <ul>
+        <li>2013/09/30 -- <a href="/cs24_f13/lab1">Lab 1</a></li>
+        <li>2013/10/02 -- Drop deadline (no fee)</li>
+        <li>2013/10/08 -- <a href="/cs24_f13/lab2">Lab 2</a></li>
+        <li>2013/10/14 -- <a href="/cs24_f13/lab3">Lab 3</a></li>
+        <li>2013/10/20 -- <a href="/cs24_f13/proj1">Project 1</a></li>
+        <li>2013/10/22 -- <a href="/cs24_f13/lab4">Lab 4</a></li>
+        <li>2013/10/23 23:45 -- Drop deadline ($3 fee)</li>
+        <li>2013/10/28 -- <a href="/cs24_f13/lab5">Lab 5</a></li>
+        <li>2013/10/30 14:00 -- Midterm Examination</li>
+        <li>2013/11/04 -- <a href="/cs24_f13/lab6">Lab 6</a></li>
+        <li>2013/11/13 -- <a href="/cs24_f13/lab7">Lab 7</a></li>
+        <li>2013/11/18 -- <a href="/cs24_f13/lab8">Lab 8</a></li>
+        <li>2013/11/22 -- <a href="/cs24_f13/proj2">Project 2</a></li>
+        <li>2013/11/25 -- <a href="/cs24_f13/lab9">Lab 9</a></li>
+        <li>2013/12/02 -- <a href="/cs24_f13/lab10">Lab 10</a></li>
+        <li>2013/12/06 -- <a href="/cs24_f13/proj3">Project 3</a></li>
+        <li>2013/12/09 16:00 -- Final Examination</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+<h2 id="lab-4-file-input-and-output">Lab 4: File Input and Output</h2>
+
+<p>Note that you have until Tuesday night to complete this lab.</p>
+
+<h3 id="goals-for-this-lab">Goals for this lab</h3>
+
+<p>By the time you have completed this lab, you should:</p>
+
+<ul>
+  <li>know what a FILE stream is</li>
+  <li>know the difference between stdin, stdout, and stderr</li>
+  <li>be able to read from files on disk</li>
+  <li>be able to parse and validate an input stream</li>
+  <li>have reinforced using the List ADT</li>
+</ul>
+
+<p>The purpose of this lab is to have you demonstrate reading and parsing file
+input streams.</p>
+
+<h3 id="lab-pairing">Lab Pairing</h3>
+
+<p>For this lab you may work with a partner. To facilitate your submissions as a
+pair you <strong>MUST</strong> pair up using the submission system. When you visit the
+project page from where you can view all your submission you should see a link
+to a page where you can join a group. Of the two people in the group, one of
+you must invite the other, and the other must confirm the invitation. Once you
+group up, any submissions that either you, or your partner have already made
+will be visible to each other in addition to all future submissions.</p>
+
+<h3 id="lab-preparation">Lab Preparation</h3>
+
+<p>At this point, everyone should have a COE account. If you do not, you need to
+make that a priority and should partner up with someone who already has an
+account.</p>
+
+<p>Before you begin, let’s prepare a cs24 directory in your home directory if you
+don’t already have one. In that directory we’ll create a subdirectory for the
+files for this lab. Note that these instructions assume you are using either a
+CSIL machine or one of the lab machines:</p>
+
+<p>After logging in, create the directory (assuming you haven’t already done so):</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> cs24/lab4
+</code></pre></div></div>
+
+<p>Change the permissions of the cs24 directory such that only your account can
+access the files inside this directory. This step is <strong>incredibly</strong>
+important. If omitted, other students can peek at your work and you may be held
+partially responsible. It should also go without saying that you may <strong>not</strong>
+give other students access to your account. If you’ve done that in the past
+please <a href="https://accounts.engr.ucsb.edu/maintain/login">change your password</a> at
+this time.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod </span>700 cs24
+</code></pre></div></div>
+
+<p>Change into the lab4 directory and copy the files you will need for this lab:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>cs24/lab4
+<span class="nb">cp</span> <span class="nt">-r</span> ~bboe/public_html/cs24_f13/code/lab4/<span class="k">*</span> <span class="nb">.</span>
+</code></pre></div></div>
+
+<h3 id="the-provided-files">The provided files</h3>
+
+<p>In your directory you will find the following files:</p>
+
+<ul>
+  <li>
+    <p>linked_list.o and list.h – The combination of these files allow you to make
+use of <code class="language-plaintext highlighter-rouge">struct List</code> and the associated functions.</p>
+  </li>
+  <li>
+    <p>Makefile - This file specifies how the <code class="language-plaintext highlighter-rouge">group_by</code> binary should be
+compiled.</p>
+  </li>
+  <li>
+    <p>tests/MIXED_INPUT - A sample input file which contains both valid lines and
+invalid lines.</p>
+  </li>
+  <li>
+    <p>tests/MIXED_OUTPUT - The combined output (stderr and stdout) that should be
+produced when running <code class="language-plaintext highlighter-rouge">group_by</code> on the MIXED_INPUT input file.</p>
+  </li>
+  <li>
+    <p>tests/SAMPLE_INPUT - A simple input file that contains only valid input
+lines.</p>
+  </li>
+  <li>
+    <p>tests/SAMPLE_OUTPUT - The output that should be produced when running
+<code class="language-plaintext highlighter-rouge">group_by</code> on the SAMPLE_INPUT input file.</p>
+  </li>
+</ul>
+
+<h3 id="your-task">Your task</h3>
+
+<p>Your task is to write a program, <code class="language-plaintext highlighter-rouge">group_by.c</code>, that:</p>
+
+<ol>
+  <li>Reads lines from an input stream (either from stdin or a named file)</li>
+  <li>Parses valid lines for <code class="language-plaintext highlighter-rouge">[AGE] [NAME]</code></li>
+  <li>Discards invalid lines with <em>the</em> appropriate error message</li>
+  <li>Adds the name to the end of a list for the associated age</li>
+  <li>For each valid age (1-99 inclusive) output the age and list of names
+associated with that age if there are any.</li>
+  <li>Deallocates any memory allocated before exiting.</li>
+</ol>
+
+<p>For instance, if the input is the contents of <code class="language-plaintext highlighter-rouge">SAMPLE_INPUT</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>57 George Washington
+61 John Adams
+57 Thomas Jefferson
+57 James Madison
+58 James Monroe
+57 John Quincy Adams
+61 Andrew Jackson
+54 Martin Van Buren
+68 William Harrison
+51 John Tyler
+</code></pre></div></div>
+
+<p>then the output should be:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Age 51
+  0: John Tyler
+Age 54
+  0: Martin Van Buren
+Age 57
+  0: George Washington
+  1: Thomas Jefferson
+  2: James Madison
+  3: John Quincy Adams
+Age 58
+  0: James Monroe
+Age 61
+  0: John Adams
+  1: Andrew Jackson
+Age 68
+  0: William Harrison
+</code></pre></div></div>
+
+<h3 id="compiling-and-executing-your-program">Compiling and executing your program</h3>
+
+<p>Type <code class="language-plaintext highlighter-rouge">make</code> to compile your program. On successful compilation the file
+<code class="language-plaintext highlighter-rouge">group_by</code> should be created.</p>
+
+<p>The program you create needs to execute in two ways. The first is simply via:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./group_by
+</code></pre></div></div>
+
+<p>With no arguments, your program should read lines from the standard input
+stream (stdin).</p>
+
+<p>The second way is by providing a named file as the only argument to the
+program:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./group_by some_input_filename
+</code></pre></div></div>
+
+<p>In this case your program should (1) attempt to read lines from the named file
+<code class="language-plaintext highlighter-rouge">some_input_filename</code> and gracefully fail (exactly as described below) if the
+file cannot be opened.</p>
+
+<p>With any other number of arguments your program should output <code class="language-plaintext highlighter-rouge">Usage: group_by
+[FILENAME]\n</code> to the standard error stream.</p>
+
+<h3 id="standard-file-streams">Standard FILE streams</h3>
+
+<p>In previous labs we have utilized command line arguments to give our programs
+input. Another common way to take input in a program is through an input
+stream, likewise all program output is handled through an output
+stream. Simply, a stream is a pointer to a <code class="language-plaintext highlighter-rouge">FILE</code> structure, or <code class="language-plaintext highlighter-rouge">FILE *</code> that
+can be <em>readable</em> and/or <em>writable</em>. An input stream is a stream that is
+readable and an output stream is a stream that is writable.</p>
+
+<p>Any time you have the code <code class="language-plaintext highlighter-rouge">#include &lt;stdio.h&gt;</code> three global streams are made
+available. Those are:</p>
+
+<ul>
+  <li>
+    <p>stdin - A read-only stream (from the program’s point of view) that represents
+input to the program. Under normal execution this stream is provided via
+keyboard input.</p>
+  </li>
+  <li>
+    <p>stdout - A write-only stream that is used to produce normal program
+output. You implicitly use the stdout stream every time you make a call to
+<code class="language-plaintext highlighter-rouge">printf</code>.</p>
+  </li>
+  <li>
+    <p>stderr - A write-only stream that is typically used to produce error
+output. Under normal program execution the <code class="language-plaintext highlighter-rouge">stderr</code> stream is printed to the
+terminal along with the <code class="language-plaintext highlighter-rouge">stdout</code> stream.</p>
+  </li>
+</ul>
+
+<h3 id="outputting-to-writable-streams">Outputting to writable streams</h3>
+
+<p>We already know how to output to <code class="language-plaintext highlighter-rouge">stdout</code> using <code class="language-plaintext highlighter-rouge">printf</code>, but how would we
+output to <code class="language-plaintext highlighter-rouge">stderr</code>? It turns out that <code class="language-plaintext highlighter-rouge">printf(...)</code> is essentially the same as
+<code class="language-plaintext highlighter-rouge">fprintf(stdout, ...)</code>
+[<a href="https://pubs.opengroup.org/onlinepubs/000095399/functions/printf.html">ref</a>].
+Thus if we wanted to output “hello world\n” to <code class="language-plaintext highlighter-rouge">stderr</code> we could write:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">"hello world</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Likewise let’s assume we had another writable stream assigned to the variable
+<code class="language-plaintext highlighter-rouge">FILE *my_stream</code>. We could provide output to that stream by:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fprintf</span><span class="p">(</span><span class="n">my_stream</span><span class="p">,</span> <span class="s">"hello world</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Three other useful functions for writing to stream are
+<a href="https://pubs.opengroup.org/onlinepubs/000095399/functions/fputc.html">fputc</a>,
+for writing single characters (includes <code class="language-plaintext highlighter-rouge">'\0'</code>);
+<a href="https://pubs.opengroup.org/onlinepubs/000095399/functions/fputs.html">fputs</a>,
+for writing complete c-strings without <code class="language-plaintext highlighter-rouge">%?</code> replacement; and
+<a href="https://pubs.opengroup.org/onlinepubs/000095399/functions/fwrite.html">fwrite</a>,
+for writing a fixed amount of data from a buffer (includes <code class="language-plaintext highlighter-rouge">'\0'</code>).</p>
+
+<p><strong>WARNING</strong>: As the clang compiler will warn you, you should never call any
+form of <code class="language-plaintext highlighter-rouge">printf</code> with a c-string that is not hard-coded in your program
+code. If you only want to output the contents of a c-string (let’s call it
+<code class="language-plaintext highlighter-rouge">str</code>) to stream <code class="language-plaintext highlighter-rouge">stream</code>, use either <code class="language-plaintext highlighter-rouge">fputs(str, stream)</code> or <code class="language-plaintext highlighter-rouge">fprintf(stream
+"%s", str)</code>. Using <code class="language-plaintext highlighter-rouge">fprintf(stream, str)</code> makes your program vulnerable to
+<a href="https://en.wikipedia.org/wiki/Uncontrolled_format_string">format string
+exploits</a>.</p>
+
+<h3 id="inputting-from-readable-streams">Inputting from readable streams</h3>
+
+<p>There are a number of functions to read input from readable streams.</p>
+
+<h4 id="fgetc">fgetc</h4>
+
+<p>The simplest is
+<a href="https://pubs.opengroup.org/onlinepubs/000095399/functions/fgetc.html">fgetc</a>
+that reads in one character at a time. Astute readers will not that rather than
+return a <code class="language-plaintext highlighter-rouge">char</code> type, this function returns an <code class="language-plaintext highlighter-rouge">int</code> type. The reason is that
+<code class="language-plaintext highlighter-rouge">fgetc</code> needs some value to indicate that an error has occurred and both 0 and
+-1 (255 unsigned) are valid characters. Thus <code class="language-plaintext highlighter-rouge">fgetc</code> returns an integer and
+uses the additional bytes for error conditions. For instance <code class="language-plaintext highlighter-rouge">fgetc</code> will
+return the magic value <code class="language-plaintext highlighter-rouge">EOF</code> when the stream has no more data. <code class="language-plaintext highlighter-rouge">EOF</code> stands for
+end-of-file.</p>
+
+<p>The following is a simple program that <em>echos</em>, or repeats the data it reads
+from the standard input stream to the standard output stream.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">((</span><span class="n">c</span> <span class="o">=</span> <span class="n">fgetc</span><span class="p">(</span><span class="n">stdin</span><span class="p">))</span> <span class="o">!=</span> <span class="n">EOF</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">fputc</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">stdout</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>When running this program, you can terminate the keyboard input stream (thus
+triggering <code class="language-plaintext highlighter-rouge">EOF</code>) by pressing <code class="language-plaintext highlighter-rouge">ctrl+d</code> (you may need to press it
+twice if you’ve already input characters on the line).</p>
+
+<h4 id="fgets">fgets</h4>
+
+<p>Another useful function is
+<a href="https://pubs.opengroup.org/onlinepubs/000095399/functions/fgets.html">fgets</a>.
+<code class="language-plaintext highlighter-rouge">fgets</code> attempts to read an entire line (up to and including a newline, <code class="language-plaintext highlighter-rouge">'\n'</code>)
+into a pre-allocated <code class="language-plaintext highlighter-rouge">char</code> array (often referred to as a buffer) and then
+null-terminates the buffer so that it can be treated as a c-string. <strong>NOTE</strong>:
+<code class="language-plaintext highlighter-rouge">fgets</code> will read null-terminating characters, <code class="language-plaintext highlighter-rouge">'\0'</code>, just like any other
+character.</p>
+
+<p>The following is a nearly functionally identical example of the former <strong>echo</strong>
+example, using <code class="language-plaintext highlighter-rouge">fgets</code> and <code class="language-plaintext highlighter-rouge">fputs</code> rather than <code class="language-plaintext highlighter-rouge">fgetc</code> and <code class="language-plaintext highlighter-rouge">fputc</code>:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#define BUFFER_SIZE 64
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="n">BUFFER_SIZE</span><span class="p">];</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">fgets</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">BUFFER_SIZE</span><span class="p">,</span> <span class="n">stdin</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">fputs</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">stdout</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>There are three primary differences between this example and the former. The
+obvious one is that the former example reads character-by-character, where as
+the second example attempts to read line-by-line.</p>
+
+<p>The second has to do with the <code class="language-plaintext highlighter-rouge">BUFFER_SIZE</code> constant defined. An array, by
+definition, has a fixed sized, however, a line can be arbitrarily long. Thus to
+prevent buffer overflows, <code class="language-plaintext highlighter-rouge">fgets</code> requires the programmer to specify the size
+of the buffer to copy the data to, and copies in at most that size - 1
+bytes. The last byte is used to copy the null-terminating character.</p>
+
+<p>The final difference is that <code class="language-plaintext highlighter-rouge">fgets</code> returns NULL when there is no more data to
+read, i.e., it is at the end of the stream.</p>
+
+<h4 id="other-read-functions">Other read functions</h4>
+
+<p>In addition to
+<a href="https://pubs.opengroup.org/onlinepubs/000095399/functions/fgetc.html">fgetc</a>
+and
+<a href="https://pubs.opengroup.org/onlinepubs/000095399/functions/fgets.html">fgets</a> is
+<a href="https://pubs.opengroup.org/onlinepubs/000095399/functions/fread.html">fread</a>.
+<code class="language-plaintext highlighter-rouge">fread</code> is the complement function to <code class="language-plaintext highlighter-rouge">fwrite</code> which allows read an fixed
+amount of data into a buffer (includes ‘\0’).</p>
+
+<h3 id="working-with-named-files">Working with named files</h3>
+
+<p>So far we’ve only looked at working with <code class="language-plaintext highlighter-rouge">stdin</code>, <code class="language-plaintext highlighter-rouge">stdout</code>, and <code class="language-plaintext highlighter-rouge">stderr</code>. Often
+it is useful to read or write to a named file. In C, we can think of the <code class="language-plaintext highlighter-rouge">FILE</code>
+structure and its associated functions as an ADT for handling input and
+output. Thus, just like our list ADT, there are similar constructor and
+destructor functions for named files. Those are
+<a href="https://pubs.opengroup.org/onlinepubs/000095399/functions/fopen.html">fopen</a>
+and
+<a href="https://pubs.opengroup.org/onlinepubs/000095399/functions/fclose.html">fclose</a>
+respectively.</p>
+
+<h4 id="echo-from-a-named-file">Echo from a named file</h4>
+
+<p>Below is a simple example of the character-by-character <code class="language-plaintext highlighter-rouge">echo</code> program, this
+time echoing data from the named file <code class="language-plaintext highlighter-rouge">foobar</code> rather than standard input:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">FILE</span> <span class="o">*</span><span class="n">input</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">"foobar"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">);</span>
+  <span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">((</span><span class="n">c</span> <span class="o">=</span> <span class="n">fgetc</span><span class="p">(</span><span class="n">input</span><span class="p">))</span> <span class="o">!=</span> <span class="n">EOF</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">fputc</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">stdout</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">fclose</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Note that we use <code class="language-plaintext highlighter-rouge">"r"</code> as the second argument to <code class="language-plaintext highlighter-rouge">fopen</code> to indicate open the
+file for reading only. Also, note that the program will segfault if the file
+<code class="language-plaintext highlighter-rouge">foobar</code> does not exist relative to the present working directory at
+runtime. Just like our <code class="language-plaintext highlighter-rouge">list_construct</code> function, <code class="language-plaintext highlighter-rouge">fopen</code> will return NULL if
+the <code class="language-plaintext highlighter-rouge">FILE</code> structure cannot be <em>created</em>, or (opened in this case).</p>
+
+<h4 id="gracefully-handling-fopen-errors">Gracefully handling <code class="language-plaintext highlighter-rouge">fopen</code> errors</h4>
+
+<p>There are actually a number of reasons why <code class="language-plaintext highlighter-rouge">fopen</code> might fail. The most obvious
+is the file does not exist (when opening for reading), but another failure case
+is that the user does not have permission to open the file. In <strong>C</strong> there is a
+convenient
+<a href="https://pubs.opengroup.org/onlinepubs/009695399/functions/perror.html">perror</a>
+function to output (to standard error) an appropriate error message.</p>
+
+<p>Let’s update our example to gracefully handle errors with opening the file:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">FILE</span> <span class="o">*</span><span class="n">input</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">"foobar"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">input</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">perror</span><span class="p">(</span><span class="s">"foobar"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">((</span><span class="n">c</span> <span class="o">=</span> <span class="n">fgetc</span><span class="p">(</span><span class="n">input</span><span class="p">))</span> <span class="o">!=</span> <span class="n">EOF</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">fputc</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">stdout</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">fclose</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Now if when you run the program, the file <code class="language-plaintext highlighter-rouge">foobar</code> does not exist the following
+will be output to the standard error stream:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>foobar: No such file or directory
+</code></pre></div></div>
+
+<p>Likewise, if <code class="language-plaintext highlighter-rouge">foobar</code> exists, but it is not readable, the following will be
+output:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>foobar: Permission denied
+</code></pre></div></div>
+
+<h4 id="echo-to-a-named-file">Echo to a named file</h4>
+
+<p>The previous example took input from a named file and output it to the standard
+output stream. The following example, takes input from the standard input
+stream (normally keyboard) and outputs it to the named file “foobar”. Note that
+you should read the full
+<a href="https://pubs.opengroup.org/onlinepubs/000095399/functions/fopen.html">fopen</a>
+description to see what happens when you open files for writing that already
+exist and how to get the desired behavior.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">FILE</span> <span class="o">*</span><span class="n">output</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">"foobar"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">output</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">perror</span><span class="p">(</span><span class="s">"foobar"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">((</span><span class="n">c</span> <span class="o">=</span> <span class="n">fgetc</span><span class="p">(</span><span class="n">stdin</span><span class="p">))</span> <span class="o">!=</span> <span class="n">EOF</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">fputc</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">output</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">fclose</span><span class="p">(</span><span class="n">output</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Remember that to close the keyboard input stream you should hit <code class="language-plaintext highlighter-rouge">ctrl+d</code> on
+your keyboard.</p>
+
+<h4 id="reading-and-parsing-lines">Reading and parsing lines</h4>
+
+<p>You should use <code class="language-plaintext highlighter-rouge">fgets</code> to read in each line of the file. You are to assume that
+no lines are longer than 63 characters (include the newline, if available) thus
+a buffer of size 64 is sufficient to store the line data plus the null
+terminating character that <code class="language-plaintext highlighter-rouge">fgets</code> will automatically add. <strong>NOTE</strong>: You do
+<strong>NOT</strong> need to check for lines longer than 63 characters (though I encourage
+you to think about how you might do that).</p>
+
+<p>Each valid line is of the format <code class="language-plaintext highlighter-rouge">AGE SPACE NAME</code>. Is a base-10 number in the
+range 1-99 (inclusive). Note that <code class="language-plaintext highlighter-rouge">0001</code> and <code class="language-plaintext highlighter-rouge">00000000099</code> are valid ages and
+should be treated just like <code class="language-plaintext highlighter-rouge">1</code> and <code class="language-plaintext highlighter-rouge">99</code> respectively, but you shouldn’t have
+to do anything special to handle those numbers (if you are you’re making things
+too complicated for yourself). The SPACE is a <em>single</em> literal SPACE, <code class="language-plaintext highlighter-rouge">' '</code>,
+character. Finally, NAME is all characters following the SPACE character up to
+the new line character <code class="language-plaintext highlighter-rouge">'\n'</code> (if one exists).</p>
+
+<p>Any lines which do not match this format should result in a message to the
+standard error stream containing the line that resulted in the error. The exact
+format string message you are to use is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"Ignored invalid line: %s\n"
+</code></pre></div></div>
+
+<p>See the <code class="language-plaintext highlighter-rouge">MIXED_INPUT</code> and <code class="language-plaintext highlighter-rouge">MIXED_OUTPUT</code> file for examples of invalid output.</p>
+
+<h4 id="splitting-c-strings">Splitting c-strings</h4>
+
+<p>A very useful function for parsing c-strings is the
+<a href="https://pubs.opengroup.org/onlinepubs/009695299/functions/strtok.html">strtok</a>
+function. Below is an example program that splits up the individual terms
+(separated by either a space character, <code class="language-plaintext highlighter-rouge">' '</code>, or a new line character,
+<code class="language-plaintext highlighter-rouge">'\n'</code>).</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span>
+<span class="kt">void</span> <span class="nf">output_terms</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">orig</span> <span class="o">=</span> <span class="n">strdup</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>  <span class="c1">// Save a copy as strtok is destructive</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">token_arg</span> <span class="o">=</span> <span class="n">msg</span><span class="p">;</span>  <span class="c1">// Non-null only for the first call to strtok</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">token</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="c1">// Loop over each token (split on either space or new line characters)</span>
+  <span class="k">while</span> <span class="p">((</span><span class="n">token</span> <span class="o">=</span> <span class="n">strtok</span><span class="p">(</span><span class="n">token_arg</span><span class="p">,</span> <span class="s">" </span><span class="se">\n</span><span class="s">"</span><span class="p">))</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">token_arg</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>  <span class="c1">// Subsequent strtok calls require this to be NULL</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Token %d: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">index</span><span class="o">++</span><span class="p">,</span> <span class="n">token</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"The original message was: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">orig</span><span class="p">);</span>
+  <span class="n">free</span><span class="p">(</span><span class="n">orig</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">char</span> <span class="n">line1</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"1 23 456 789</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+  <span class="kt">char</span> <span class="n">line2</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"hello world"</span><span class="p">;</span>  <span class="c1">// Note that this does not end with '\n'</span>
+  <span class="n">output_terms</span><span class="p">(</span><span class="n">line1</span><span class="p">);</span>
+  <span class="n">output_terms</span><span class="p">(</span><span class="n">line2</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Note that <code class="language-plaintext highlighter-rouge">strtok</code> is destructive thus we use
+<a href="https://pubs.opengroup.org/onlinepubs/009695299/functions/strdup.html">strdup</a>
+to make a copy of the original string in order to use it afterwards.</p>
+
+<h4 id="storing-lists-of-names-by-ages">Storing lists of names by ages</h4>
+
+<p>Aside from the task of parsing data, this is the primary challenge for this lab
+(don’t discuss this part outside of your group except with the instructor and
+TAs). You are provided with a complete implementation of the List ADT, thus
+allowing you to <code class="language-plaintext highlighter-rouge">#include "list.h"</code>.</p>
+
+<p>You <em>should</em> store each name in a list corresponding to a single age, and use
+the appropriate output function to output the contents of the list. The
+question you must answer is how do you manage a list for each age such that
+after reading all the input, the names associated with each age are output in
+age order? Good luck!</p>
+
+<h3 id="submitting-the-assignment">Submitting the assignment</h3>
+
+<p>Only one person in a group need submit the assignment but make sure that both
+you and your partner can view the submission on the submission site. If you
+cannot, you need to complete the making a group process. Please review the
+<a href="/cs24_f13/submission">submission instructions</a> as needed. Note that you may resubmit
+this assignment as many times as necessary up until the deadline.</p>
+
+  </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
+      <div id="credits">
+        <p><span class="small">Template design by <a href="https://andreasviklund.com/">Andreas Viklund</a></span></p>
+      </div>
+    </div>
+  </body>
+</html>

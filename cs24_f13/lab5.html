@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/public/variant-multi.css" title="Variant Multi" media="all" />
+    <link rel="stylesheet" type="text/css" href="/public/monokai.sublime.css" />
+    <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+    <title>Lab 5 &raquo; CS24 Fall 2013</title>
+  </head>
+  <body>
+    <div id="container980">
+<div id="header">
+  <h1><a href="/cs24_f13/">Computer Science 24, Fall 2013</a></h1>
+  <h2>Problem Solving with Computers II</h2>
+</div>
+
+<div id="menu">
+  <ul>
+    <li><a href="/cs24_f13/schedule">lecture schedule</a></li>
+    <li><a href="/cs24_f13/submission">submission instructions</a></li>
+    <li><a href="/cs24_f13/gdb">gdb tutorial</a></li>
+  </ul>
+</div>
+
+<div id="main">
+  <div id="sidebar">
+    <div class="sidebarbox">
+      <h2>People &amp; Office Hours</h2>
+      <ul>
+        <li><strong>Instructor</strong>: Bryce Boe
+          (<a href="/">web</a>, <a href="mailto:bboe@cs.ucsb.edu">email</a>)
+          <ul>
+            <li>Tuesday, 15:30 - 16:30 in HFH 1152</li>
+            <li>Wednesday, 11:00 - 12:00 in HFH 1152</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Geoffrey Douglas
+          <ul>
+            <li>Wednesday, 15:00 - 17:00 in Phelps 1413</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Jon Sun
+          <ul>
+            <li>Thursday, 10:00 - 12:00 in Phelps 1413</li>
+          </ul>
+        </li>
+        <li><strong>TA</strong>: Dani Kudrow
+          <ul>
+            <li>Thursday, 15:00 - 17:00 in Phelps 1413</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebarbox">
+      <h2>Deadlines</h2>
+      <h3>All deadlines are at 23:59:59 on the due date unless otherwise noted.</h3>
+      <ul>
+        <li>2013/09/30 -- <a href="/cs24_f13/lab1">Lab 1</a></li>
+        <li>2013/10/02 -- Drop deadline (no fee)</li>
+        <li>2013/10/08 -- <a href="/cs24_f13/lab2">Lab 2</a></li>
+        <li>2013/10/14 -- <a href="/cs24_f13/lab3">Lab 3</a></li>
+        <li>2013/10/20 -- <a href="/cs24_f13/proj1">Project 1</a></li>
+        <li>2013/10/22 -- <a href="/cs24_f13/lab4">Lab 4</a></li>
+        <li>2013/10/23 23:45 -- Drop deadline ($3 fee)</li>
+        <li>2013/10/28 -- <a href="/cs24_f13/lab5">Lab 5</a></li>
+        <li>2013/10/30 14:00 -- Midterm Examination</li>
+        <li>2013/11/04 -- <a href="/cs24_f13/lab6">Lab 6</a></li>
+        <li>2013/11/13 -- <a href="/cs24_f13/lab7">Lab 7</a></li>
+        <li>2013/11/18 -- <a href="/cs24_f13/lab8">Lab 8</a></li>
+        <li>2013/11/22 -- <a href="/cs24_f13/proj2">Project 2</a></li>
+        <li>2013/11/25 -- <a href="/cs24_f13/lab9">Lab 9</a></li>
+        <li>2013/12/02 -- <a href="/cs24_f13/lab10">Lab 10</a></li>
+        <li>2013/12/06 -- <a href="/cs24_f13/proj3">Project 3</a></li>
+        <li>2013/12/09 16:00 -- Final Examination</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="content">
+<h2 id="lab-5-intro-to-c">Lab 5: Intro to C++</h2>
+
+<h3 id="updates">Updates</h3>
+
+<p>I’ve added the <code class="language-plaintext highlighter-rouge">-pedantic</code> flag to the compilation line. This will warn you if
+you attempt to do something like the following:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">numbers</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>The following works using clang++ (and g++) because of a compiler extension
+that allows dynamically-sized arrays on the stack. However, this extension is
+<em>not</em> part of the C++ standard and thus is not acceptable to use in this lab.</p>
+
+<h3 id="goals-for-this-lab">Goals for this lab</h3>
+<p>After completing this lab you should be able to:</p>
+
+<ul>
+  <li>Use C++’s <code class="language-plaintext highlighter-rouge">std::cin</code> and <code class="language-plaintext highlighter-rouge">std::cout</code></li>
+  <li>Allocate and deallocate memory using <code class="language-plaintext highlighter-rouge">new[]</code> and <code class="language-plaintext highlighter-rouge">delete[]</code></li>
+  <li>Define C++ classes</li>
+</ul>
+
+<h3 id="lab-pairing">Lab Pairing</h3>
+
+<p>For this lab you may work with a partner. To facilitate your submissions as a
+pair you <strong>MUST</strong> pair up using the submission system. When you visit the
+project page from where you can view all your submission you should see a link
+to a page where you can join a group. Of the two people in the group, one of
+you must invite the other, and the other must confirm the invitation. Once you
+group up, any submissions that either you, or your partner have already made
+will be visible to each other in addition to all future submissions.</p>
+
+<h3 id="lab-preparation">Lab Preparation</h3>
+
+<p>At this point, everyone should have a COE account. If you do not, you need to
+make that a priority and should partner up with someone who already has an
+account.</p>
+
+<p>Before you begin, let’s prepare a cs24 directory in your home directory if you
+don’t already have one. In that directory we’ll create a subdirectory for the
+files for this lab. Note that these instructions assume you are using either a
+CSIL machine or one of the lab machines:</p>
+
+<p>After logging in, create the directory (assuming you haven’t already done so):</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> cs24/lab5
+</code></pre></div></div>
+
+<p>Change the permissions of the cs24 directory such that only your account can
+access the files inside this directory. This step is <strong>incredibly</strong>
+important. If omitted, other students can peek at your work and you may be held
+partially responsible. It should also go without saying that you may <strong>not</strong>
+give other students access to your account. If you’ve done that in the past
+please <a href="https://accounts.engr.ucsb.edu/maintain/login">change your password</a> at
+this time.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod </span>700 cs24
+</code></pre></div></div>
+
+<p>Change into the lab5 directory and copy the files you will need for this lab:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>cs24/lab5
+<span class="nb">cp</span> <span class="nt">-r</span> ~bboe/public_html/cs24_f13/code/lab5/<span class="k">*</span> <span class="nb">.</span>
+</code></pre></div></div>
+
+<h3 id="provided-files">Provided files</h3>
+<p>You will find the following files in your directory:</p>
+
+<ul>
+  <li>
+    <p><em>numbers.cpp</em> – This file contains the skeleton code for Part 1. It has the
+<code class="language-plaintext highlighter-rouge">#include</code>s that you will need and reads the first number in for you.</p>
+  </li>
+  <li>
+    <p><em>myclass.h</em> – This file contains the skeleton code for Part 2. It defines
+the C++ class MyClass for which you will have to implement the member
+functions.</p>
+  </li>
+</ul>
+
+<h3 id="part-1-c-io">Part 1: C++ I/O</h3>
+<p>In this lab we are going to work with a few features of C++ that diverge from
+their C counterparts. Your task in the fist part of the lab is to write a
+simple program which does the following:</p>
+
+<ol>
+  <li>Read a integer from standard input (well call this number <em>n</em> and it will
+always be greater than 0)</li>
+  <li>Read in <em>n</em> more integers from standard input</li>
+  <li>Print these integers (not including <em>n</em>) in reverse order to standard output</li>
+  <li>Print the sum of these integers (not including <em>n</em>) to standard output</li>
+  <li>Print the average value of these integers (not including <em>n</em>) to standard
+output with the correct precision</li>
+</ol>
+
+<p>Here is an sample execution of the program:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./numbers
+How many numbers will you input? 3
+#1: 1
+#2: 2
+#3: 3
+In reverse: 3 2 1
+Sum: 6
+Average: 2.00
+$
+</code></pre></div></div>
+
+<p>You are to use the C++ I/O library and memory allocation/deallocation operators
+that are described below. <strong>Submissions using scanf/printf and malloc/free will
+not be accepted!</strong></p>
+
+<h3 id="part-2-c-classes">Part 2: C++ classes</h3>
+<p>For the second part of the lab, you will be writing a simple C++ class. The
+class definition is provided for you in <em>myclass.h</em> and it is up to you to
+implement the member functions declared in the class. The details and expected
+output are described in the comments of <em>myclass.h</em>.</p>
+
+<h3 id="the-iostream-library">The iostream library</h3>
+
+<p>Like C, C++ uses the <em>stream</em> as its primary method of input and output,
+however the syntax in C++ is mercifully simpler. The C++ standard I/O
+procedures can be found in the <code class="language-plaintext highlighter-rouge">&lt;iostream&gt;</code> library. The stream for standard
+input is named <code class="language-plaintext highlighter-rouge">std::cin</code> and the stream for standard output is named
+<code class="language-plaintext highlighter-rouge">std::cout</code>. Recall that <code class="language-plaintext highlighter-rouge">::</code> is the scope resolution operator. All of the
+standard library functions and variables are in the <code class="language-plaintext highlighter-rouge">std</code> namespace so you must
+prefix them with <code class="language-plaintext highlighter-rouge">std::</code> to use them. To write to and read from streams C++
+provides the <em>insertion</em> and <em>extraction</em> operators, <code class="language-plaintext highlighter-rouge">&lt;&lt;</code> and <code class="language-plaintext highlighter-rouge">&gt;&gt;</code>, which
+handle print formatting for you:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Enter a number: "</span><span class="p">;</span> <span class="c1">// print to standard output</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">i</span><span class="p">;</span>                   <span class="c1">// read from standard output</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">" squared is "</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>For tighter control of output formatting, C++ provides the <code class="language-plaintext highlighter-rouge">&lt;iomanip&gt;</code>
+libray. In this lab we want to set the precision with which we print floating
+point variables. This can be done using the <code class="language-plaintext highlighter-rouge">std::fixed</code> and
+<code class="language-plaintext highlighter-rouge">std::setprecision</code> stream manipulators:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;iomanip&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">double</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.1415927</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">pi</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span> <span class="c1">// print with default formatting</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">setprecision</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">pi</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span> <span class="c1">// print with UP TO 2 digits of precision</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">setprecision</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">pi</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span> <span class="c1">// print with UP TO 9 digits of precision</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">fixed</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">pi</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span> <span class="c1">// print with EXACTLY 9 digits of precision</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Output:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./a.out
+3.14159
+3.14
+3.1415927
+3.141592700
+</code></pre></div></div>
+
+<h3 id="memory-management">Memory management</h3>
+<p>C++ has built-in operators to handle dynamic allocation and deallocation of
+memory. Use the <code class="language-plaintext highlighter-rouge">new[]</code> operator to allocate memory and <code class="language-plaintext highlighter-rouge">delete</code> to
+deallocate. While the syntax is new to you, their functionality should be
+familiar:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="o">*</span><span class="n">p1</span><span class="p">;</span>
+<span class="kt">int</span> <span class="o">*</span><span class="n">p2</span><span class="p">;</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">;</span>    <span class="c1">// allocate memory for 1 int</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span> <span class="c1">// allocate memory for 5 ints</span>
+<span class="k">delete</span> <span class="n">p1</span><span class="p">;</span>       <span class="c1">// deallocate memory for 1 int</span>
+<span class="k">delete</span><span class="p">[]</span> <span class="n">p2</span><span class="p">;</span>     <span class="c1">// deallocate memory for 5 ints</span>
+</code></pre></div></div>
+
+  </div>
+  <div class="clear">&nbsp;</div>
+</div>
+
+      <div id="credits">
+        <p><span class="small">Template design by <a href="https://andreasviklund.com/">Andreas Viklund</a></span></p>
+      </div>
+    </div>
+  </body>
+</html>
