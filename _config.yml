@@ -13,13 +13,16 @@ defaults:
       path: cs24_m13/
     values:
       layout: cs24_m13
-
+  - scope:
+      path: cs24_f13/
+    values:
+      layout: cs24_f13
 
 url: https://sites.cs.ucsb.edu
 
 # Build settings
 plugins:
-  - jekyll-feed
+  - jekyll-sitemap
 
 # Exclude from processing.
 # The following items will not be processed, by default.
