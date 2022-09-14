@@ -26,8 +26,10 @@ Programming](https://www.ooblick.com/text/sh/) page provided by ooblick.com.
 
 ### Hello World
 
-    #!/bin/sh
-    echo "Hello world"
+```sh
+#!/bin/sh
+echo "Hello world"
+```
 
 The first line, `#!/bin/sh`, tells the operating system that the file should be
 processed with the executable /bin/sh. If this line is omitted, then whatever
@@ -49,12 +51,13 @@ different shell wihtout modifing the script contents: `bash hello.sh`.
 
 ### Command line arguments and string concatenation
 
-    #!/bin/sh
-    echo "All arguments: $*"   # Doesn't include the script name
-    echo "Script name: $0"     # Output the script name
-    echo "First argument: $1"  # Output the first command line argument
-    echo "Num args: $#"        # Output the number of arguments
-
+```sh
+#!/bin/sh
+echo "All arguments: $*"   # Doesn't include the script name
+echo "Script name: $0"     # Output the script name
+echo "First argument: $1"  # Output the first command line argument
+echo "Num args: $#"        # Output the number of arguments
+```
 
 If you run the above script via `example.sh a b c` you should see the following
 output:
@@ -72,12 +75,14 @@ whatever type that variable holds.
 
 ### Variables and capturing external commands' output
 
-    #!/bin/sh
-    msg_string="Path to script:"
-    prog_name=$(basename $0) # Assign the output of the command "basename $0"
-                             # to the variable prog_name
-    cur_directory=$(pwd)     # Do something similiar with pwd
-    echo "$msg_string: $cur_directory/$prog_name"
+```sh
+#!/bin/sh
+msg_string="Path to script:"
+prog_name=$(basename $0) # Assign the output of the command "basename $0"
+                         # to the variable prog_name
+cur_directory=$(pwd)     # Do something similiar with pwd
+echo "$msg_string: $cur_directory/$prog_name"
+```
 
 In the above example, we see three examples of variable assignment. On line
 two, we directly assign a string to the variable `msg_string`. Note that we do
@@ -100,12 +105,14 @@ this time combining three separate variables into a single string.
 
 ### Conditionals
 
-    #!/bin/sh
-    if [ $# -ne 0 ]; then
-        echo "There are command line arguments"
-    else
-        echo "There are no command line arguments"
-    fi
+```sh
+#!/bin/sh
+if [ $# -ne 0 ]; then
+    echo "There are command line arguments"
+else
+    echo "There are no command line arguments"
+fi
+```
 
 In the above example, we demonstrate the use of an if/else conditional on the
 condition that the number of arguments does not equal zero. Again, please note
@@ -118,12 +125,14 @@ if the path points to a regular file, `-f`, a directory, `-d`, or a few
 others. In the following example, we confirm that our current directory, `.`, is, in
 fact, a directory and not a file.
 
-    #!/bin/sh
-    if [ -d . -a ! -f . ]; then
-        echo ". is in fact a directory and not a file."
-    else
-        echo "This should never be true."
-    fi
+```sh
+#!/bin/sh
+if [ -d . -a ! -f . ]; then
+    echo ". is in fact a directory and not a file."
+else
+    echo "This should never be true."
+fi
+```
 
 In the above conditional, I introduced the _logical and_, `-a`, between two
 independent conditions, `-d .` and `! -f .`. The `!` preceding the second
@@ -131,10 +140,12 @@ condition is the _logical negation_.
 
 ### Basic Looping
 
-    #!/bin/sh
-    for filename in $(ls); do
-        echo $filename
-    done
+```sh
+#!/bin/sh
+for filename in $(ls); do
+    echo $filename
+done
+```
 
 In the above example, we loop over the list of filenames in the current
 directory as reported by the command `ls`. The variable `filename` holds the
