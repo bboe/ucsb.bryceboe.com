@@ -14,7 +14,7 @@ typedef void (*sort_func)(string *, int, comparison_func);
    result in integer. Returns true if only an integer was read from the
    line. Returns false otherwise.
 
-   Function adapted from example at http://stackoverflow.com/a/8631962/176978
+   Function adapted from example at https://stackoverflow.com/a/8631962/176978
 */
 bool read_integer(int &integer) {
   int success = true;

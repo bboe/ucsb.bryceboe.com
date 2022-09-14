@@ -1,5 +1,5 @@
 ---
-title: Schedule
+title: Schedule &raquo; CS32 Summer 2012
 ---
 {%- assign base = site.baseurl | append: "/cs32_m12" -%}
 ## Tentative Lecture and Reading Schedule
