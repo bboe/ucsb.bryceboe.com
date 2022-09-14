@@ -1,5 +1,5 @@
 ---
-title: Bourne Shell Scripting
+title: Bourne Shell Scripting &raquo; CS32 Summer 2012
 ---
 ## An introduction to bourne shell scripting
 
